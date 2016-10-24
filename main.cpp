@@ -20,6 +20,7 @@ int main()
     
     while(HarvestGame.getGameStatus()) {
         std::cout << "\nSuccessful game start!\n";
+        std::cout << "\nPlaced on GitHub, even!\n";
         
         std::cout << HarvestGame.getPlayerName(0) << " " << HarvestGame.getPlayerAge(0) << std::endl;
         
