@@ -18,3 +18,53 @@ Player::~Player()
 {
     std::cout << "\n> Player destructed\n";
 }
+
+//* Getters / Setters *//
+
+/* Player name */
+std::string Player::getPlayerName(void)
+{
+    return playerName;
+}
+
+void Player::setPlayerName(std::string name)
+{
+    playerName = name;
+}
+
+
+/* Player age */
+int Player::getPlayerAge(void)
+{
+    return playerAge;
+}
+
+void Player::setPlayerAge(int age)
+{
+    playerAge = age;
+}
+
+
+/* Player gold */
+int Player::getPlayerGold(void)
+{
+    return playerGold;
+}
+
+void Player::setPlayerGold(int gold)
+{
+    playerGold = gold;
+}
+
+
+//* Methods *//
+
+void Player::addGold(int gold)
+{
+    playerGold += gold;
+}
+
+void Player::removeGold(int gold)
+{
+    playerGold -= gold;
+}
