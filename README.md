@@ -8,4 +8,4 @@ CLI version of a Harvest Moon-style card game I am developing for commercial rel
 
 About the Author
 ----------------
-I'm very much new to programming, and only know what I've learned from class. I don't mind receiving input or criticism or other types of help, as anything would go a long way in helping me progress. 
+I'm very much new to programming, and only know what I've learned from class. I don't mind receiving input or criticism or other types of help, as anything would go a long way in helping me progress. The best place to send information would be brandon.seals@gmail.com.
