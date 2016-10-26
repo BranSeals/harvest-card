@@ -23,6 +23,9 @@ public:
     std::string getCardName(void);
     void setCardName(std::string);
     
+    bool isCardFaceUp(void);
+    void setCardFaceUp(bool);
+    
     /* Effect on card, referring to list of effects */
     int getCardEffect(void);
     void setCardEffect(int);
@@ -41,10 +44,11 @@ public:
     
     //* Methods *//
     
-    
+    void flipCard(void);
     
 private:
     std::string cardName{""};
+    bool cardFaceUp{false};
     int cardEffect{0};
     int cardCost{0};
     int cardValue{0};

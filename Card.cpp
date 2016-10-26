@@ -32,6 +32,16 @@ void Card::setCardName(std::string name)
     cardName = name;
 }
 
+bool Card::isCardFaceUp(void)
+{
+    return cardFaceUp;
+}
+
+void Card::setCardFaceUp(bool tf)
+{
+    cardFaceUp = tf;
+}
+
 /* Effect on card, referring to list of effects */
 int Card::getCardEffect(void)
 {
@@ -78,3 +88,11 @@ void Card::setCardDescription(std::string description)
 
 //* Methods *//
 
+void Card::flipCard(void)
+{
+    if (cardFaceUp == true) {
+        cardFaceUp = false;
+    } else {
+        cardFaceUp = true;
+    }
+}
