@@ -9,7 +9,8 @@
 #include "Player.hpp"
 #include <iostream>
 
-Player::Player()
+Player::Player(int playerNum, std::string name, int age, int gold) :
+playerNumber{playerNum}, playerName{name}, playerAge{age}, playerGold{gold}
 {
     std::cout << "\n> Player constructed\n";
 }
@@ -20,6 +21,17 @@ Player::~Player()
 }
 
 //* Getters / Setters *//
+
+/* Player order number */
+int Player::getPlayerNumber(void)
+{
+    return playerNumber;
+}
+
+void Player::setPlayerNumber(int number)
+{
+    playerNumber = number;
+}
 
 /* Player name */
 std::string Player::getPlayerName(void)
@@ -67,4 +79,12 @@ void Player::addGold(int gold)
 void Player::removeGold(int gold)
 {
     playerGold -= gold;
+}
+
+void Player::printPlayer(void)
+{
+    std::cout << "\nPlayer " << playerNumber;
+    std::cout << "\nName:\t" << playerName;
+    std::cout << "\nAge:\t" << playerAge;
+    std::cout << "\nGold:\t" << playerGold;
 }

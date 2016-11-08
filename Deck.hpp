@@ -12,7 +12,7 @@
 #include "Card.hpp"
 #include <vector>
 
-class Deck
+class Deck : public Card
 {
 public:
     Deck();
@@ -30,13 +30,13 @@ public:
     
     //* Methods *//
     
-    void addCard(Card);
+    void addCard(int);
     void printDeck(void);
     void shuffleDeck(void);
     Card dealCard(void);
     
 private:
-    std::vector<Card> deck;
+    std::vector<int> deck;
     Card* deckPtr; // not sure yet if fully needed or wanted
     int deckSize{0}; // not sure if this will be useful; maybe
 };

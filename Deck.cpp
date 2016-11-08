@@ -7,15 +7,25 @@
 //
 
 #include "Deck.hpp"
-#include "Card.hpp"
+//#include "Card.hpp"
 #include <iostream>
 
 Deck::Deck()
 {
-    std::cout << "\n> Deck constructed\n";
 }
 
 Deck::~Deck()
 {
-    std::cout << "\n> Deck destructed\n";
+}
+
+void Deck::addCard(int cardID)
+{
+    deck.push_back(cardID);
+}
+
+void Deck::printDeck()
+{
+    for (size_t i{0}; i < deck.size(); ++i) {
+        std::cout << deck[i] << " ";
+    }
 }
