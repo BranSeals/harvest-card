@@ -10,22 +10,24 @@
 #include <string>
 #include <vector>
 #include "Player.hpp"
+#include "Market.hpp"
 
+/* Game rules */
 const int seasonLength{0};
-const int gameLength{seasonLength * 0};
+const int gameLength{seasonLength * 4};
 const int startingGold{100};
 
 int main()
 {
+    /* Player initialization */
     int numPlayers{0};
     int age{0};
     std::vector<int> playerAges;
     std::string name{""};
     std::vector<std::string> playerNames;
     bool gameStatus{false};
-    int currentPlayer{0};
-    int currentPhase{0};
     
+    /* Get number of players */
     do {
         std::cout << "\nHow many players are there? [1-4]: ";
         std::cin >> numPlayers;
@@ -68,6 +70,27 @@ int main()
         Player Player4(4, playerNames[3], playerAges[3], startingGold);
     }
     
+    Player1.printPlayer();
+    
+    /* Game initialization */
+    int currentPlayer{0};
+    int currentPhase{0};
+    Deck allCards;
+    
+    /* Season initialization */
+    Deck springDeck;
+    Deck summerDeck;
+    Deck autumnDeck;
+    Deck winterDeck;
+    
+    /* Market initialization */
+    Deck seedDeck;
+    Deck toolDeck;
+    Deck livestockDeck;
+    
+
+    
+    /* Game loop */
     // TODO: conditionals in loop using currentPhase and currentPlayer
     // TODO: allow quitting at certain point in loop
     while (gameStatus) {
