@@ -11,12 +11,12 @@
 
 Card::Card()
 {
-    std::cout << "\n> Card constructed\n";
+    //std::cout << "\n> Card constructed\n";
 }
 
 Card::~Card()
 {
-    std::cout << "\n> Card destructed\n";
+    //std::cout << "\n> Card destructed\n";
 }
 
 //* Getters / Setters *//

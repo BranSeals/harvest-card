@@ -11,10 +11,10 @@
 
 Market::Market()
 {
-    std::cout << "\n> Market constructed\n";
+    //std::cout << "\n> Market constructed\n";
 }
 
 Market::~Market()
 {
-    std::cout << "\n> Market destructed\n";
+    //std::cout << "\n> Market destructed\n";
 }
