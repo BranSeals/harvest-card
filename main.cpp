@@ -10,7 +10,10 @@
 #include "Player.hpp"
 #include "Market.hpp"
 
-/* Game rules */
+/* Functions */
+void sortPlayers(std::vector<int>*, std::vector<std::string>*);
+
+/* Constant game rules */
 const int seasonLength{0};
 const int gameLength{seasonLength * 4};
 const int startingGold{100};
@@ -25,6 +28,8 @@ int main()
     std::vector<std::string> playerNames;
     bool gameStatus{false};
 	Player Player1, Player2, Player3, Player4;
+	std::vector<int>* playerAgesPtr{nullptr};
+	std::vector<std::string>* playerNamesPtr{nullptr};
     
     /* Get number of players */
     do {
@@ -47,15 +52,13 @@ int main()
         playerAges.push_back(age);
         playerNames.push_back(name);
     }
-    
-    // TODO: add bubble sort from lab assignment to do full sorting
-    // TODO: when ages match, sort alphabetically
-    for (size_t i{1}; i < playerAges.size(); ++i) {
-        if (playerAges[i] < playerAges[i - 1]) {
-            std::swap(playerAges[i], playerAges[i - 1]);
-            std::swap(playerNames[i], playerNames[i - 1]);
-        }
-    }
+
+	/* Sort Players by age and name (youngest first, then alphabetically) */
+	if (numPlayers > 1) {
+		playerAgesPtr = &playerAges;
+		playerNamesPtr = &playerNames;
+		sortPlayers(playerAgesPtr, playerNamesPtr);
+	}
     
     /* Create players sorted by age */
 	Player1.setPlayerNumber(1);
@@ -124,4 +127,45 @@ int main()
     } // end game loop
     
     return 0;
+}
+
+void sortPlayers(std::vector<int>* agesPtr, std::vector<std::string>* namesPtr)
+{
+	bool sortedAge{false};
+	bool sortedName{false};
+
+	while (!sortedAge || !sortedName) {
+
+		/* Sort by age value first */
+		for (size_t i{1}; i < (*agesPtr).size(); ++i) {
+
+			if ((*agesPtr)[i] < (*agesPtr)[i - 1]) {
+				std::swap((*agesPtr)[i], (*agesPtr)[i - 1]);
+				std::swap((*namesPtr)[i], (*namesPtr)[i - 1]);
+			}
+		}
+		/* Then sort by name */
+		for (size_t i{1}; i < (*agesPtr).size(); ++i) {
+			if (((*agesPtr)[i] == (*agesPtr)[i - 1])
+				&& ((*namesPtr)[i] < (*namesPtr)[i - 1])) {
+				std::swap((*agesPtr)[i], (*agesPtr)[i - 1]);
+				std::swap((*namesPtr)[i], (*namesPtr)[i - 1]);
+			}
+		}
+
+		/* Verify age and name values are sorted; if not, re-loop */
+		for (size_t j{1}; j < (*agesPtr).size(); ++j) {
+			if ((*agesPtr)[j] < (*agesPtr)[j - 1]) {
+				sortedAge = false;
+				break;
+			}
+			if (((*agesPtr)[j] == (*agesPtr)[j - 1])
+				&& ((*namesPtr)[j] < (*namesPtr)[j - 1])) {
+				sortedName = false;
+				break;
+			}
+			sortedAge = true;
+			sortedName = true;
+		}
+	}
 }
