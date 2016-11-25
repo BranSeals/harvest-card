@@ -14,6 +14,11 @@ Card::Card()
     //std::cout << "\n> Card constructed\n";
 }
 
+Card::Card(int id)
+{
+	createByID(id);
+}
+
 Card::~Card()
 {
     //std::cout << "\n> Card destructed\n";
@@ -87,6 +92,11 @@ void Card::setCardDescription(std::string description)
 }
 
 //* Methods *//
+
+void Card::createByID(int id)
+{
+	//from here, use switch statements to call set functions considering ID
+}
 
 void Card::flipCard(void)
 {

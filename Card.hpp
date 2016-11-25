@@ -15,6 +15,7 @@ class Card
 {
 public:
     Card();
+	Card(int);
     ~Card();
     
     //* Getters / Setters *//
@@ -44,6 +45,7 @@ public:
     
     //* Methods *//
     
+	void createByID(int);
     void flipCard(void);
     
 private:
