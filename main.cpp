@@ -12,6 +12,7 @@
 
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
+bool confirmYN(std::string);
 
 /* Constants */
 const std::string gameTitle{"Harvest Card Game"};
@@ -128,19 +129,13 @@ int main()
 	std::cout << "\n> Shuffling decks...\n";
 
 	/* Verify game start */
-	while (!gameStatus) {
-		std::cout << "Begin game? [y/n]: ";
-		std::cin >> ynAnswer;
-		std::cin.clear();
-		std::cin.ignore();
-		if (tolower(ynAnswer) == 'y') {
-			std::cout << "\n> Beginning game...\n";
-			gameStatus = true;
-		}
-		if (tolower(ynAnswer) == 'n') {
-			std::cout << "\n> Quitting game...\n";
-			return 0;
-		}
+	if (confirmYN("Begin game? [y/n]: ")) {
+		std::cout << "\n> Beginning game...\n";
+		gameStatus = true;
+	} else {
+		std::cout << "\n> Quitting game...\n";
+		gameStatus = false;
+		return 0;
 	}
     
     /* Game loop */
@@ -195,6 +190,23 @@ void sortPlayers(std::vector<int>* agesPtr, std::vector<std::string>* namesPtr)
 			}
 			sortedAge = true;
 			sortedName = true;
+		}
+	}
+}
+
+bool confirmYN(std::string message)
+{
+	char ynAnswer{};
+	while ((tolower(ynAnswer) != 'n') || (tolower(ynAnswer)) != 'y') {
+		std::cout << message;
+		std::cin >> ynAnswer;
+		std::cin.clear();
+		std::cin.ignore();
+		if (tolower(ynAnswer) == 'y') {
+			return true;
+		}
+		if (tolower(ynAnswer) == 'n') {
+			return false;
 		}
 	}
 }
