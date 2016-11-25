@@ -1,7 +1,7 @@
-/*  
+/* Project name: Harvest Card Game
  * Author: Brandon Seals
  * Last revised: 2016-11-25
- *
+ * Description: CLI version of farming card game
  */
 
 #include <iostream>
@@ -13,24 +13,40 @@
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
 
-/* Constant game rules */
+/* Constants */
 const int seasonLength{0};
 const int gameLength{seasonLength * 4};
 const int startingGold{100};
 
 int main()
 {
-    /* Player initialization */
+    /* Player variables */
     int numPlayers{0};
     int age{0};
     std::vector<int> playerAges;
     std::string name{""};
     std::vector<std::string> playerNames;
-    bool gameStatus{false};
 	Player Player1, Player2, Player3, Player4;
 	std::vector<int>* playerAgesPtr{nullptr};
 	std::vector<std::string>* playerNamesPtr{nullptr};
-    
+
+	/* Game variables */
+	bool gameStatus{false};
+	int currentPlayer{0};
+	int currentPhase{0};
+	Deck allCards;
+
+	/* Season decks */
+	Deck springDeck;
+	Deck summerDeck;
+	Deck autumnDeck;
+	Deck winterDeck;
+
+	/* Market decks */
+	Deck seedDeck;
+	Deck toolDeck;
+	Deck livestockDeck;
+
     /* Get number of players */
     do {
         std::cout << "\nHow many players are there? [1-4]: ";
@@ -39,7 +55,6 @@ int main()
         std::cin.ignore();
     } while ((numPlayers < 1) || (numPlayers > 4));
     
-    // TODO: add validation for name
     for (size_t i{1}; i <= numPlayers; ++i) {
         std::cout << "\nWhat is player " << i << "'s name?: ";
         std::cin >> name;
@@ -53,7 +68,7 @@ int main()
         playerNames.push_back(name);
     }
 
-	/* Sort Players by age and name (youngest first, then alphabetically) */
+	/* Sort players by age and name (youngest first, then alphabetically) */
 	if (numPlayers > 1) {
 		playerAgesPtr = &playerAges;
 		playerNamesPtr = &playerNames;
@@ -97,23 +112,7 @@ int main()
 		Player4.printPlayer();
 	}
     
-    /* Game initialization */
-    int currentPlayer{0};
-    int currentPhase{0};
-    Deck allCards;
-    
-    /* Season initialization */
-    Deck springDeck;
-    Deck summerDeck;
-    Deck autumnDeck;
-    Deck winterDeck;
-    
-    /* Market initialization */
-    Deck seedDeck;
-    Deck toolDeck;
-    Deck livestockDeck;
-    
-
+	/* Fill card decks */
     
     /* Game loop */
     // TODO: conditionals in loop using currentPhase and currentPlayer
@@ -129,6 +128,7 @@ int main()
     return 0;
 }
 
+/* Function definitions */
 void sortPlayers(std::vector<int>* agesPtr, std::vector<std::string>* namesPtr)
 {
 	bool sortedAge{false};
