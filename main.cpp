@@ -24,6 +24,7 @@ int main()
     std::string name{""};
     std::vector<std::string> playerNames;
     bool gameStatus{false};
+	Player Player1, Player2, Player3, Player4;
     
     /* Get number of players */
     do {
@@ -57,18 +58,41 @@ int main()
     }
     
     /* Create players sorted by age */
-    Player Player1(1, playerNames[0], playerAges[0], startingGold);
+	Player1.setPlayerNumber(1);
+	Player1.setPlayerName(playerNames[0]);
+	Player1.setPlayerAge(playerAges[0]);
+	Player1.setPlayerGold(startingGold);
+
     if (numPlayers > 1) {
-        Player Player2(2, playerNames[1], playerAges[1], startingGold);
+		Player2.setPlayerNumber(2);
+		Player2.setPlayerName(playerNames[1]);
+		Player2.setPlayerAge(playerAges[1]);
+		Player2.setPlayerGold(startingGold);
     }
     if (numPlayers > 2) {
-        Player Player3(3, playerNames[2], playerAges[2], startingGold);
+		Player3.setPlayerNumber(3);
+		Player3.setPlayerName(playerNames[2]);
+		Player3.setPlayerAge(playerAges[2]);
+		Player3.setPlayerGold(startingGold);
     }
     if (numPlayers > 3) {
-        Player Player4(4, playerNames[3], playerAges[3], startingGold);
+		Player4.setPlayerNumber(4);
+		Player4.setPlayerName(playerNames[3]);
+		Player4.setPlayerAge(playerAges[3]);
+		Player4.setPlayerGold(startingGold);
     }
     
+	/* Print player information */
     Player1.printPlayer();
+	if (numPlayers > 1) {
+		Player2.printPlayer();
+	}
+	if (numPlayers > 2) {
+		Player3.printPlayer();
+	}
+	if (numPlayers > 3) {
+		Player4.printPlayer();
+	}
     
     /* Game initialization */
     int currentPlayer{0};

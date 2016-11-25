@@ -15,6 +15,7 @@
 class Player : public Farm
 {
 public:
+	Player();
     Player(int, std::string, int, int);
     ~Player();
     
