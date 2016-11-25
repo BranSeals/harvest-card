@@ -92,4 +92,5 @@ void Player::printPlayer(void)
     std::cout << "\nName:\t" << playerName;
     std::cout << "\nAge:\t" << playerAge;
     std::cout << "\nGold:\t" << playerGold;
+	std::cout << "\n";
 }

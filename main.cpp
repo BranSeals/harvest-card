@@ -14,6 +14,8 @@
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
 
 /* Constants */
+const std::string gameTitle{"Harvest Card Game"};
+const std::string gameDescription{"A terminal-based farming card game for 1 - 4 players.\n"};
 const int seasonLength{0};
 const int gameLength{seasonLength * 4};
 const int startingGold{100};
@@ -32,6 +34,7 @@ int main()
 
 	/* Game variables */
 	bool gameStatus{false};
+	char ynAnswer{'n'};
 	int currentPlayer{0};
 	int currentPhase{0};
 	Deck allCards;
@@ -47,6 +50,10 @@ int main()
 	Deck toolDeck;
 	Deck livestockDeck;
 
+	/* Opening dialogue */
+	std::cout << "-- " << gameTitle << " --\n";
+	std::cout << gameDescription;
+
     /* Get number of players */
     do {
         std::cout << "\nHow many players are there? [1-4]: ";
@@ -59,7 +66,7 @@ int main()
         std::cout << "\nWhat is player " << i << "'s name?: ";
         std::cin >> name;
         do {
-            std::cout << "\nWhat is player " << i << "'s age?: ";
+            std::cout << "What is player " << i << "'s age?: ";
             std::cin >> age;
             std::cin.clear();
             std::cin.ignore();
@@ -101,6 +108,8 @@ int main()
     }
     
 	/* Print player information */
+	std::cout << "\n-- Player list --\n";
+	std::cout << "Younger players will go first.\n";
     Player1.printPlayer();
 	if (numPlayers > 1) {
 		Player2.printPlayer();
@@ -112,17 +121,37 @@ int main()
 		Player4.printPlayer();
 	}
     
-	/* Fill card decks */
+	/* Fill decks */
+	std::cout << "\n> Filling decks...\n";
+
+	/* Shuffle decks */
+	std::cout << "\n> Shuffling decks...\n";
+
+	/* Verify game start */
+	while (!gameStatus) {
+		std::cout << "Begin game? [y/n]: ";
+		std::cin >> ynAnswer;
+		std::cin.clear();
+		std::cin.ignore();
+		if (tolower(ynAnswer) == 'y') {
+			std::cout << "\n> Beginning game...\n";
+			gameStatus = true;
+		}
+		if (tolower(ynAnswer) == 'n') {
+			std::cout << "\n> Quitting game...\n";
+			return 0;
+		}
+	}
     
     /* Game loop */
     // TODO: conditionals in loop using currentPhase and currentPlayer
     // TODO: allow quitting at certain point in loop
     while (gameStatus) {
-        
+		std::cout << "\n> Game loop success!\n";
         // if currentPhase == season
         // if currentPhase == market
         // if currentPhase == farm
-        
+		gameStatus = false;
     } // end game loop
     
     return 0;
