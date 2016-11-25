@@ -1,10 +1,8 @@
-//
-//  main.cpp
-//  Harvest Game
-//
-//  Created by Brandon Seals on 10/22/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+/*  
+ * Author: Brandon Seals
+ * Last revised: 2016-11-25
+ *
+ */
 
 #include <iostream>
 #include <string>
