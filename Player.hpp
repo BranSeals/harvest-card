@@ -10,14 +10,18 @@
 #define Player_hpp
 
 #include <string>
+#include "Farm.hpp"
 
-class Player
+class Player : public Farm
 {
 public:
-    Player();
+    Player(int, std::string, int, int);
     ~Player();
     
     //* Getters / Setters *//
+    
+    int getPlayerNumber(void);
+    void setPlayerNumber(int);
     
     /* Player name */
     std::string getPlayerName(void);
@@ -35,12 +39,15 @@ public:
     
     void addGold(int);
     void removeGold(int);
+    void printPlayer(void);
     
     
 private:
+    int playerNumber{0};
     std::string playerName{""};
     int playerAge{0};
     int playerGold{0};
+    Farm playerFarm;
 };
 
 #endif /* Player_hpp */

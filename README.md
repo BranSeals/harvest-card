@@ -1,6 +1,5 @@
 Harvest Card Game
 =================
-(Working title)
 
 About the Project
 -----------------

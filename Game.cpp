@@ -1,4 +1,4 @@
-//
+//                          DEPRECATED
 //  Game.cpp
 //  Contains game rules
 //  Harvest Game
@@ -8,16 +8,15 @@
 //
 
 #include "Game.hpp"
+#include "Farm.hpp"
 #include <iostream>
 
 Game::Game()
 {
-    std::cout << "\n> Game constructed\n";
 }
 
 Game::~Game()
 {
-    std::cout << "\n> Game destructed\n";
 }
 
 //* Getters / Setters *//
@@ -146,5 +145,9 @@ void Game::getPlayers(void)
         std::cout << "\nWhat is player " << i << "'s age?: ";
         std::cin >> age;
         addPlayer(name, age);
+    }
+    
+    if (numPlayers == 1) {
+        Farm p1Farm;
     }
 }
