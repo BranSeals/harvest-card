@@ -51,6 +51,11 @@ int main()
 	Deck toolDeck;
 	Deck livestockDeck;
 
+	/* Testing */
+	Card testCard(5101);
+	std::cout << testCard.getCardSeason();
+	std::cout << testCard.getCardName();
+
 	/* Opening dialogue */
 	std::cout << "-- " << gameTitle << " --\n";
 	std::cout << gameDescription;
@@ -129,7 +134,7 @@ int main()
 	std::cout << "\n> Shuffling decks...\n";
 
 	/* Verify game start */
-	if (confirmYN("Begin game? [y/n]: ")) {
+	if (confirmYN("\nBegin game? [y/n]: ")) {
 		std::cout << "\n> Beginning game...\n";
 		gameStatus = true;
 	} else {
@@ -143,6 +148,7 @@ int main()
     // TODO: allow quitting at certain point in loop
     while (gameStatus) {
 		std::cout << "\n> Game loop success!\n";
+		Player1.printDeck();
         // if currentPhase == season
         // if currentPhase == market
         // if currentPhase == farm
