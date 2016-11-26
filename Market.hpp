@@ -23,6 +23,8 @@ public:
     
     
     //* Methods *//
+
+	virtual void printDeck(void);
     
     /* Check for empty slots in market */
     int checkEmptyStall(void);

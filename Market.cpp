@@ -18,3 +18,8 @@ Market::~Market()
 {
     //std::cout << "\n> Market destructed\n";
 }
+
+void Market::printDeck(void)
+{
+
+}
