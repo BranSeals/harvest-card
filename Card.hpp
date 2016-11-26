@@ -15,9 +15,14 @@ class Card
 {
 public:
     Card();
+	Card(int);
     ~Card();
     
     //* Getters / Setters *//
+
+	/* ID of card */
+	int getCardID(void);
+	void setCardID(int);
     
     /* Name of card */
     std::string getCardName(void);
@@ -41,17 +46,24 @@ public:
     /* Description of card */
     std::string getCardDescription(void);
     void setCardDescription(std::string);
+
+	/* Season of card */
+	int getCardSeason(void);
+	void setCardSeason(int);
     
     //* Methods *//
     
+	void createByID(int);
     void flipCard(void);
     
 private:
+	int cardID{0};
     std::string cardName{""};
     bool cardFaceUp{false};
     int cardEffect{0};
     int cardCost{0};
     int cardValue{0};
+	int cardSeason{0};
     std::string cardDescription{""};
 };
 

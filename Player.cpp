@@ -9,15 +9,20 @@
 #include "Player.hpp"
 #include <iostream>
 
+Player::Player()
+{
+	//std::cout << "\n> Player constructed\n";
+}
+
 Player::Player(int playerNum, std::string name, int age, int gold) :
 playerNumber{playerNum}, playerName{name}, playerAge{age}, playerGold{gold}
 {
-    std::cout << "\n> Player constructed\n";
+    //std::cout << "\n> Player constructed\n";
 }
 
 Player::~Player()
 {
-    std::cout << "\n> Player destructed\n";
+    //std::cout << "\n> Player destructed\n";
 }
 
 //* Getters / Setters *//
@@ -87,4 +92,5 @@ void Player::printPlayer(void)
     std::cout << "\nName:\t" << playerName;
     std::cout << "\nAge:\t" << playerAge;
     std::cout << "\nGold:\t" << playerGold;
+	std::cout << "\n";
 }

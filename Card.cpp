@@ -8,18 +8,35 @@
 
 #include "Card.hpp"
 #include <iostream>
+#include <fstream>
 
 Card::Card()
 {
-    std::cout << "\n> Card constructed\n";
+    //std::cout << "\n> Card constructed\n";
+}
+
+Card::Card(int id)
+{
+	createByID(id);
 }
 
 Card::~Card()
 {
-    std::cout << "\n> Card destructed\n";
+    //std::cout << "\n> Card destructed\n";
 }
 
 //* Getters / Setters *//
+
+/* ID of card */
+int Card::getCardID(void)
+{
+	return cardID;
+}
+
+void Card::setCardID(int id)
+{
+	cardID = id;
+}
 
 /* Name of card */
 std::string Card::getCardName(void)
@@ -75,6 +92,16 @@ void Card::setCardValue(int value)
     cardValue = value;
 }
 
+/* Season of card */
+int Card::getCardSeason(void)
+{
+	return cardSeason;
+}
+void Card::setCardSeason(int season)
+{
+	cardSeason = season;
+}
+
 /* Description of card */
 std::string Card::getCardDescription(void)
 {
@@ -96,3 +123,33 @@ void Card::flipCard(void)
         cardFaceUp = true;
     }
 }
+
+void Card::createByID(int id)
+{
+	/* Set ID attribute */
+	setCardID(id);
+
+	/* Set Season attribute */
+	if (((id / 1000) > 0) && ((id / 1000) < 5)) {
+		setCardSeason(id / 1000);
+	}
+	if ((id / 1000) == 5) {
+		setCardSeason((id - 5000) / 100);
+	}
+
+	std::ifstream file;
+	std::string lineContent{""};
+
+	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
+
+	while (!file.eof()) {
+		getline(file, lineContent);
+		if (std::to_string(id) == lineContent) {
+			getline(file, lineContent);
+			setCardName(lineContent);
+		}
+	}
+
+	file.close();
+}
+

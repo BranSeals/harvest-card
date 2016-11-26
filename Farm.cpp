@@ -7,6 +7,7 @@
 //
 
 #include "Farm.hpp"
+#include <iostream>
 
 Farm::Farm()
 {
@@ -16,3 +17,6 @@ Farm::~Farm()
 {
 }
 
+void Farm::printDeck(void)
+{
+}

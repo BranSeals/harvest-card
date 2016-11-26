@@ -31,7 +31,7 @@ public:
     //* Methods *//
     
     void addCard(int);
-    void printDeck(void);
+    virtual void printDeck(void);
     void shuffleDeck(void);
     Card dealCard(void);
     
