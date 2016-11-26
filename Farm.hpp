@@ -18,6 +18,7 @@ public:
     Farm();
     ~Farm();
     
+	virtual void printDeck(void);
 private:
     
 };
