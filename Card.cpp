@@ -27,6 +27,17 @@ Card::~Card()
 
 //* Getters / Setters *//
 
+/* ID of card */
+int Card::getCardID(void)
+{
+	return cardID;
+}
+
+void Card::setCardID(int id)
+{
+	cardID = id;
+}
+
 /* Name of card */
 std::string Card::getCardName(void)
 {
@@ -115,6 +126,9 @@ void Card::flipCard(void)
 
 void Card::createByID(int id)
 {
+	/* Set ID attribute */
+	setCardID(id);
+
 	/* Set Season attribute */
 	if (((id / 1000) > 0) && ((id / 1000) < 5)) {
 		setCardSeason(id / 1000);

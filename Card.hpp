@@ -19,6 +19,10 @@ public:
     ~Card();
     
     //* Getters / Setters *//
+
+	/* ID of card */
+	int getCardID(void);
+	void setCardID(int);
     
     /* Name of card */
     std::string getCardName(void);
@@ -53,6 +57,7 @@ public:
     void flipCard(void);
     
 private:
+	int cardID{0};
     std::string cardName{""};
     bool cardFaceUp{false};
     int cardEffect{0};
