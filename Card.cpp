@@ -119,7 +119,9 @@ void Card::createByID(int id)
 		setCardSeason(id / 1000);
 	}
 	if ((id / 1000) == 5) {
-		setCardSeason(id / 100);
+		setCardSeason((id - 5000) / 100);
 	}
+
+
 }
 
