@@ -8,6 +8,7 @@
 
 #include "Card.hpp"
 #include <iostream>
+#include <fstream>
 
 Card::Card()
 {
@@ -122,6 +123,19 @@ void Card::createByID(int id)
 		setCardSeason((id - 5000) / 100);
 	}
 
+	std::ifstream file;
+	std::string lineContent{""};
 
+	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
+
+	while (!file.eof()) {
+		getline(file, lineContent);
+		if (std::to_string(id) == lineContent) {
+			getline(file, lineContent);
+			setCardName(lineContent);
+		}
+	}
+
+	file.close();
 }
 
