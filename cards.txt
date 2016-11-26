@@ -1,86 +1,431 @@
-Format:
-ID
-Season
-Name
+Effects:
+0 No effect
+1 Flip Card (0 = face down, 1 = face up)
+2 Gain Gold (Amount of Gold Gained)
+3 Lose Gold (Amount of Gold Lost)
+4 Discard Seed (Number of Cards Lost)
+5 Discard Crop (Number of Cards Lost)
+6 Discard Tool (Number of Cards Lost)
+7 Discard Livestock (Number of Cards Lost)
+8 Discount (Divided By)
+9 Bonus Gold (Multiplied By)
+
+Will need functions:
+Determine if crop is in season and give bonus amount determined by constant
+
+Brainstorming:
+Hurricane
+Tornado
+Swimming
+Drought - can’t use watering can
+Farmer’s Market - sell one or all crops
+Plant Sale
+Bug-catching 
+Locusts!
+Sheep Shearing Contest
+Apple Bobbing
+Watermelon Festival
+Cooking Contest
+Apple picking
+Baking Contest
+Butter Churning Contest
+Animal Contest
+Horse Racing
+Dog Racing
+Chicken Fights
+Wine Festival
+Groundhog’s Day
+Fishing Tournament
+Costume Contest
+Snowstorm
+Snowball Fight
+
+Fox Attack
+Rainy Day
+Hole in a bucket
+Farm injury
+Elves
+Person Needs X
+Animal Gets Sick
+
+Find Honey
+Get Bees
+Find Coin
+
+1000
+1
+Spring Event (test)
+Description for Spring Event (test).
+0
+0
+0
+
+1001
+1
+Blossom Festival
 Description
-Effect
-Cost
-Value
+0
+0
+0
+
+1002
+1
+Egg Hunt
+Description
+0
+0
+0
+
+2000
+2
+Summer Event (test)
+Description for Summer Event (test).
+0
+0
+0
+
+2001
+1
+Fireworks Festival
+Description
+0
+0
+0
+
+2002
+2
+Farmer’s Market
+Description
+8
+2
+0
+
+3000
+3
+Autumn Event (test)
+Description for Autumn Event (test).
+0
+0
+0
+
+3001
+3
+Thanksgiving
+Description
+0
+0
+0
+
+3002
+3
+Pumpkin Carving
+Description
+0
+0
+0
+
+3003
+3
+Apple Bobbing
+Description
+0
+0
+0
+
+3004
+3
+Ghost Story
+Description
+0
+0
+0
+
+4000
+4
+Winter Event (test)
+Description for Winter Event (test).
+0
+0
+0
+
+4001
+
+5100
+1
+Spring Crop (test)
+Description for Spring Crop (test)
+2
+0
+1
 
 5101
+1
 Radish
+Description
+2
+Value
+Cost
 
 5102
+1
 Cabbage
+Description
+2
+Value
+Cost
 
 5103
+1
 Potato
+Description
+2
+Value
+Cost
 
 5104
+1
 Turnip
+Description
+2
+Value
+Cost
+
+5200
+2
+Summer Crop (test)
+Description for Summer Crop (test)
+2
+0
+1
 
 5201
+2
 Tomato
+Description
+2
+Value
+Cost
 
 5202
+2
 Wheat
+Description
+2
+Value
+Cost
 
 5203
+2
 Eggplant
+Description
+2
+Value
+Cost
 
 5204
+2
 Watermelon
+Description
+2
+Value
+Cost
+
+5300
+3
+Autumn Crop (test)
+Description for Autumn Crop (test)
+2
+0
+1
 
 5301
+3
 Corn
+Description
+2
+Value
+Cost
 
 5302
+3
 Pumpkin
+Description
+2
+Value
+Cost
 
 5303
+3
 Yam
+Description
+2
+Value
+Cost
 
 5304
+3
 Beet
+Description
+2
+Value
+Cost
+
+5400
+4
+Winter Crop (test)
+Description for Winter Crop (test)
+2
+0
+1
 
 5401
+4
 Onion
+Description
+2
+Value
+Cost
 
 5402
+4
 Garlic
+Description
+2
+Value
+Cost
 
 5403
+4
 Leek
+Description
+2
+Value
+Cost
 
 5404
+4
 Peas
+Description
+2
+Value
+Cost
+
+6000
+0
+Tool Card (test)
+Description for Tool Card (test)
+0
+0
+0
 
 6001
+0
 Garden Hoe
+Flip one Seed Card per turn.
+1
+1
+Cost
 
 6002
+0
 Fertilizer
+Flip one Seed Card per turn.
+1
+1
+Cost
 
 6003
+0
 Watering Can
+Flip one Seed Card per turn.
+1
+1
+Cost
 
 6004
+0
 Sprinkler
+Flip two Seed Cards per turn.
+1
+2
+Cost
 
 6005
+0
 Milk Pail
+Used by Cow to collect milk.
+1
+1
+Cost
 
 6006
+0
 Shears
+Used by Sheep to cut wool.
+1
+1
+Cost
 
 6007
+0
 Animal Feed
+Description
+1
+1
+Cost
+
+6008
+0
+Saddle
+Used by Horse to work.
+1
+1
+Cost
+
+6009
+0
+Hay
+Used by Chicken to lay eggs.
+1
+1
+Cost
+
+7000
+0
+Livestock Card (test)
+Description for Livestock Card (test)
+0
+0
+0
 
 7001
+0
 Cow
+With Milk Pail, can sell milk once per turn.
+2
+Value
+Cost
 
 7002
+0
 Chicken
+With Hay, can sell egg once per turn.
+2
+Value
+Cost
 
 7003
+0
 Sheep
+With Shears, can sell wool once per turn.
+2
+Value
+Cost
+
+7004
+0
+Horse
+With Saddle, can flip a Seed Card once per turn.
+1
+1
+Cost
