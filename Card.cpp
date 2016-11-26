@@ -103,11 +103,6 @@ void Card::setCardDescription(std::string description)
 
 //* Methods *//
 
-void Card::createByID(int id)
-{
-	//from here, use switch statements to call set functions considering ID
-}
-
 void Card::flipCard(void)
 {
     if (cardFaceUp == true) {
@@ -116,3 +111,37 @@ void Card::flipCard(void)
         cardFaceUp = true;
     }
 }
+
+void Card::createByID(int id)
+{
+	/* Set Season attribute */
+	if ((id / 1000) == 1) {
+		setCardSeason(1);
+	}
+	if ((id / 1000) == 2) {
+		setCardSeason(2);
+	}
+	if ((id / 1000) == 3) {
+		setCardSeason(3);
+	}
+	if ((id / 1000) == 4) {
+		setCardSeason(4);
+	}
+	if (((id / 1000) == 5)
+		&& (id / 100 == 1)) {
+		setCardSeason(1);
+	}
+	if (((id / 1000) == 5)
+		&& (id / 100 == 2)) {
+		setCardSeason(2);
+	}
+	if (((id / 1000) == 5)
+		&& (id / 100 == 3)) {
+		setCardSeason(3);
+	}
+	if (((id / 1000) == 5)
+		&& (id / 100 == 4)) {
+		setCardSeason(4);
+	}
+}
+
