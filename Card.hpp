@@ -42,6 +42,10 @@ public:
     /* Description of card */
     std::string getCardDescription(void);
     void setCardDescription(std::string);
+
+	/* Season of card */
+	int getCardSeason(void);
+	void setCardSeason(int);
     
     //* Methods *//
     
@@ -54,6 +58,7 @@ private:
     int cardEffect{0};
     int cardCost{0};
     int cardValue{0};
+	int cardSeason{0};
     std::string cardDescription{""};
 };
 

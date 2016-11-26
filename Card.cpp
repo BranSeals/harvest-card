@@ -80,6 +80,16 @@ void Card::setCardValue(int value)
     cardValue = value;
 }
 
+/* Season of card */
+int Card::getCardSeason(void)
+{
+	return cardSeason;
+}
+void Card::setCardSeason(int season)
+{
+	cardSeason = season;
+}
+
 /* Description of card */
 std::string Card::getCardDescription(void)
 {
