@@ -18,6 +18,11 @@ Deck::~Deck()
 {
 }
 
+int Deck::getDeckSize(void)
+{
+	return deck.size();
+}
+
 void Deck::addCard(int cardID)
 {
     deck.push_back(cardID);

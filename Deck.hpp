@@ -22,11 +22,6 @@ public:
     
     /* Size of deck */
     int getDeckSize(void);
-    void setDeckSize(int);
-    
-    /* Deck pointer; unsure if needed */
-    Card* getDeckPtr(void);
-    void setDeckPtr(Card*);
     
     //* Methods *//
     
@@ -37,8 +32,6 @@ public:
     
 private:
     std::vector<int> deck;
-    Card* deckPtr; // not sure yet if fully needed or wanted
-    int deckSize{0}; // not sure if this will be useful; maybe
 };
 
 #endif /* Deck_hpp */
