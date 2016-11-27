@@ -56,8 +56,24 @@ int main()
 	/* Testing */
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
+
+	Deck testDeck;
+	testDeck.addCard(5101);
+	testDeck.addCard(5100);
+	testDeck.printDeck();
+	std::cout << std::endl;
+	int card = testDeck.dealCard();
+	testDeck.printDeck();
+	std::cout << std::endl;
+	int card2 = testDeck.dealCard();
+	testDeck.printDeck();
+	std::cout << std::endl;
+	int card3 = testDeck.dealCard();
+	testDeck.printDeck();
+	std::cout << std::endl;
+
 	Card testCard(5101);
-	std::cout << testCard.getCardID() << std::endl;
+	std::cout << "\n" << testCard.getCardID() << std::endl;
 	std::cout << testCard.getCardSeason() << std::endl;
 	std::cout << testCard.getCardName() << std::endl;
 	std::cout << testCard.getCardDescription() << std::endl;
