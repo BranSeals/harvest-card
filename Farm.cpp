@@ -17,7 +17,7 @@ Farm::~Farm()
 {
 }
 
-void Farm::displayFarm(void)
+void Farm::print(void)
 {
 
 }

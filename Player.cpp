@@ -11,7 +11,7 @@
 
 Player::Player()
 {
-	//std::cout << "\n> Player constructed\n";
+    //std::cout << "\n> Player constructed\n";
 }
 
 Player::Player(int playerNum, std::string name, int age, int gold) :
@@ -86,11 +86,11 @@ void Player::removeGold(int gold)
     playerGold -= gold;
 }
 
-void Player::printPlayer(void)
+void Player::print(void)
 {
     std::cout << "\nPlayer " << playerNumber;
     std::cout << "\nName:\t" << playerName;
     std::cout << "\nAge:\t" << playerAge;
     std::cout << "\nGold:\t" << playerGold;
-	std::cout << "\n";
+    std::cout << "\n";
 }

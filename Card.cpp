@@ -131,7 +131,7 @@ void Card::resetCard(void)
 	createByID(getCardID());
 }
 
-void Card::printCard(void)
+void Card::print(void)
 {
 	std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
 		<< "\nEffect: " << getCardEffect() << "\nValue: " << getCardValue()

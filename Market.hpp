@@ -24,7 +24,7 @@ public:
     
     //* Methods *//
 
-	virtual void printDeck(void);
+	virtual void print(void);
     
     /* Check for empty slots in market */
     int checkEmptyStall(void);

@@ -18,7 +18,7 @@ public:
     Farm();
     ~Farm();
 
-	void displayFarm(void);
+	virtual void print(void);
 
 private:
 	std::vector<int> deck;

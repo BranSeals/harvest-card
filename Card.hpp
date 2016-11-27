@@ -55,7 +55,7 @@ public:
     
 	void createByID(int);
     void flipCard(void);
-	void printCard(void);
+	virtual void print(void);
 	void resetCard(void);
     
 private:

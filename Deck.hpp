@@ -12,7 +12,7 @@
 #include "Card.hpp"
 #include <vector>
 
-class Deck
+class Deck : public Card
 {
 public:
     Deck();
@@ -25,7 +25,7 @@ public:
     //* Methods *//
     
     void addCard(int);
-    virtual void printDeck(void);
+    virtual void print(void);
     void shuffleDeck(void);
     int dealCard(void);
     

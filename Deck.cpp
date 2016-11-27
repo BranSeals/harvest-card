@@ -28,7 +28,7 @@ void Deck::addCard(int cardID)
     deck.push_back(cardID);
 }
 
-void Deck::printDeck()
+void Deck::print()
 {
 	std::cout << "\nCards in deck:\n";
     for (size_t i{0}; i < deck.size(); ++i) {
