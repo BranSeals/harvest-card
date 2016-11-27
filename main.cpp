@@ -54,25 +54,33 @@ int main()
 	Deck livestockDeck;
 
 	/* Testing */
+	Player testPlayer;
+	testPlayer.takeCard(5101);
+	testPlayer.printFarm();
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
 
 	Deck testDeck;
 	testDeck.addCard(5101);
 	testDeck.addCard(5100);
-	testDeck.printDeck();
-	std::cout << std::endl;
+	testDeck.print();
+	/*std::cout << std::endl;
 	int card = testDeck.dealCard();
-	testDeck.printDeck();
+	testDeck.print();
 	std::cout << std::endl;
 	int card2 = testDeck.dealCard();
-	testDeck.printDeck();
-	std::cout << std::endl;
-	int card3 = testDeck.dealCard();
-	testDeck.printDeck();
-	std::cout << std::endl;
+	testDeck.print();*/
+	//std::cout << std::endl;
 
-	Card testCard(5101);
+	Farm testFarm;
+	testFarm.addCard(5101);
+	testFarm.addCard(5101);
+	testFarm.addCard(5101);
+	testFarm.print();
+	std::cout << testFarm.getDeckSize();
+
+
+	/*Card testCard(5101);
 	std::cout << "\n" << testCard.getCardID() << std::endl;
 	std::cout << testCard.getCardSeason() << std::endl;
 	std::cout << testCard.getCardName() << std::endl;
@@ -80,7 +88,7 @@ int main()
 	std::cout << testCard.getCardEffect() << std::endl;
 	std::cout << testCard.getCardValue() << std::endl;
 	std::cout << testCard.getCardCost() << std::endl;
-	testCard.printCard();
+	testCard.printCard();*/
 
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
@@ -142,15 +150,15 @@ int main()
 	/* Print player information */
 	std::cout << "\n-- Player list --\n";
 	std::cout << "Younger players will go first.\n";
-    Player1.printPlayer();
+    Player1.print();
 	if (numPlayers > 1) {
-		Player2.printPlayer();
+		Player2.print();
 	}
 	if (numPlayers > 2) {
-		Player3.printPlayer();
+		Player3.print();
 	}
 	if (numPlayers > 3) {
-		Player4.printPlayer();
+		Player4.print();
 	}
     
 	/* Fill decks */
@@ -174,7 +182,7 @@ int main()
     // TODO: allow quitting at certain point in loop
     while (gameStatus) {
 		std::cout << "\n> Game loop success!\n";
-		Player1.printDeck();
+		Player1.print();
         // if currentPhase == season
         // if currentPhase == market
         // if currentPhase == farm

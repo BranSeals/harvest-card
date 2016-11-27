@@ -17,7 +17,11 @@ Farm::~Farm()
 {
 }
 
-void Farm::print(void)
-{
-
-}
+//void Farm::print(void)
+//{
+//	//std::cout << "\nFarm contents:\n";
+//	Deck::print();
+//	/*for (size_t i{0}; i < deck.size(); ++i) {
+//		std::cout << deck[i] << "\n";
+//	}*/
+//}

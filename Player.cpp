@@ -94,3 +94,13 @@ void Player::print(void)
     std::cout << "\nGold:\t" << playerGold;
     std::cout << "\n";
 }
+
+void Player::printFarm(void)
+{
+	playerFarm.print();
+}
+
+void Player::takeCard(int id)
+{
+	playerFarm.addCard(id);
+}

@@ -41,6 +41,10 @@ public:
     void addGold(int);
     void removeGold(int);
     virtual void print(void);
+
+	// TO DO
+	void printFarm(void);
+	void takeCard(int);
     
     
 private:

@@ -9,7 +9,7 @@
 #ifndef Farm_hpp
 #define Farm_hpp
 
-#include <stdio.h>
+#include <iostream>
 #include "Deck.hpp"
 
 class Farm : public Deck
@@ -18,10 +18,10 @@ public:
     Farm();
     ~Farm();
 
-	virtual void print(void);
+	//virtual void print(void);
 
 private:
-	std::vector<int> deck;
+	//std::vector<int> deck;
 };
 
 #endif /* Farm_hpp */
