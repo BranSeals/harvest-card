@@ -1,4 +1,4 @@
-Effects:
+﻿Effects:
 0 No effect
 1 Flip Card (0 = face down, 1 = face up)
 2 Gain Gold (Amount of Gold Gained)
@@ -163,8 +163,8 @@ Description for Spring Crop (test)
 Radish
 Description
 2
-Value
-Cost
+40
+20
 
 5102
 1
