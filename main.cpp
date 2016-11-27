@@ -53,8 +53,13 @@ int main()
 
 	/* Testing */
 	Card testCard(5101);
-	std::cout << testCard.getCardSeason();
-	std::cout << testCard.getCardName();
+	std::cout << testCard.getCardID() << std::endl;
+	std::cout << testCard.getCardSeason() << std::endl;
+	std::cout << testCard.getCardName() << std::endl;
+	std::cout << testCard.getCardDescription() << std::endl;
+	std::cout << testCard.getCardEffect() << std::endl;
+	std::cout << testCard.getCardValue() << std::endl;
+	std::cout << testCard.getCardCost() << std::endl;
 
 	/* Opening dialogue */
 	std::cout << "-- " << gameTitle << " --\n";
