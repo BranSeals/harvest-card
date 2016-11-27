@@ -9,6 +9,7 @@
 #include "Card.hpp"
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 
 Card::Card()
 {
@@ -130,23 +131,35 @@ void Card::createByID(int id)
 	setCardID(id);
 
 	/* Set Season attribute */
-	if (((id / 1000) > 0) && ((id / 1000) < 5)) {
-		setCardSeason(id / 1000);
-	}
-	if ((id / 1000) == 5) {
-		setCardSeason((id - 5000) / 100);
-	}
+	//if (((id / 1000) > 0) && ((id / 1000) < 5)) {
+	//	setCardSeason(id / 1000);
+	//}
+	//if ((id / 1000) == 5) {
+	//	setCardSeason((id - 5000) / 100);
+	//}
 
 	std::ifstream file;
 	std::string lineContent{""};
 
 	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
 
+    // TO DO: Align all info with attributes
+    // TO DO: Make sure the atoi works
 	while (!file.eof()) {
 		getline(file, lineContent);
 		if (std::to_string(id) == lineContent) {
 			getline(file, lineContent);
-			setCardName(lineContent);
+			setCardSeason(atoi(lineContent.c_str()));
+            getline(file, lineContent);
+            setCardName(lineContent);
+            getline(file, lineContent);
+            setCardDescription(lineContent);
+            getline(file, lineContent);
+            setCardEffect(atoi(lineContent.c_str()));
+            getline(file, lineContent);
+            setCardValue(atoi(lineContent.c_str()));
+            getline(file, lineContent);
+            setCardCost(atoi(lineContent.c_str()));
 		}
 	}
 
