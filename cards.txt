@@ -1,4 +1,14 @@
-﻿Effects:
+﻿Card Format:
+Card ID
+Season
+Name
+Description
+Effect
+Value
+Cost
+Initially Face Up (true) or Down (false) 
+
+Effects:
 0 No effect
 1 Flip Card (0 = face down, 1 = face up)
 2 Gain Gold (Amount of Gold Gained)
@@ -76,6 +86,7 @@ Description
 0
 0
 
+
 2000
 2
 Summer Event (test)
@@ -83,6 +94,7 @@ Description for Summer Event (test).
 0
 0
 0
+
 
 2001
 1
@@ -157,6 +169,7 @@ Description for Spring Crop (test)
 2
 0
 1
+0
 
 5101
 1
@@ -165,6 +178,7 @@ Description
 2
 40
 20
+0
 
 5102
 1
@@ -173,6 +187,7 @@ Description
 2
 Value
 Cost
+0
 
 5103
 1
@@ -181,6 +196,7 @@ Description
 2
 Value
 Cost
+0
 
 5104
 1
@@ -189,6 +205,7 @@ Description
 2
 Value
 Cost
+0
 
 5200
 2
@@ -197,6 +214,7 @@ Description for Summer Crop (test)
 2
 0
 1
+0
 
 5201
 2
@@ -205,6 +223,7 @@ Description
 2
 Value
 Cost
+0
 
 5202
 2
@@ -213,6 +232,7 @@ Description
 2
 Value
 Cost
+0
 
 5203
 2
@@ -221,6 +241,7 @@ Description
 2
 Value
 Cost
+0
 
 5204
 2
@@ -229,6 +250,7 @@ Description
 2
 Value
 Cost
+0
 
 5300
 3
@@ -237,6 +259,7 @@ Description for Autumn Crop (test)
 2
 0
 1
+0
 
 5301
 3
@@ -245,6 +268,7 @@ Description
 2
 Value
 Cost
+0
 
 5302
 3
@@ -253,6 +277,7 @@ Description
 2
 Value
 Cost
+0
 
 5303
 3
@@ -261,6 +286,7 @@ Description
 2
 Value
 Cost
+0
 
 5304
 3
@@ -269,6 +295,7 @@ Description
 2
 Value
 Cost
+0
 
 5400
 4
@@ -277,6 +304,7 @@ Description for Winter Crop (test)
 2
 0
 1
+0
 
 5401
 4
@@ -285,6 +313,7 @@ Description
 2
 Value
 Cost
+0
 
 5402
 4
@@ -293,6 +322,7 @@ Description
 2
 Value
 Cost
+0
 
 5403
 4
@@ -301,6 +331,7 @@ Description
 2
 Value
 Cost
+0
 
 5404
 4
@@ -309,6 +340,7 @@ Description
 2
 Value
 Cost
+0
 
 6000
 0
@@ -317,6 +349,7 @@ Description for Tool Card (test)
 0
 0
 0
+1
 
 6001
 0
@@ -325,6 +358,7 @@ Flip one Seed Card per turn.
 1
 1
 Cost
+1
 
 6002
 0
@@ -333,6 +367,7 @@ Flip one Seed Card per turn.
 1
 1
 Cost
+1
 
 6003
 0
@@ -341,6 +376,7 @@ Flip one Seed Card per turn.
 1
 1
 Cost
+1
 
 6004
 0
@@ -349,6 +385,7 @@ Flip two Seed Cards per turn.
 1
 2
 Cost
+1
 
 6005
 0
@@ -357,6 +394,7 @@ Used by Cow to collect milk.
 1
 1
 Cost
+1
 
 6006
 0
@@ -365,6 +403,7 @@ Used by Sheep to cut wool.
 1
 1
 Cost
+1
 
 6007
 0
@@ -373,6 +412,7 @@ Description
 1
 1
 Cost
+1
 
 6008
 0
@@ -381,6 +421,7 @@ Used by Horse to work.
 1
 1
 Cost
+1
 
 6009
 0
@@ -389,11 +430,13 @@ Used by Chicken to lay eggs.
 1
 1
 Cost
+1
 
 7000
 0
 Livestock Card (test)
 Description for Livestock Card (test)
+0
 0
 0
 0
@@ -405,6 +448,7 @@ With Milk Pail, can sell milk once per turn.
 2
 Value
 Cost
+0
 
 7002
 0
@@ -413,6 +457,7 @@ With Hay, can sell egg once per turn.
 2
 Value
 Cost
+0
 
 7003
 0
@@ -421,6 +466,7 @@ With Shears, can sell wool once per turn.
 2
 Value
 Cost
+0
 
 7004
 0
@@ -429,3 +475,4 @@ With Saddle, can flip a Seed Card once per turn.
 1
 1
 Cost
+0
