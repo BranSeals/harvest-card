@@ -220,9 +220,10 @@ bool confirmYN(std::string message)
 		std::cin.ignore();
 		if (tolower(ynAnswer) == 'y') {
 			return true;
-		}
-		if (tolower(ynAnswer) == 'n') {
+		} else if (tolower(ynAnswer) == 'n') {
 			return false;
+		} else {
+			std::cout << "\n*** Answer must be 'y' or 'n' ***\n";
 		}
 	}
 }
