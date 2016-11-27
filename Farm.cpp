@@ -17,6 +17,7 @@ Farm::~Farm()
 {
 }
 
-void Farm::printDeck(void)
+void Farm::displayFarm(void)
 {
+
 }

@@ -17,10 +17,11 @@ class Farm : public Deck
 public:
     Farm();
     ~Farm();
-    
-	virtual void printDeck(void);
+
+	void displayFarm(void);
+
 private:
-    
+	std::vector<int> deck;
 };
 
 #endif /* Farm_hpp */
