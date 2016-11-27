@@ -20,7 +20,6 @@ public:
     
     //* Getters / Setters *//
     
-    /* Size of deck */
     int getDeckSize(void);
     
     //* Methods *//
