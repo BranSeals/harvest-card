@@ -31,12 +31,9 @@ public:
     void fillEmptyStall(void);
     
 private:
-    Deck seedDeck;
-    Deck toolDeck;
-    Deck livestockDeck;
-    Deck springDeck;
-    Deck summerDeck;
-    Deck autumnDeck;
-    Deck winterDeck;
+	std::vector<int> deck;
+	std::vector<Card> seedDeck;
+	std::vector<Card> toolDeck;
+	std::vector<Card> livestock;
 };
 #endif /* Market_hpp */
