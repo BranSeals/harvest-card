@@ -9,10 +9,12 @@
 #include <vector>
 #include "Player.hpp"
 #include "Market.hpp"
+#include <direct.h>
 
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
 bool confirmYN(std::string);
+std::string current_working_directory(void);
 
 /* Constants */
 const std::string gameTitle{"Harvest Card Game"};
@@ -52,6 +54,8 @@ int main()
 	Deck livestockDeck;
 
 	/* Testing */
+	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
+	//std::cout << current_working_directory();
 	Card testCard(5101);
 	std::cout << testCard.getCardID() << std::endl;
 	std::cout << testCard.getCardSeason() << std::endl;
@@ -60,9 +64,10 @@ int main()
 	std::cout << testCard.getCardEffect() << std::endl;
 	std::cout << testCard.getCardValue() << std::endl;
 	std::cout << testCard.getCardCost() << std::endl;
+	testCard.printCard();
 
 	/* Opening dialogue */
-	std::cout << "-- " << gameTitle << " --\n";
+	std::cout << "\n-- " << gameTitle << " --\n";
 	std::cout << gameDescription;
 
     /* Get number of players */
@@ -220,4 +225,12 @@ bool confirmYN(std::string message)
 			return false;
 		}
 	}
+}
+
+std::string current_working_directory()
+{
+	char* cwd = _getcwd(0, 0); // **** microsoft specific ****
+	std::string working_directory(cwd);
+	std::free(cwd);
+	return working_directory;
 }
