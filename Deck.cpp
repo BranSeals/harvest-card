@@ -7,7 +7,7 @@
 //
 
 #include "Deck.hpp"
-//#include "Card.hpp"
+#include "Card.hpp"
 #include <iostream>
 
 Deck::Deck()
@@ -18,14 +18,88 @@ Deck::~Deck()
 {
 }
 
+unsigned long Deck::getDeckSize(void)
+{
+	return deck.size();
+}
+
 void Deck::addCard(int cardID)
 {
     deck.push_back(cardID);
 }
 
-void Deck::printDeck()
+void Deck::print()
 {
-    for (size_t i{0}; i < deck.size(); ++i) {
-        std::cout << deck[i] << " ";
-    }
+	std::cout << "\n-- Decks --";
+	printDeck(&deck, "Main");
+	printDeck(&seasonDeck, "Season");
+	printDeck(&seedDeck, "Seed");
+	printDeck(&toolDeck, "Tool");
+	printDeck(&livestockDeck, "Livestock");
+}
+
+void Deck::shuffleDeck(void)
+{
+	// random shuffle
+}
+
+// Reminder: check when calling function to ensure cards exist in deck
+int Deck::dealCard(std::vector<int>* deck)
+{
+	int dealtCard{(*deck)[(*deck).size() - 1]};
+	(*deck).pop_back();
+	return dealtCard;
+}
+
+Card Deck::dealCardObject(std::vector<int>* deck)
+{
+	int dealtCard = dealCard(deck);
+	return Card(dealtCard);
+}
+
+int Deck::dealSeasonCard(void)
+{
+	return dealCard(&seasonDeck);
+}
+
+int Deck::dealSeedCard(void)
+{
+	return dealCard(&seedDeck);
+}
+
+int Deck::dealToolCard(void)
+{
+	return dealCard(&toolDeck);
+}
+
+int Deck::dealLivestockCard(void)
+{
+	return dealCard(&livestockDeck);
+}
+
+void Deck::fillDecks(void)
+{
+	int tempCard{0};
+	while (deck.size() > 0) {
+		tempCard = dealCard(&deck);
+		if (tempCard < 5000) {
+			seasonDeck.push_back(tempCard);
+		} else if (tempCard < 6000) {
+			seedDeck.push_back(tempCard);
+		} else if (tempCard < 7000) {
+			toolDeck.push_back(tempCard);
+		} else if (tempCard < 8000) {
+			livestockDeck.push_back(tempCard);
+		} else {
+			std::cout << "\n*** Error filling decks ***\n";
+		}
+	}
+}
+
+void Deck::printDeck(std::vector<int>* deck, std::string name)
+{
+	std::cout << "\n" << name << " Deck:\n";
+	for (size_t i{0}; i < (*deck).size(); ++i) {
+		std::cout << (*deck)[i] << "\n";
+	}
 }

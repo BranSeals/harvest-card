@@ -9,10 +9,12 @@
 #include <vector>
 #include "Player.hpp"
 #include "Market.hpp"
+//#include <direct.h>
 
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
 bool confirmYN(std::string);
+std::string current_working_directory(void);
 
 /* Constants */
 const std::string gameTitle{"Harvest Card Game"};
@@ -35,7 +37,7 @@ int main()
 
 	/* Game variables */
 	bool gameStatus{false};
-	char ynAnswer{'n'};
+	//char ynAnswer{'n'};
 	int currentPlayer{0};
 	int currentPhase{0};
 	Deck allCards;
@@ -52,17 +54,26 @@ int main()
 	Deck livestockDeck;
 
 	/* Testing */
-	Card testCard(5101);
-	std::cout << testCard.getCardID() << std::endl;
-	std::cout << testCard.getCardSeason() << std::endl;
-	std::cout << testCard.getCardName() << std::endl;
-	std::cout << testCard.getCardDescription() << std::endl;
-	std::cout << testCard.getCardEffect() << std::endl;
-	std::cout << testCard.getCardValue() << std::endl;
-	std::cout << testCard.getCardCost() << std::endl;
+
+	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
+	//std::cout << current_working_directory();
+	
+	Market testMarket;
+	testMarket.addCard(5101);
+	testMarket.addCard(5303);
+	testMarket.addCard(5301);
+	testMarket.addCard(6003);
+	testMarket.addCard(6005);
+	testMarket.addCard(6001);
+	testMarket.addCard(7001);
+	testMarket.addCard(7002);
+	testMarket.addCard(7004);
+	testMarket.fillDecks();
+	testMarket.fillStalls();
+	testMarket.print();
 
 	/* Opening dialogue */
-	std::cout << "-- " << gameTitle << " --\n";
+	std::cout << "\n-- " << gameTitle << " --\n";
 	std::cout << gameDescription;
 
     /* Get number of players */
@@ -121,15 +132,15 @@ int main()
 	/* Print player information */
 	std::cout << "\n-- Player list --\n";
 	std::cout << "Younger players will go first.\n";
-    Player1.printPlayer();
+    Player1.print();
 	if (numPlayers > 1) {
-		Player2.printPlayer();
+		Player2.print();
 	}
 	if (numPlayers > 2) {
-		Player3.printPlayer();
+		Player3.print();
 	}
 	if (numPlayers > 3) {
-		Player4.printPlayer();
+		Player4.print();
 	}
     
 	/* Fill decks */
@@ -153,7 +164,7 @@ int main()
     // TODO: allow quitting at certain point in loop
     while (gameStatus) {
 		std::cout << "\n> Game loop success!\n";
-		Player1.printDeck();
+		Player1.print();
         // if currentPhase == season
         // if currentPhase == market
         // if currentPhase == farm
@@ -215,9 +226,19 @@ bool confirmYN(std::string message)
 		std::cin.ignore();
 		if (tolower(ynAnswer) == 'y') {
 			return true;
-		}
-		if (tolower(ynAnswer) == 'n') {
+		} else if (tolower(ynAnswer) == 'n') {
 			return false;
+		} else {
+			std::cout << "\n*** Answer must be 'y' or 'n' ***\n";
 		}
 	}
+    return false;
 }
+
+//std::string current_working_directory()
+//{
+//	char* cwd = _getcwd(0, 0); // **** microsoft specific ****
+//	std::string working_directory(cwd);
+//	std::free(cwd);
+//	return working_directory;
+//}

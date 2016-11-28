@@ -9,7 +9,7 @@
 #ifndef Farm_hpp
 #define Farm_hpp
 
-#include <stdio.h>
+#include <iostream>
 #include "Deck.hpp"
 
 class Farm : public Deck
@@ -17,10 +17,9 @@ class Farm : public Deck
 public:
     Farm();
     ~Farm();
-    
-	virtual void printDeck(void);
+
 private:
-    
+	
 };
 
 #endif /* Farm_hpp */

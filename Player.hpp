@@ -40,7 +40,11 @@ public:
     
     void addGold(int);
     void removeGold(int);
-    void printPlayer(void);
+    virtual void print(void);
+
+	// TO DO
+	void printFarm(void);
+	void takeCard(int);
     
     
 private:

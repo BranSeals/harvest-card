@@ -125,26 +125,31 @@ void Card::flipCard(void)
     }
 }
 
+/* Resets card to default value */
+void Card::resetCard(void)
+{
+	createByID(getCardID());
+}
+
+void Card::print(void)
+{
+	std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
+		<< "\nEffect: " << getCardEffect() << "\nValue: " << getCardValue()
+		<< "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
+}
+
+/* Assigns default values to card object from text file */
 void Card::createByID(int id)
 {
 	/* Set ID attribute */
 	setCardID(id);
 
-	/* Set Season attribute */
-	//if (((id / 1000) > 0) && ((id / 1000) < 5)) {
-	//	setCardSeason(id / 1000);
-	//}
-	//if ((id / 1000) == 5) {
-	//	setCardSeason((id - 5000) / 100);
-	//}
-
 	std::ifstream file;
 	std::string lineContent{""};
-
+	
 	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
+    //file.open("cards.txt", std::ifstream::in);
 
-    // TO DO: Align all info with attributes
-    // TO DO: Make sure the atoi works
 	while (!file.eof()) {
 		getline(file, lineContent);
 		if (std::to_string(id) == lineContent) {
@@ -160,6 +165,8 @@ void Card::createByID(int id)
             setCardValue(atoi(lineContent.c_str()));
             getline(file, lineContent);
             setCardCost(atoi(lineContent.c_str()));
+			getline(file, lineContent);
+			setCardFaceUp(std::stoi(lineContent.c_str()));
 		}
 	}
 

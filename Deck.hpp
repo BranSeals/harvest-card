@@ -20,25 +20,30 @@ public:
     
     //* Getters / Setters *//
     
-    /* Size of deck */
-    int getDeckSize(void);
-    void setDeckSize(int);
-    
-    /* Deck pointer; unsure if needed */
-    Card* getDeckPtr(void);
-    void setDeckPtr(Card*);
+    unsigned long getDeckSize(void);
     
     //* Methods *//
     
-    void addCard(int);
-    virtual void printDeck(void);
+    virtual void print(void);
     void shuffleDeck(void);
-    Card dealCard(void);
+    int dealCard(std::vector<int>*);
+	void addCard(int);
+    Card dealCardObject(std::vector<int>*);
+
+	/* Experiment */
+	int dealSeasonCard(void);
+	int dealSeedCard(void);
+	int dealToolCard(void);
+	int dealLivestockCard(void);
+	void fillDecks(void);
+	void printDeck(std::vector<int>*, std::string);
     
 private:
     std::vector<int> deck;
-    Card* deckPtr; // not sure yet if fully needed or wanted
-    int deckSize{0}; // not sure if this will be useful; maybe
+	std::vector<int> seasonDeck;
+	std::vector<int> seedDeck;
+	std::vector<int> toolDeck;
+	std::vector<int> livestockDeck;
 };
 
 #endif /* Deck_hpp */
