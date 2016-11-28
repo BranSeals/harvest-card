@@ -54,48 +54,23 @@ int main()
 	Deck livestockDeck;
 
 	/* Testing */
-	/*Player testPlayer;
-	testPlayer.takeCard(5101);
-    std::cout << "\ntestPlayer Farm:" << std::endl;
-	testPlayer.printFarm();*/
+
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
-
+	
 	Market testMarket;
 	testMarket.addCard(5101);
-	testMarket.addCard(5101);
-	testMarket.addCard(5101);
+	testMarket.addCard(5303);
+	testMarket.addCard(5301);
+	testMarket.addCard(6003);
+	testMarket.addCard(6005);
+	testMarket.addCard(6001);
+	testMarket.addCard(7001);
+	testMarket.addCard(7002);
+	testMarket.addCard(7004);
 	testMarket.fillDecks();
-
-	/*Deck testDeck;
-	testDeck.addCard(5101);
-	testDeck.addCard(5100);
-	testDeck.print();*/
-	/*std::cout << std::endl;
-	int card = testDeck.dealCard();
-	testDeck.print();
-	std::cout << std::endl;
-	int card2 = testDeck.dealCard();
-	testDeck.print();*/
-	//std::cout << std::endl;
-
-	/*Farm testFarm;
-	testFarm.addCard(5101);
-	testFarm.addCard(5101);
-	testFarm.addCard(5101);
-	testFarm.print();*/
-	
-	/*std::cout << testFarm.getDeckSize();*/
-
-	/*Card testCard(5101);
-	std::cout << "\n" << testCard.getCardID() << std::endl;
-	std::cout << testCard.getCardSeason() << std::endl;
-	std::cout << testCard.getCardName() << std::endl;
-	std::cout << testCard.getCardDescription() << std::endl;
-	std::cout << testCard.getCardEffect() << std::endl;
-	std::cout << testCard.getCardValue() << std::endl;
-	std::cout << testCard.getCardCost() << std::endl;
-	testCard.print();*/
+	testMarket.fillStalls();
+	testMarket.print();
 
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
