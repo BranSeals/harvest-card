@@ -41,15 +41,16 @@ void Deck::shuffleDeck(void)
 	// random shuffle
 }
 
-// TO DO - come up with better solution if no cards in deck
-//       - this method will place 0s in a deck
-int Deck::dealCard(void)
+// Requires check when calling function to ensure cards exist in deck
+int Deck::dealCardInt(void)
 {
-	if (deck.size() > 0) {
-		int dealtCard{deck[deck.size() - 1]};
-		deck.pop_back();
-		return dealtCard;
-	}
-    std::cout << "\n*** Error: No cards in deck ***\n";
-    return 0;
+	int dealtCard{deck[deck.size() - 1]};
+	deck.pop_back();
+	return dealtCard;
+}
+
+Card Deck::dealCardObject(int id)
+{
+	int dealtCard = dealCardInt();
+	return Card(dealtCard);
 }
