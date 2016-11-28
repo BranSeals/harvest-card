@@ -41,6 +41,8 @@ void Deck::shuffleDeck(void)
 	// random shuffle
 }
 
+// TO DO - come up with better solution if no cards in deck
+//       - this method will place 0s in a deck
 int Deck::dealCard(void)
 {
 	if (deck.size() > 0) {
