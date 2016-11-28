@@ -42,44 +42,55 @@ void Deck::shuffleDeck(void)
 }
 
 // Requires check when calling function to ensure cards exist in deck
-int Deck::dealCard(void)
+int Deck::dealCard(std::vector<int>* deck)
 {
-	int dealtCard{deck[deck.size() - 1]};
-	deck.pop_back();
+	int dealtCard{(*deck)[(*deck).size() - 1]};
+	(*deck).pop_back();
 	return dealtCard;
 }
 
-Card Deck::dealCardObject(void)
+Card Deck::dealCardObject(std::vector<int>* deck)
 {
-	int dealtCard = dealCard();
+	int dealtCard = dealCard(deck);
 	return Card(dealtCard);
 }
 
 /* Experiment - may be replaced by pointer-based dealing from market if it works */
 int Deck::dealSeasonCard(void)
 {
-	int dealtCard{seasonDeck[seasonDeck.size() - 1]};
-	seasonDeck.pop_back();
-	return dealtCard;
+	return dealCard(&seasonDeck);
 }
 
 int Deck::dealSeedCard(void)
 {
-	int dealtCard{seedDeck[seedDeck.size() - 1]};
-	seedDeck.pop_back();
-	return dealtCard;
+	return dealCard(&seedDeck);
 }
 
 int Deck::dealToolCard(void)
 {
-	int dealtCard{toolDeck[toolDeck.size() - 1]};
-	toolDeck.pop_back();
-	return dealtCard;
+	return dealCard(&toolDeck);
 }
 
 int Deck::dealLivestockCard(void)
 {
-	int dealtCard{livestockDeck[livestockDeck.size() - 1]};
-	livestockDeck.pop_back();
-	return dealtCard;
+	return dealCard(&livestockDeck);
+}
+
+void Deck::fillDecks(void)
+{
+	int tempCard{0};
+	while (deck.size() > 0) {
+		tempCard = dealCard(&deck);
+		if (tempCard < 5000) {
+			seasonDeck.push_back(tempCard);
+		} else if (tempCard < 6000) {
+			seedDeck.push_back(tempCard);
+		} else if (tempCard < 7000) {
+			toolDeck.push_back(tempCard);
+		} else if (tempCard < 8000) {
+			livestockDeck.push_back(tempCard);
+		} else {
+			std::cout << "\n*** Error filling decks ***\n";
+		}
+	}
 }
