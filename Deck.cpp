@@ -30,10 +30,12 @@ void Deck::addCard(int cardID)
 
 void Deck::print()
 {
-	std::cout << "\nDeck contents:\n";
-    for (size_t i{0}; i < deck.size(); ++i) {
-        std::cout << deck[i] << "\n";
-    }
+	std::cout << "\n-- Decks --";
+	printDeck(&deck, "Main");
+	printDeck(&seasonDeck, "Season");
+	printDeck(&seedDeck, "Seed");
+	printDeck(&toolDeck, "Tool");
+	printDeck(&livestockDeck, "Livestock");
 }
 
 void Deck::shuffleDeck(void)
@@ -41,7 +43,7 @@ void Deck::shuffleDeck(void)
 	// random shuffle
 }
 
-// Requires check when calling function to ensure cards exist in deck
+// Reminder: check when calling function to ensure cards exist in deck
 int Deck::dealCard(std::vector<int>* deck)
 {
 	int dealtCard{(*deck)[(*deck).size() - 1]};
@@ -55,7 +57,6 @@ Card Deck::dealCardObject(std::vector<int>* deck)
 	return Card(dealtCard);
 }
 
-/* Experiment - may be replaced by pointer-based dealing from market if it works */
 int Deck::dealSeasonCard(void)
 {
 	return dealCard(&seasonDeck);
@@ -92,5 +93,13 @@ void Deck::fillDecks(void)
 		} else {
 			std::cout << "\n*** Error filling decks ***\n";
 		}
+	}
+}
+
+void Deck::printDeck(std::vector<int>* deck, std::string name)
+{
+	std::cout << "\n" << name << " Deck:\n";
+	for (size_t i{0}; i < (*deck).size(); ++i) {
+		std::cout << (*deck)[i] << "\n";
 	}
 }

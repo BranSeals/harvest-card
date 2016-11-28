@@ -20,34 +20,24 @@ Market::~Market()
     //std::cout << "\n> Market destructed\n";
 }
 
-//void Market::print(void)
-//{
-//	//
-//}
-
-void Market::fillDecks(void)
+void Market::print(void)
 {
-	/*int tempCard;
-	while (getDeckSize() > 0) {
-		tempCard = Deck::dealCard();
-		if ((tempCard / 1000) == 1) {
-			
-		}
-	}*/
-	// while deck not empty
-	// deal card to deck it matches
+	std::cout << "\n-- Market --";
+	printStall(&seedStall, "Seeds");
+	printStall(&toolStall, "Tools");
+	printStall(&livestockStall, "Livestock");
+}
+
+void Market::printStall(std::vector<Card>* stall, std::string name)
+{
+	std::cout << "\n" << name << ":\n";
+	for (size_t i{0}; i < (*stall).size(); ++i) {
+		std::cout << (*stall)[i].getCardName() << "\n";
+	}
 }
 
 // NEEDS TESTING
-int Market::dealCard(std::vector<int>* deck)
-{
-	int dealtCard{(*deck)[(*deck).size() - 1]};
-	(*deck).pop_back();
-	return dealtCard;
-}
-
-// NEEDS TESTING
-void Market::refillEmptyStall(void)
+void Market::fillStalls(void)
 {
 	while (seedStall.size() < 3) {
 		seedStall.push_back(dealSeedCard());
