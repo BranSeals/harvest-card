@@ -18,10 +18,8 @@ public:
     Farm();
     ~Farm();
 
-	//virtual void print(void);
-
 private:
-	//std::vector<int> deck;
+	
 };
 
 #endif /* Farm_hpp */

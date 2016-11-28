@@ -18,7 +18,7 @@ Deck::~Deck()
 {
 }
 
-int Deck::getDeckSize(void)
+unsigned long Deck::getDeckSize(void)
 {
 	return deck.size();
 }
@@ -47,7 +47,7 @@ int Deck::dealCard(void)
 		int dealtCard{deck[deck.size() - 1]};
 		deck.pop_back();
 		return dealtCard;
-	} else {
-		std::cout << "\n*** Error: No cards in deck ***\n";
 	}
+    std::cout << "\n*** Error: No cards in deck ***\n";
+    return 0;
 }

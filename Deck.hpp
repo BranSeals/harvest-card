@@ -20,7 +20,7 @@ public:
     
     //* Getters / Setters *//
     
-    int getDeckSize(void);
+    unsigned long getDeckSize(void);
     
     //* Methods *//
     

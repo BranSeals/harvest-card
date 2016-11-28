@@ -9,7 +9,7 @@
 #include <vector>
 #include "Player.hpp"
 #include "Market.hpp"
-#include <direct.h>
+//#include <direct.h>
 
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
@@ -37,7 +37,7 @@ int main()
 
 	/* Game variables */
 	bool gameStatus{false};
-	char ynAnswer{'n'};
+	//char ynAnswer{'n'};
 	int currentPlayer{0};
 	int currentPhase{0};
 	Deck allCards;
@@ -56,6 +56,8 @@ int main()
 	/* Testing */
 	Player testPlayer;
 	testPlayer.takeCard(5101);
+    testPlayer.takeCard(5101);
+    std::cout << "\ntestPlayer Farm:" << std::endl;
 	testPlayer.printFarm();
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
@@ -250,12 +252,13 @@ bool confirmYN(std::string message)
 			std::cout << "\n*** Answer must be 'y' or 'n' ***\n";
 		}
 	}
+    return false;
 }
 
-std::string current_working_directory()
-{
-	char* cwd = _getcwd(0, 0); // **** microsoft specific ****
-	std::string working_directory(cwd);
-	std::free(cwd);
-	return working_directory;
-}
+//std::string current_working_directory()
+//{
+//	char* cwd = _getcwd(0, 0); // **** microsoft specific ****
+//	std::string working_directory(cwd);
+//	std::free(cwd);
+//	return working_directory;
+//}
