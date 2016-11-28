@@ -31,9 +31,6 @@ public:
     void fillEmptyStall(void);
     
 private:
-	std::vector<int> deck;
-	std::vector<Card> seedStall;
-	std::vector<Card> toolStall;
-	std::vector<Card> livestockStall;
+
 };
 #endif /* Market_hpp */

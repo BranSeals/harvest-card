@@ -147,8 +147,8 @@ void Card::createByID(int id)
 	std::ifstream file;
 	std::string lineContent{""};
 	
-	//file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
-    file.open("cards.txt", std::ifstream::in);
+	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
+    //file.open("cards.txt", std::ifstream::in);
 
 	while (!file.eof()) {
 		getline(file, lineContent);

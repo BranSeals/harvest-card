@@ -42,7 +42,7 @@ void Deck::shuffleDeck(void)
 }
 
 // Requires check when calling function to ensure cards exist in deck
-int Deck::dealCardInt(void)
+int Deck::dealCard(void)
 {
 	int dealtCard{deck[deck.size() - 1]};
 	deck.pop_back();
@@ -51,6 +51,6 @@ int Deck::dealCardInt(void)
 
 Card Deck::dealCardObject(int id)
 {
-	int dealtCard = dealCardInt();
+	int dealtCard = dealCard();
 	return Card(dealtCard);
 }

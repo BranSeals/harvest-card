@@ -27,8 +27,8 @@ public:
     void addCard(int);
     virtual void print(void);
     void shuffleDeck(void);
-    int dealCardInt(void);
-	Card dealCardObject(int);
+    int dealCard(void);
+    Card dealCardObject(int);
     
 private:
     std::vector<int> deck;

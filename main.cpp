@@ -54,18 +54,17 @@ int main()
 	Deck livestockDeck;
 
 	/* Testing */
-	Player testPlayer;
+	/*Player testPlayer;
 	testPlayer.takeCard(5101);
-    testPlayer.takeCard(5101);
     std::cout << "\ntestPlayer Farm:" << std::endl;
-	testPlayer.printFarm();
+	testPlayer.printFarm();*/
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
 
-	Deck testDeck;
+	/*Deck testDeck;
 	testDeck.addCard(5101);
 	testDeck.addCard(5100);
-	testDeck.print();
+	testDeck.print();*/
 	/*std::cout << std::endl;
 	int card = testDeck.dealCard();
 	testDeck.print();
@@ -74,13 +73,13 @@ int main()
 	testDeck.print();*/
 	//std::cout << std::endl;
 
-	Farm testFarm;
+	/*Farm testFarm;
 	testFarm.addCard(5101);
 	testFarm.addCard(5101);
 	testFarm.addCard(5101);
-	testFarm.print();
-	std::cout << testFarm.getDeckSize();
-
+	testFarm.print();*/
+	
+	/*std::cout << testFarm.getDeckSize();*/
 
 	/*Card testCard(5101);
 	std::cout << "\n" << testCard.getCardID() << std::endl;
@@ -90,7 +89,7 @@ int main()
 	std::cout << testCard.getCardEffect() << std::endl;
 	std::cout << testCard.getCardValue() << std::endl;
 	std::cout << testCard.getCardCost() << std::endl;
-	testCard.printCard();*/
+	testCard.print();*/
 
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
