@@ -24,13 +24,20 @@ public:
     
     //* Methods *//
 
-	virtual void print(void);
+	//virtual void print(void);
+	virtual int dealCard(std::vector<int>*);
     
-    /* Check for empty slots in market */
-    int checkEmptyStall(void);
-    void fillEmptyStall(void);
+    /* Check and fill empty slots in market */
+    void refillEmptyStall(void);
+	void fillDecks(void);
     
 private:
-
+	/*std::vector<int> seasonDeck;
+	std::vector<int> seedDeck;
+	std::vector<int> toolDeck;
+	std::vector<int> livestockDeck;*/
+	std::vector<Card> seedStall;
+	std::vector<Card> toolStall;
+	std::vector<Card> livestockStall;
 };
 #endif /* Market_hpp */
