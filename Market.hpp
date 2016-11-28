@@ -32,8 +32,8 @@ public:
     
 private:
 	std::vector<int> deck;
-	std::vector<Card> seedDeck;
-	std::vector<Card> toolDeck;
-	std::vector<Card> livestock;
+	std::vector<Card> seedStall;
+	std::vector<Card> toolStall;
+	std::vector<Card> livestockStall;
 };
 #endif /* Market_hpp */
