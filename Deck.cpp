@@ -49,8 +49,37 @@ int Deck::dealCard(void)
 	return dealtCard;
 }
 
-Card Deck::dealCardObject(int id)
+Card Deck::dealCardObject(void)
 {
 	int dealtCard = dealCard();
 	return Card(dealtCard);
+}
+
+/* Experiment - may be replaced by pointer-based dealing from market if it works */
+int Deck::dealSeasonCard(void)
+{
+	int dealtCard{seasonDeck[seasonDeck.size() - 1]};
+	seasonDeck.pop_back();
+	return dealtCard;
+}
+
+int Deck::dealSeedCard(void)
+{
+	int dealtCard{seedDeck[seedDeck.size() - 1]};
+	seedDeck.pop_back();
+	return dealtCard;
+}
+
+int Deck::dealToolCard(void)
+{
+	int dealtCard{toolDeck[toolDeck.size() - 1]};
+	toolDeck.pop_back();
+	return dealtCard;
+}
+
+int Deck::dealLivestockCard(void)
+{
+	int dealtCard{livestockDeck[livestockDeck.size() - 1]};
+	livestockDeck.pop_back();
+	return dealtCard;
 }

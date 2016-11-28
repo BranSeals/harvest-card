@@ -24,14 +24,26 @@ public:
     
     //* Methods *//
     
-    void addCard(int);
     virtual void print(void);
     void shuffleDeck(void);
     int dealCard(void);
-    Card dealCardObject(int);
+	void addCard(int);
+    Card dealCardObject(void);
+
+	/* Experiment */
+	int dealSeasonCard(void);
+	int dealSeedCard(void);
+	int dealToolCard(void);
+	int dealLivestockCard(void);
     
 private:
     std::vector<int> deck;
+
+	/* Experiment */
+	std::vector<int> seasonDeck;
+	std::vector<int> seedDeck;
+	std::vector<int> toolDeck;
+	std::vector<int> livestockDeck;
 };
 
 #endif /* Deck_hpp */

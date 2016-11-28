@@ -61,6 +61,12 @@ int main()
 	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
 	//std::cout << current_working_directory();
 
+	Market testMarket;
+	testMarket.addCard(5101);
+	testMarket.addCard(5101);
+	testMarket.addCard(5101);
+	testMarket.fillDecks();
+
 	/*Deck testDeck;
 	testDeck.addCard(5101);
 	testDeck.addCard(5100);
