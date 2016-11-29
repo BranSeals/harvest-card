@@ -107,6 +107,7 @@ void Game::addPlayer(std::string name, int age)
 
 void Game::quitGame(void)
 {
+	// TO DO: Replace below with confirmYN function from main
     char yn;
     do {
         std::cout << "\nQuit game? [y/n]: ";

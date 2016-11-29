@@ -10,6 +10,7 @@
 #define Game_hpp
 
 #include <vector>
+#include "Player.hpp"
 
 class Game
 {
@@ -58,6 +59,7 @@ private:
     int numPlayers{1};
     std::vector<int> playerAges;
     std::vector<std::string> playerNames;
+	std::vector<Player> player; // filled in after players are sorted
     int gameLength{0};
     int seasonLength{0};
     bool gameStatus{false};
