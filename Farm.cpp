@@ -19,7 +19,18 @@ Farm::~Farm()
 
 void Farm::addCard(Card card)
 {
-	playerLivestock.push_back(card);
+	// use card ID to place into deck using pointTo
+	if (card.getCardID() < 5000) {
+		std::cout << "\n*** Season Card cannot be placed into Farm ***\n";
+	} else if (card.getCardID() < 6000) {
+		playerSeed.push_back(card);
+	} else if (card.getCardID() < 7000) {
+		playerTool.push_back(card);
+	} else if (card.getCardID() < 8000) {
+		playerLivestock.push_back(card);
+	} else {
+		std::cout << "\n*** Error in Farm::addCard() ***\n";
+	}
 }
 
 void Farm::print(void)
