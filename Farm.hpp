@@ -19,6 +19,9 @@ public:
     ~Farm();
 
 	void addCard(Card);
+	virtual void print(void);
+	std::vector<Card>* pointTo(std::string);
+	void print(std::string);
 
 private:
 	std::vector<Card> playerSeed;
