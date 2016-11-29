@@ -10,9 +10,10 @@
 #define Farm_hpp
 
 #include <iostream>
-#include "Deck.hpp"
+#include <vector>
+#include "Card.hpp"
 
-class Farm : public Deck
+class Farm
 {
 public:
     Farm();
