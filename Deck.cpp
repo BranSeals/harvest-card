@@ -38,8 +38,9 @@ void Deck::print()
 	print("Livestock");
 }
 
-void Deck::print(std::string deckName) {
-	std::vector<int>* deckPtr{pointToDeck(deckName)};
+void Deck::print(std::string deckName)
+{
+	std::vector<int>* deckPtr{pointTo(deckName)};
 	std::cout << "\n" << deckName << " Deck:\n";
 	for (size_t i{0}; i < (*deckPtr).size(); ++i) {
 		std::cout << (*deckPtr)[i] << "\n";
@@ -54,13 +55,13 @@ void Deck::shuffleDecks(void)
 // Reminder: check when calling function to ensure cards exist in deck
 int Deck::dealCard(std::string deckName)
 {
-	std::vector<int>* deckPtr{pointToDeck(deckName)};
+	std::vector<int>* deckPtr{pointTo(deckName)};
 	int dealtCard{(*deckPtr)[(*deckPtr).size() - 1]};
 	(*deckPtr).pop_back();
 	return dealtCard;
 }
 
-std::vector<int>* Deck::pointToDeck(std::string deckName)
+std::vector<int>* Deck::pointTo(std::string deckName)
 {
 	if (deckName == "Main") {
 		return &deck;
@@ -73,7 +74,7 @@ std::vector<int>* Deck::pointToDeck(std::string deckName)
 	} else if (deckName == "Livestock") {
 		return &livestockDeck;
 	} else {
-		std::cout << "\n*** Error in pointToDeck() ***\n";
+		std::cout << "\n*** Error in Deck::pointTo() ***\n";
 	}
 }
 
