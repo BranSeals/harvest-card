@@ -25,7 +25,7 @@ public:
     //* Methods *//
     
     virtual void print(void);
-	void print(std::vector<int>*, std::string);
+	void print(std::string);
     void shuffleDecks(void);
     int dealCard(std::vector<int>*);
 	void addCard(int);

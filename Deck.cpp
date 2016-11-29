@@ -31,17 +31,32 @@ void Deck::addCard(int cardID)
 void Deck::print()
 {
 	std::cout << "\n-- Decks --";
-	print(&deck, "Main");
-	print(&seasonDeck, "Season");
-	print(&seedDeck, "Seed");
-	print(&toolDeck, "Tool");
-	print(&livestockDeck, "Livestock");
+	print("Main");
+	print("Season");
+	print("Seed");
+	print("Tool");
+	print("Livestock");
 }
 
-void Deck::print(std::vector<int>* deck, std::string name) {
+void Deck::print(std::string name) {
+	std::vector<int>* deckPtr;
+	if (name == "Main") {
+		deckPtr = &deck;
+	} else if (name == "Season") {
+		deckPtr = &seasonDeck;
+	} else if (name == "Seed") {
+		deckPtr = &seedDeck;
+	} else if (name == "Tool") {
+		deckPtr = &toolDeck;
+	} else if (name == "Livestock") {
+		deckPtr = &livestockDeck;
+	} else {
+		std::cout << "\n*** Error in deck's print method ***\n";
+	}
+
 	std::cout << "\n" << name << " Deck:\n";
-	for (size_t i{0}; i < (*deck).size(); ++i) {
-		std::cout << (*deck)[i] << "\n";
+	for (size_t i{0}; i < (*deckPtr).size(); ++i) {
+		std::cout << (*deckPtr)[i] << "\n";
 	}
 }
 
