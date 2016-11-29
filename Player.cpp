@@ -88,7 +88,7 @@ void Player::removeGold(int gold)
 
 void Player::print(void)
 {
-    std::cout << "\nPlayer " << playerNumber;
+    std::cout << "\n-- Player " << playerNumber << " --";
     std::cout << "\nName:\t" << playerName;
     std::cout << "\nAge:\t" << playerAge;
     std::cout << "\nGold:\t" << playerGold;
@@ -115,6 +115,7 @@ void Player::buy(Market* market, int selection)
 
 void Player::sell(Card card)
 {
+	// (may need to list game phase as an argument for below to work)
 	// collect money (card value)
 	// flip over card
 	// do for all cards ready to be sold
