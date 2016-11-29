@@ -16,3 +16,8 @@ Farm::Farm()
 Farm::~Farm()
 {
 }
+
+void Farm::addCard(Card card)
+{
+
+}
