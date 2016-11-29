@@ -9,12 +9,18 @@
 #include <vector>
 #include "Player.hpp"
 #include "Market.hpp"
+#include "Game.hpp"
+#include "Farm.hpp"
+#include "Deck.hpp"
+#include "Card.hpp"
+
 //#include <direct.h>
 
 /* Functions */
 void sortPlayers(std::vector<int>*, std::vector<std::string>*);
 bool confirmYN(std::string);
-std::string current_working_directory(void);
+//std::string current_working_directory(void);
+void fillMarket(Market*);
 
 /* Constants */
 const std::string gameTitle{"Harvest Card Game"};
@@ -37,41 +43,20 @@ int main()
 
 	/* Game variables */
 	bool gameStatus{false};
-	//char ynAnswer{'n'};
 	int currentPlayer{0};
 	int currentPhase{0};
-	Deck allCards;
+	Market gameMarket;
 
-	/* Season decks */
-	Deck springDeck;
-	Deck summerDeck;
-	Deck autumnDeck;
-	Deck winterDeck;
-
-	/* Market decks */
-	Deck seedDeck;
-	Deck toolDeck;
-	Deck livestockDeck;
 
 	/* Testing */
-
-	//printf(" %s", _fullpath(NULL, "cards.txt", 40));
-	//std::cout << current_working_directory();
-	
-	Market testMarket;
-	testMarket.addCard(5101);
-	testMarket.addCard(5303);
-	testMarket.addCard(5301);
-	testMarket.addCard(6003);
-	testMarket.addCard(6005);
-	testMarket.addCard(6001);
-	testMarket.addCard(7001);
-	testMarket.addCard(7002);
-	testMarket.addCard(7004);
-	testMarket.fillDecks();
-	testMarket.fillStalls();
-	testMarket.print();
-
+	/* Fill market with cards */
+	fillMarket(&gameMarket);
+	gameMarket.print();
+	Player testPlayer(1, "Bran", 31, 1000);
+	testPlayer.print();
+	testPlayer.buy(&gameMarket, 1);
+	testPlayer.print();
+	testPlayer.printFarm();
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
 	std::cout << gameDescription;
@@ -242,3 +227,39 @@ bool confirmYN(std::string message)
 //	std::free(cwd);
 //	return working_directory;
 //}
+
+void fillMarket(Market* market)
+{
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->fillDecks();
+	market->fillStalls();
+}
