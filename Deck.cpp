@@ -31,16 +31,23 @@ void Deck::addCard(int cardID)
 void Deck::print()
 {
 	std::cout << "\n-- Decks --";
-	printDeck(&deck, "Main");
-	printDeck(&seasonDeck, "Season");
-	printDeck(&seedDeck, "Seed");
-	printDeck(&toolDeck, "Tool");
-	printDeck(&livestockDeck, "Livestock");
+	print(&deck, "Main");
+	print(&seasonDeck, "Season");
+	print(&seedDeck, "Seed");
+	print(&toolDeck, "Tool");
+	print(&livestockDeck, "Livestock");
 }
 
-void Deck::shuffleDeck(void)
+void Deck::print(std::vector<int>* deck, std::string name) {
+	std::cout << "\n" << name << " Deck:\n";
+	for (size_t i{0}; i < (*deck).size(); ++i) {
+		std::cout << (*deck)[i] << "\n";
+	}
+}
+
+void Deck::shuffleDecks(void)
 {
-	// random shuffle
+	
 }
 
 // Reminder: check when calling function to ensure cards exist in deck
@@ -93,13 +100,5 @@ void Deck::fillDecks(void)
 		} else {
 			std::cout << "\n*** Error filling decks ***\n";
 		}
-	}
-}
-
-void Deck::printDeck(std::vector<int>* deck, std::string name)
-{
-	std::cout << "\n" << name << " Deck:\n";
-	for (size_t i{0}; i < (*deck).size(); ++i) {
-		std::cout << (*deck)[i] << "\n";
 	}
 }
