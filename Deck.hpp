@@ -27,15 +27,9 @@ public:
     virtual void print(void);
 	void print(std::string);
     void shuffleDecks(void);
-    int dealCard(std::vector<int>*);
+    int dealCard(std::string);
 	void addCard(int);
-    Card dealCardObject(std::vector<int>*);
-
-	/* Experiment */
-	int dealSeasonCard(void);
-	int dealSeedCard(void);
-	int dealToolCard(void);
-	int dealLivestockCard(void);
+    Card dealCardObject(std::string);
 	void fillDecks(void);
     
 private:

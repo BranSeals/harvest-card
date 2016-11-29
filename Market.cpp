@@ -28,6 +28,11 @@ void Market::print(void)
 	printStall(&livestockStall, "Livestock");
 }
 
+void Market::printDecks(void)
+{
+	Deck::print();
+}
+
 void Market::printStall(std::vector<Card>* stall, std::string name)
 {
 	std::cout << "\n" << name << ":\n";
@@ -40,12 +45,12 @@ void Market::printStall(std::vector<Card>* stall, std::string name)
 void Market::fillStalls(void)
 {
 	while (seedStall.size() < 3) {
-		seedStall.push_back(dealSeedCard());
+		seedStall.push_back(dealCard("Seed"));
 	}
 	while (toolStall.size() < 3) {
-		toolStall.push_back(dealToolCard());
+		toolStall.push_back(dealCard("Tool"));
 	}
 	while (livestockStall.size() < 3) {
-		livestockStall.push_back(dealLivestockCard());
+		livestockStall.push_back(dealCard("Livestock"));
 	}
 }

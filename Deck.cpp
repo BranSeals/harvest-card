@@ -38,23 +38,23 @@ void Deck::print()
 	print("Livestock");
 }
 
-void Deck::print(std::string name) {
-	std::vector<int>* deckPtr;
-	if (name == "Main") {
+void Deck::print(std::string deckName) {
+	std::vector<int>* deckPtr{nullptr};
+	if (deckName == "Main") {
 		deckPtr = &deck;
-	} else if (name == "Season") {
+	} else if (deckName == "Season") {
 		deckPtr = &seasonDeck;
-	} else if (name == "Seed") {
+	} else if (deckName == "Seed") {
 		deckPtr = &seedDeck;
-	} else if (name == "Tool") {
+	} else if (deckName == "Tool") {
 		deckPtr = &toolDeck;
-	} else if (name == "Livestock") {
+	} else if (deckName == "Livestock") {
 		deckPtr = &livestockDeck;
 	} else {
 		std::cout << "\n*** Error in deck's print method ***\n";
 	}
 
-	std::cout << "\n" << name << " Deck:\n";
+	std::cout << "\n" << deckName << " Deck:\n";
 	for (size_t i{0}; i < (*deckPtr).size(); ++i) {
 		std::cout << (*deckPtr)[i] << "\n";
 	}
@@ -66,44 +66,38 @@ void Deck::shuffleDecks(void)
 }
 
 // Reminder: check when calling function to ensure cards exist in deck
-int Deck::dealCard(std::vector<int>* deck)
+int Deck::dealCard(std::string deckName)
 {
-	int dealtCard{(*deck)[(*deck).size() - 1]};
-	(*deck).pop_back();
+	std::vector<int>* deckPtr{nullptr};
+	if (deckName == "Main") {
+		deckPtr = &deck;
+	} else if (deckName == "Season") {
+		deckPtr = &seasonDeck;
+	} else if (deckName == "Seed") {
+		deckPtr = &seedDeck;
+	} else if (deckName == "Tool") {
+		deckPtr = &toolDeck;
+	} else if (deckName == "Livestock") {
+		deckPtr = &livestockDeck;
+	} else {
+		std::cout << "\n*** Error in deck's print method ***\n";
+	}
+	int dealtCard{(*deckPtr)[(*deckPtr).size() - 1]};
+	(*deckPtr).pop_back();
 	return dealtCard;
 }
 
-Card Deck::dealCardObject(std::vector<int>* deck)
+Card Deck::dealCardObject(std::string deckName)
 {
-	int dealtCard = dealCard(deck);
+	int dealtCard = dealCard(deckName);
 	return Card(dealtCard);
-}
-
-int Deck::dealSeasonCard(void)
-{
-	return dealCard(&seasonDeck);
-}
-
-int Deck::dealSeedCard(void)
-{
-	return dealCard(&seedDeck);
-}
-
-int Deck::dealToolCard(void)
-{
-	return dealCard(&toolDeck);
-}
-
-int Deck::dealLivestockCard(void)
-{
-	return dealCard(&livestockDeck);
 }
 
 void Deck::fillDecks(void)
 {
 	int tempCard{0};
 	while (deck.size() > 0) {
-		tempCard = dealCard(&deck);
+		tempCard = dealCard("Main");
 		if (tempCard < 5000) {
 			seasonDeck.push_back(tempCard);
 		} else if (tempCard < 6000) {

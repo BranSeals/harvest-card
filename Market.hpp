@@ -18,17 +18,9 @@ public:
     Market();
     ~Market();
     
-    //* Getters / Setters *//
-    
-    
-    
-    //* Methods *//
-
 	virtual void print(void);
+	void printDecks(void);
 	void printStall(std::vector<Card>*, std::string);
-
-    
-    /* Check and fill empty slots in market */
     void fillStalls(void);
     
 private:
