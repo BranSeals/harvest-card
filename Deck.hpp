@@ -28,6 +28,7 @@ public:
 	void print(std::string);
     void shuffleDecks(void);
     int dealCard(std::string);
+	std::vector<int>* pointToDeck(std::string);
 	void addCard(int);
     Card dealCardObject(std::string);
 	void fillDecks(void);
