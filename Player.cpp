@@ -95,12 +95,15 @@ void Player::print(void)
     std::cout << "\n";
 }
 
-void Player::printFarm(void)
+void Player::buy(Card card)
 {
-	playerFarm.print();
+	// remove money (card cost)
+	playerFarm.addCard(card);
 }
 
-void Player::takeCard(int id)
+void Player::sell(Card card)
 {
-	playerFarm.addCard(id);
+	// collect money (card value)
+	// flip over card
+	// do for all cards ready to be sold
 }
