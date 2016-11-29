@@ -51,6 +51,7 @@ std::vector<Card>* Market::pointTo(std::string stallName)
 		return &livestockStall;
 	} else {
 		std::cout << "\n*** Error in Market::pointTo() ***\n";
+		return nullptr; 
 	}
 }
 
@@ -69,11 +70,13 @@ void Market::fillStalls(void)
 
 int Market::getCostAt(int selection)
 {
+	// TO DO: make this work with any of the 9 market slots - combine vectors?
 	return livestockStall[selection].getCardCost();
 }
 
 Card Market::removeFromStall(int selection)
 {
+	// TO DO: make this work with any of the 9 market slots - combine vectors?
 	Card removedCard = livestockStall[selection];
 	livestockStall.erase(livestockStall.begin() + (selection));
 	return removedCard;
