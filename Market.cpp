@@ -75,6 +75,6 @@ int Market::getCostAt(int selection)
 Card Market::removeFromStall(int selection)
 {
 	Card removedCard = livestockStall[selection];
-	livestockStall.erase(livestockStall.begin() + (selection - 1));
+	livestockStall.erase(livestockStall.begin() + (selection));
 	return removedCard;
 }
