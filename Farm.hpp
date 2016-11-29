@@ -18,8 +18,12 @@ public:
     Farm();
     ~Farm();
 
+	void addCard(Card);
+
 private:
-	
+	std::vector<Card> playerSeed;
+	std::vector<Card> playerTool;
+	std::vector<Card> playerLivestock;
 };
 
 #endif /* Farm_hpp */
