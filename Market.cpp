@@ -66,3 +66,15 @@ void Market::fillStalls(void)
 		livestockStall.push_back(dealCard("Livestock"));
 	}
 }
+
+int Market::getCostAt(int selection)
+{
+	return livestockStall[selection].getCardCost();
+}
+
+Card Market::removeFromStall(int selection)
+{
+	Card removedCard = livestockStall[selection];
+	livestockStall.erase(livestockStall.begin() + (selection - 1));
+	return removedCard;
+}

@@ -22,6 +22,8 @@ public:
 	std::vector<Card>* pointTo(std::string);
 	void print(std::string);
     void fillStalls(void);
+	int getCostAt(int);
+	Card removeFromStall(int);
     
 private:
 	std::vector<Card> seedStall;
