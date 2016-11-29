@@ -47,21 +47,29 @@ int main()
 	int currentPhase{0};
 	Market gameMarket;
 
-
 	/* Testing */
 	/* Fill market with cards */
 	fillMarket(&gameMarket);
 	gameMarket.print();
 	Player testPlayer(1, "Bran", 31, 1000);
 	testPlayer.print();
+	testPlayer.buy(&gameMarket, 0);
+	testPlayer.print();
+	gameMarket.print();
+	testPlayer.printFarm();
+
 	testPlayer.buy(&gameMarket, 1);
 	testPlayer.print();
+	gameMarket.print();
 	testPlayer.printFarm();
+
 	/* Can loop through players like this */
 	/* Consider doing this in a game object */
 	std::vector<Player> player;
 	player.push_back(testPlayer);
 
+
+	/* End Testing */
 
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
@@ -234,6 +242,7 @@ bool confirmYN(std::string message)
 //	return working_directory;
 //}
 
+/* Use a similar function to feed into an int array used in constructed game object */
 void fillMarket(Market* market)
 {
 	market->addCard(5101);
