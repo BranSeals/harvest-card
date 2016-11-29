@@ -100,7 +100,24 @@ void Player::printFarm(void)
 	playerFarm.print();
 }
 
-void Player::takeCard(int id)
+void Player::buy(Market* market, int selection)
 {
-	playerFarm.addCard(id);
+	if (getPlayerGold() > market->getCostAt(selection)) {
+		boughtCard = market->removeFromStall(selection);
+		removeGold(boughtCard.getCardCost());
+		playerFarm.addCard(boughtCard);
+		std::cout << "\n> Bought " << boughtCard.getCardName() << " for "
+			<< boughtCard.getCardCost() << " gold.\n";
+	} else {
+		std::cout << "\nNot enough gold.";
+	}
+}
+
+void Player::sell(Card card)
+{
+	// collect money (card value)
+	// flip over card
+	// do for all cards ready to be sold
+		// at end of round for livestock
+		// at end of season for crops
 }

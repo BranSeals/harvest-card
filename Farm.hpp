@@ -10,16 +10,24 @@
 #define Farm_hpp
 
 #include <iostream>
-#include "Deck.hpp"
+#include <vector>
+#include "Card.hpp"
 
-class Farm : public Deck
+class Farm
 {
 public:
     Farm();
     ~Farm();
 
+	void addCard(Card);
+	virtual void print(void);
+	std::vector<Card>* pointTo(std::string);
+	void print(std::string);
+
 private:
-	
+	std::vector<Card> playerSeed;
+	std::vector<Card> playerTool;
+	std::vector<Card> playerLivestock;
 };
 
 #endif /* Farm_hpp */

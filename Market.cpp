@@ -23,29 +23,58 @@ Market::~Market()
 void Market::print(void)
 {
 	std::cout << "\n-- Market --";
-	printStall(&seedStall, "Seeds");
-	printStall(&toolStall, "Tools");
-	printStall(&livestockStall, "Livestock");
+	print("Seed");
+	print("Tool");
+	print("Livestock");
 }
 
-void Market::printStall(std::vector<Card>* stall, std::string name)
+void Market::print(std::string stallName)
 {
-	std::cout << "\n" << name << ":\n";
-	for (size_t i{0}; i < (*stall).size(); ++i) {
-		std::cout << (*stall)[i].getCardName() << "\n";
+	if (stallName == "Decks") {
+		Deck::print();
+	} else {
+		std::vector<Card>* stallPtr{Market::pointTo(stallName)};
+		std::cout << "\n" << stallName << ":\n";
+		for (size_t i{0}; i < (*stallPtr).size(); ++i) {
+			std::cout << (*stallPtr)[i].getCardName() << "\n";
+		}
 	}
 }
 
-// NEEDS TESTING
+std::vector<Card>* Market::pointTo(std::string stallName)
+{
+	if (stallName == "Seed") {
+		return &seedStall;
+	} else if (stallName == "Tool") {
+		return &toolStall;
+	} else if (stallName == "Livestock") {
+		return &livestockStall;
+	} else {
+		std::cout << "\n*** Error in Market::pointTo() ***\n";
+	}
+}
+
 void Market::fillStalls(void)
 {
 	while (seedStall.size() < 3) {
-		seedStall.push_back(dealSeedCard());
+		seedStall.push_back(dealCard("Seed"));
 	}
 	while (toolStall.size() < 3) {
-		toolStall.push_back(dealToolCard());
+		toolStall.push_back(dealCard("Tool"));
 	}
 	while (livestockStall.size() < 3) {
-		livestockStall.push_back(dealLivestockCard());
+		livestockStall.push_back(dealCard("Livestock"));
 	}
+}
+
+int Market::getCostAt(int selection)
+{
+	return livestockStall[selection].getCardCost();
+}
+
+Card Market::removeFromStall(int selection)
+{
+	Card removedCard = livestockStall[selection];
+	livestockStall.erase(livestockStall.begin() + (selection - 1));
+	return removedCard;
 }

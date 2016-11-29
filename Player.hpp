@@ -11,6 +11,7 @@
 
 #include <string>
 #include "Farm.hpp"
+#include "Market.hpp"
 
 class Player : public Farm
 {
@@ -41,10 +42,10 @@ public:
     void addGold(int);
     void removeGold(int);
     virtual void print(void);
-
-	// TO DO
 	void printFarm(void);
-	void takeCard(int);
+
+	void buy(Market*, int);
+	void sell(Card);
     
     
 private:
@@ -52,6 +53,7 @@ private:
     std::string playerName{""};
     int playerAge{0};
     int playerGold{0};
+	Card boughtCard;
     Farm playerFarm;
 };
 

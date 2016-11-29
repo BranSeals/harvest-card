@@ -447,7 +447,7 @@ Cow
 With Milk Pail, can sell milk once per turn.
 2
 Value
-Cost
+20
 0
 
 7002
@@ -456,7 +456,7 @@ Chicken
 With Hay, can sell egg once per turn.
 2
 Value
-Cost
+21
 0
 
 7003
@@ -474,5 +474,5 @@ Horse
 With Saddle, can flip a Seed Card once per turn.
 1
 1
-Cost
+23
 0

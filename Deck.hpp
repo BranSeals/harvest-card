@@ -25,18 +25,13 @@ public:
     //* Methods *//
     
     virtual void print(void);
-    void shuffleDeck(void);
-    int dealCard(std::vector<int>*);
+	void print(std::string);
+    void shuffleDecks(void);
+    int dealCard(std::string);
+	std::vector<int>* pointTo(std::string);
 	void addCard(int);
-    Card dealCardObject(std::vector<int>*);
-
-	/* Experiment */
-	int dealSeasonCard(void);
-	int dealSeedCard(void);
-	int dealToolCard(void);
-	int dealLivestockCard(void);
+    Card dealCardObject(std::string);
 	void fillDecks(void);
-	void printDeck(std::vector<int>*, std::string);
     
 private:
     std::vector<int> deck;

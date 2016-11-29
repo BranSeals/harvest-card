@@ -18,18 +18,12 @@ public:
     Market();
     ~Market();
     
-    //* Getters / Setters *//
-    
-    
-    
-    //* Methods *//
-
 	virtual void print(void);
-	void printStall(std::vector<Card>*, std::string);
-
-    
-    /* Check and fill empty slots in market */
+	std::vector<Card>* pointTo(std::string);
+	void print(std::string);
     void fillStalls(void);
+	int getCostAt(int);
+	Card removeFromStall(int);
     
 private:
 	std::vector<Card> seedStall;
