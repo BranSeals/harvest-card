@@ -20,8 +20,7 @@ public:
     
 	virtual void print(void);
 	std::vector<Card>* pointTo(std::string);
-	void printDecks(void);
-	void printStall(std::string);
+	void print(std::string);
     void fillStalls(void);
     
 private:

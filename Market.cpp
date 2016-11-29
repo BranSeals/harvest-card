@@ -23,22 +23,21 @@ Market::~Market()
 void Market::print(void)
 {
 	std::cout << "\n-- Market --";
-	printStall("Seed");
-	printStall("Tool");
-	printStall("Livestock");
+	print("Seed");
+	print("Tool");
+	print("Livestock");
 }
 
-void Market::printDecks(void)
+void Market::print(std::string stallName)
 {
-	Deck::print();
-}
-
-void Market::printStall(std::string stallName)
-{
-	std::vector<Card>* stallPtr{Market::pointTo(stallName)};
-	std::cout << "\n" << stallName << ":\n";
-	for (size_t i{0}; i < (*stallPtr).size(); ++i) {
-		std::cout << (*stallPtr)[i].getCardName() << "\n";
+	if (stallName == "Decks") {
+		Deck::print();
+	} else {
+		std::vector<Card>* stallPtr{Market::pointTo(stallName)};
+		std::cout << "\n" << stallName << ":\n";
+		for (size_t i{0}; i < (*stallPtr).size(); ++i) {
+			std::cout << (*stallPtr)[i].getCardName() << "\n";
+		}
 	}
 }
 
