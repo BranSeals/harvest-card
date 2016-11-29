@@ -95,10 +95,20 @@ void Player::print(void)
     std::cout << "\n";
 }
 
-void Player::buy(Card card)
+void Player::printFarm(void)
 {
-	// remove money (card cost)
-	playerFarm.addCard(card);
+	playerFarm.print();
+}
+
+void Player::buy(Market* market, int selection)
+{
+	if (getPlayerGold() > market->getCostAt(selection)) {
+		boughtCard = market->removeFromStall(selection);
+		removeGold(boughtCard.getCardCost());
+	} else {
+		std::cout << "\nNot enough gold.";
+	}
+	playerFarm.addCard(boughtCard);
 }
 
 void Player::sell(Card card)
