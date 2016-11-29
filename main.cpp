@@ -57,6 +57,12 @@ int main()
 	testPlayer.buy(&gameMarket, 1);
 	testPlayer.print();
 	testPlayer.printFarm();
+	/* Can loop through players like this */
+	/* Consider doing this in a game object */
+	std::vector<Player> player;
+	player.push_back(testPlayer);
+
+
 	/* Opening dialogue */
 	std::cout << "\n-- " << gameTitle << " --\n";
 	std::cout << gameDescription;
