@@ -44,7 +44,7 @@ void Farm::print(void)
 	print("Seed");
 	print("Tool");
 	print("Livestock");
-	print("Target");
+	//print("Target"); // hide until time for selection
 }
 
 void Farm::print(std::string playerLot)
@@ -93,14 +93,11 @@ int Farm::sellProduct(int seasonCards)
 
 void Farm::workFarm(int selection)
 {
-	// is tool able to be used? (face up)
-	// count number of this tool's targets that are face down
-		// if all face up, output tool has no use this turn
-		// if any are face down, ask for target selection
-	if (!playerTool[selection - 1].isCardFaceUp()) {
+	if (!playerTool[selection - 1].isCardFaceUp()) {							
 		std::cout << "\n> Tool already used this turn.\n";
 	} else {
 		int targetID = playerTool[selection - 1].getCardTarget();
+
 		std::vector<Card>* lotPtr{nullptr};
 
 		if (targetID == 5000) {
@@ -111,42 +108,31 @@ void Farm::workFarm(int selection)
 			std::cout << "\n*** Error in assigning pointer in workFarm() ***\n";
 		}
 
-		// fill target buffer vector
+		/* Fill targetBuffer vector */	
 		for (size_t i{0}; i < (*lotPtr).size(); ++i) {
 			if (targetID == 5000 && !(*lotPtr)[i].isCardFaceUp()) {
-
-				// add card to target buffer
-				targetBuffer.push_back((*lotPtr)[i]);  // NEEDS TESTING
-
-				// remove card from old location
-				(*lotPtr).erase((*lotPtr).begin() + i); // NEEDS TESTING
-
-			} else if (targetID == (*lotPtr)[i].getCardID() && !(*lotPtr)[i].isCardFaceUp()) {
-
-				// add card to target buffer
-				targetBuffer.push_back((*lotPtr)[i]); // NEEDS TESTING
-
-				// remove card from old location
-				(*lotPtr).erase((*lotPtr).begin() + i); // NEEDS TESTING
-
-			} else {
-				std::cout << "\n*** Error in workFarm() ***\n";
+				targetBuffer.push_back((*lotPtr)[i]);
+				(*lotPtr).erase((*lotPtr).begin() + i);
 			}
-		} // end fill target buffer vector
+			if (targetID == (*lotPtr)[i].getCardID() && !(*lotPtr)[i].isCardFaceUp()) {
+				targetBuffer.push_back((*lotPtr)[i]);
+				(*lotPtr).erase((*lotPtr).begin() + i);
+			}
+		}
 
 		// if anything exists in target buffer, then print and get selection
-
 		// print number of targets with a number to select
-		print("Target");
-
+		if (targetBuffer.size() > 0) {
+			print("Target"); // but with numbers to select
+		}
 
 		// flip card if it can be flipped
 
 
-
-
 		/* Exhaust tool card by turning face-down after use */
 		playerTool[selection - 1].flipCard();
+
+		// put cards back into original lots
 	}
 
 	// TO DO: get selection from player
