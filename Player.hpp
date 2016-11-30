@@ -45,7 +45,8 @@ public:
 	void printFarm(void);
 
 	void buy(Market*, int);
-	void sell(Card);
+	void sell(int);
+	
     
     
 private:

@@ -113,12 +113,7 @@ void Player::buy(Market* market, int selection)
 	}
 }
 
-void Player::sell(Card card)
+void Player::sell(int seasonCards)
 {
-	// (may need to list game phase as an argument for below to work)
-	// collect money (card value)
-	// flip over card
-	// do for all cards ready to be sold
-		// at end of round for livestock
-		// at end of season for crops
+	addGold(sellProduct(seasonCards));
 }

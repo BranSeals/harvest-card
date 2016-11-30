@@ -23,6 +23,7 @@ public:
 	virtual void print(void);
 	std::vector<Card>* pointTo(std::string);
 	void print(std::string);
+	int sellProduct(int);
 
 private:
 	std::vector<Card> playerSeed;

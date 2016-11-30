@@ -61,3 +61,24 @@ std::vector<Card>* Farm::pointTo(std::string playerLot)
 		std::cout << "\n*** Error in Farm::pointTo() ***\n";
 	}
 }
+
+int Farm::sellProduct(int seasonCards)
+{
+	int goldEarned{0};
+	if (seasonCards) {
+		for (size_t i{0}; i < playerLivestock.size(); ++i) {
+			if (playerLivestock[i].isCardFaceUp()) {
+				goldEarned += playerLivestock[i].getCardValue();
+				playerLivestock[i].resetCard(); // NEEDS TESTING
+			}
+		}
+	} else {
+		for (size_t i{0}; i < playerSeed.size(); ++i) {
+			if (playerSeed[i].isCardFaceUp()) {
+				goldEarned += playerSeed[i].getCardValue();
+				playerSeed[i].resetCard(); // NEEDS TESTING
+			}
+		}
+	}
+	return goldEarned;
+}
