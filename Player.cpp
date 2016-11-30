@@ -119,5 +119,5 @@ void Player::sell(int seasonCards)
 }
 
 void Player::useTool(int selection) {
-
+	playerFarm.workFarm(selection);
 }
