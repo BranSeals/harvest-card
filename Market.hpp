@@ -18,16 +18,16 @@ public:
     Market();
     ~Market();
     
-	virtual void print(void);
-	std::vector<Card>* pointTo(std::string);
-	void print(std::string);
+    virtual void print(void);
+    std::vector<Card>* pointTo(std::string);
+    void print(std::string);
     void fillStalls(void);
-	int getCostAt(int);
-	Card removeFromStall(int);
+    int getCostAt(int);
+    Card removeFromStall(int);
     
 private:
-	std::vector<Card> seedStall;
-	std::vector<Card> toolStall;
-	std::vector<Card> livestockStall;
+    std::vector<Card> seedStall;
+    std::vector<Card> toolStall;
+    std::vector<Card> livestockStall;
 };
 #endif /* Market_hpp */
