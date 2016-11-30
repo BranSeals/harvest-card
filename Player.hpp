@@ -46,6 +46,7 @@ public:
 
 	void buy(Market*, int);
 	void sell(int);
+	void useTool(int);
 	
     
     

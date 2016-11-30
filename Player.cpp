@@ -115,5 +115,9 @@ void Player::buy(Market* market, int selection)
 
 void Player::sell(int seasonCards)
 {
-	addGold(sellProduct(seasonCards));
+	addGold(playerFarm.sellProduct(seasonCards));
+}
+
+void Player::useTool(int selection) {
+
 }
