@@ -53,15 +53,18 @@ int main()
 	gameMarket.print();
 	Player testPlayer(1, "Bran", 31, 1000);
 	testPlayer.print();
-	testPlayer.buy(&gameMarket, 0);
+	testPlayer.buy(&gameMarket, 9);
 	testPlayer.print();
 	gameMarket.print();
 	testPlayer.printFarm();
 
-	testPlayer.buy(&gameMarket, 1);
+	testPlayer.buy(&gameMarket, 7);
 	testPlayer.print();
 	gameMarket.print();
 	testPlayer.printFarm();
+
+	testPlayer.sell(1);
+	testPlayer.print();
 
 	/* Can loop through players like this */
 	/* Consider doing this in a game object */
@@ -170,6 +173,7 @@ int main()
 		gameStatus = false;
     } // end game loop
     
+	system("pause");
     return 0;
 }
 
