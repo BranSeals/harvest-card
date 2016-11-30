@@ -25,20 +25,20 @@ public:
     //* Methods *//
     
     virtual void print(void);
-	void print(std::string);
+    void print(std::string);
     void shuffleDecks(void);
     int dealCard(std::string);
-	std::vector<int>* pointTo(std::string);
-	void addCard(int);
+    std::vector<int>* pointTo(std::string);
+    void addCard(int);
     Card dealCardObject(std::string);
-	void fillDecks(void);
+    void fillDecks(void);
     
 private:
     std::vector<int> deck;
-	std::vector<int> seasonDeck;
-	std::vector<int> seedDeck;
-	std::vector<int> toolDeck;
-	std::vector<int> livestockDeck;
+    std::vector<int> seasonDeck;
+    std::vector<int> seedDeck;
+    std::vector<int> toolDeck;
+    std::vector<int> livestockDeck;
 };
 
 #endif /* Deck_hpp */

@@ -19,20 +19,20 @@ public:
     Farm();
     ~Farm();
 
-	void addCard(Card);
-	void removeCard(Card);
-	virtual void print(void);
-	std::vector<Card>* pointTo(std::string);
-	void print(std::string);
-	int sellProduct(int);
-	void workFarm(int);
-	//void moveCard(Card*, std::string);
+    void addCard(Card);
+    void removeCard(Card);
+    virtual void print(void);
+    std::vector<Card>* pointTo(std::string);
+    void print(std::string);
+    int sellProduct(int);
+    void workFarm(int);
+    //void moveCard(Card*, std::string);
 
 private:
-	std::vector<Card> playerSeed;
-	std::vector<Card> playerTool;
-	std::vector<Card> playerLivestock;
-	std::vector<Card> targetBuffer;
+    std::vector<Card> playerSeed;
+    std::vector<Card> playerTool;
+    std::vector<Card> playerLivestock;
+    std::vector<Card> targetBuffer;
 };
 
 #endif /* Farm_hpp */
