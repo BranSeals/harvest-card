@@ -18,7 +18,7 @@ Card::Card()
 
 Card::Card(int id)
 {
-	createByID(id);
+    createByID(id);
 }
 
 Card::~Card()
@@ -31,12 +31,12 @@ Card::~Card()
 /* ID of card */
 int Card::getCardID(void)
 {
-	return cardID;
+    return cardID;
 }
 
 void Card::setCardID(int id)
 {
-	cardID = id;
+    cardID = id;
 }
 
 /* Name of card */
@@ -74,18 +74,18 @@ void Card::setCardEffect(int effect)
 /* Target of card effect */
 int Card::getCardTarget(void)
 {
-	return cardTarget;
+    return cardTarget;
 }
 
 void Card::setCardTarget(int target)
 {
-	if (target == 50000) {
-		cardTarget = 5000;
-	} else if (target > 70000) {
-		cardTarget = target - 70000;
-	} else {
-		std::cout << "\n*** Error in setCardTarget() ***\n";
-	}
+    //std::cout << "target value: " << cardTarget << std::endl;
+    if (target == 50000) {
+        cardTarget = 5000;
+    } 
+	if (target > 70000) {
+        cardTarget = target - 70000;
+    }
 }
 
 /* Cost of card in Market */
@@ -113,11 +113,11 @@ void Card::setCardValue(int value)
 /* Season of card */
 int Card::getCardSeason(void)
 {
-	return cardSeason;
+    return cardSeason;
 }
 void Card::setCardSeason(int season)
 {
-	cardSeason = season;
+    cardSeason = season;
 }
 
 /* Description of card */
@@ -145,34 +145,34 @@ void Card::flipCard(void)
 /* Resets card to default value */
 void Card::resetCard(void)
 {
-	createByID(getCardID());
+    createByID(getCardID());
 }
 
 void Card::print(void)
 {
-	std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
-		<< "\nEffect: " << getCardEffect() << "\nValue: " << getCardValue()
-		<< "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
+    std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
+        << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
+        << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
 }
 
 /* Assigns default values to card object from text file */
 void Card::createByID(int id)
 {
-	/* Set ID attribute */
-	setCardID(id);
+    /* Set ID attribute */
+    setCardID(id);
 
-	std::ifstream file;
-	std::string lineContent{""};
-	
-	file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
+    std::ifstream file;
+    std::string lineContent{""};
+    
+    file.open("C:\\Users\\brand\\Desktop\\harvest-card\\cards.txt", std::ifstream::in);
     //file.open("cards.txt", std::ifstream::in);
 
-	while (!file.eof()) {
-		getline(file, lineContent);
-		if (std::to_string(id) == lineContent) {
+    while (!file.eof()) {
+        getline(file, lineContent);
+        if (std::to_string(id) == lineContent) {
 
-			getline(file, lineContent);
-			setCardSeason(atoi(lineContent.c_str()));
+            getline(file, lineContent);
+            setCardSeason(atoi(lineContent.c_str()));
 
             getline(file, lineContent);
             setCardName(lineContent);
@@ -183,8 +183,8 @@ void Card::createByID(int id)
             getline(file, lineContent);
             setCardEffect(atoi(lineContent.c_str()));
 
-			getline(file, lineContent);
-			setCardTarget(atoi(lineContent.c_str()));
+            getline(file, lineContent);
+            setCardTarget(atoi(lineContent.c_str()));
 
             getline(file, lineContent);
             setCardValue(atoi(lineContent.c_str()));
@@ -192,11 +192,11 @@ void Card::createByID(int id)
             getline(file, lineContent);
             setCardCost(atoi(lineContent.c_str()));
 
-			getline(file, lineContent);
-			setCardFaceUp(std::stoi(lineContent.c_str()));
-		}
-	}
+            getline(file, lineContent);
+            setCardFaceUp(std::stoi(lineContent.c_str()));
+        }
+    }
 
-	file.close();
+    file.close();
 }
 
