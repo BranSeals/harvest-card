@@ -34,7 +34,11 @@ public:
     /* Effect on card, referring to list of effects */
     int getCardEffect(void);
     void setCardEffect(int);
-    
+
+	/* Effect's target */
+	int getCardTarget(void);
+	void setCardTarget(int);
+
     /* Cost of card in Market */
     int getCardCost(void);
     void setCardCost(int);
@@ -63,6 +67,7 @@ private:
     std::string cardName{""};
     bool cardFaceUp{false};
     int cardEffect{0};
+	int cardTarget{0};
     int cardCost{0};
     int cardValue{0};
 	int cardSeason{0};

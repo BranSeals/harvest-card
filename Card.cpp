@@ -71,6 +71,17 @@ void Card::setCardEffect(int effect)
     cardEffect = effect;
 }
 
+/* Target of card effect */
+int Card::getCardTarget(void)
+{
+	return cardTarget;
+}
+
+void Card::setCardTarget(int target)
+{
+	cardTarget = target;
+}
+
 /* Cost of card in Market */
 int Card::getCardCost(void)
 {
@@ -153,18 +164,28 @@ void Card::createByID(int id)
 	while (!file.eof()) {
 		getline(file, lineContent);
 		if (std::to_string(id) == lineContent) {
+
 			getline(file, lineContent);
 			setCardSeason(atoi(lineContent.c_str()));
+
             getline(file, lineContent);
             setCardName(lineContent);
+
             getline(file, lineContent);
             setCardDescription(lineContent);
+
             getline(file, lineContent);
             setCardEffect(atoi(lineContent.c_str()));
+
+			getline(file, lineContent);
+			setCardTarget(atoi(lineContent.c_str()));
+
             getline(file, lineContent);
             setCardValue(atoi(lineContent.c_str()));
+
             getline(file, lineContent);
             setCardCost(atoi(lineContent.c_str()));
+
 			getline(file, lineContent);
 			setCardFaceUp(std::stoi(lineContent.c_str()));
 		}
