@@ -70,14 +70,33 @@ void Market::fillStalls(void)
 
 int Market::getCostAt(int selection)
 {
-	// TO DO: make this work with any of the 9 market slots - combine vectors?
-	return livestockStall[selection].getCardCost();
+	if (selection == 1 || selection == 2 || selection == 3) {
+		return seedStall[selection - 1].getCardCost();
+	} else if (selection == 4 || selection == 5 || selection == 6) {
+		return toolStall[selection - 4].getCardCost();
+	} else if (selection == 7 || selection == 8 || selection == 9) {
+		return livestockStall[selection - 7].getCardCost();
+	} else {
+		std::cout << "\n*** Error in getCostAt() ***\n";
+		return 0;
+	}
 }
 
 Card Market::removeFromStall(int selection)
 {
-	// TO DO: make this work with any of the 9 market slots - combine vectors?
-	Card removedCard = livestockStall[selection];
-	livestockStall.erase(livestockStall.begin() + (selection));
+	Card removedCard;
+
+	if (selection == 1 || selection == 2 || selection == 3) {
+		removedCard = seedStall[selection - 1];
+		seedStall.erase(seedStall.begin() + (selection));
+	} else if (selection == 4 || selection == 5 || selection == 6) {
+		removedCard = toolStall[selection - 4];
+		toolStall.erase(toolStall.begin() + (selection - 4));
+	} else if (selection == 7 || selection == 8 || selection == 9) {
+		removedCard = livestockStall[selection - 7];
+		livestockStall.erase(livestockStall.begin() + (selection - 7));
+	} else {
+		std::cout << "\n*** Error in removeFromStall() ***\n";
+	}
 	return removedCard;
 }
