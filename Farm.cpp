@@ -33,12 +33,18 @@ void Farm::addCard(Card card)
 	}
 }
 
+void Farm::removeCard(Card card)
+{
+
+}
+
 void Farm::print(void)
 {
 	std::cout << "\n-- Farm --";
 	print("Seed");
 	print("Tool");
 	print("Livestock");
+	print("Target");
 }
 
 void Farm::print(std::string playerLot)
@@ -57,6 +63,8 @@ std::vector<Card>* Farm::pointTo(std::string playerLot)
 		return &playerTool;
 	} else if (playerLot == "Livestock") {
 		return &playerLivestock;
+	} else if (playerLot == "Target") {
+		return &targetBuffer;
 	} else {
 		std::cout << "\n*** Error in Farm::pointTo() ***\n";
 	}
@@ -82,3 +90,79 @@ int Farm::sellProduct(int seasonCards)
 	}
 	return goldEarned;
 }
+
+void Farm::workFarm(int selection)
+{
+	// is tool able to be used? (face up)
+	// count number of this tool's targets that are face down
+		// if all face up, output tool has no use this turn
+		// if any are face down, ask for target selection
+	if (!playerTool[selection - 1].isCardFaceUp()) {
+		std::cout << "\n> Tool already used this turn.\n";
+	} else {
+		int targetID = playerTool[selection - 1].getCardTarget();
+		std::vector<Card>* lotPtr{nullptr};
+
+		if (targetID == 5000) {
+			lotPtr = Farm::pointTo("Seed");
+		} else if (targetID > 7000) {
+			lotPtr = Farm::pointTo("Livestock");
+		} else {
+			std::cout << "\n*** Error in assigning pointer in workFarm() ***\n";
+		}
+
+		// fill target buffer vector
+		for (size_t i{0}; i < (*lotPtr).size(); ++i) {
+			if (targetID == 5000 && !(*lotPtr)[i].isCardFaceUp()) {
+
+				// add card to target buffer
+				targetBuffer.push_back((*lotPtr)[i]);  // NEEDS TESTING
+
+				// remove card from old location
+				(*lotPtr).erase((*lotPtr).begin() + i); // NEEDS TESTING
+
+			} else if (targetID == (*lotPtr)[i].getCardID() && !(*lotPtr)[i].isCardFaceUp()) {
+
+				// add card to target buffer
+				targetBuffer.push_back((*lotPtr)[i]); // NEEDS TESTING
+
+				// remove card from old location
+				(*lotPtr).erase((*lotPtr).begin() + i); // NEEDS TESTING
+
+			} else {
+				std::cout << "\n*** Error in workFarm() ***\n";
+			}
+		} // end fill target buffer vector
+
+		// if anything exists in target buffer, then print and get selection
+
+		// print number of targets with a number to select
+		print("Target");
+
+
+		// flip card if it can be flipped
+
+
+
+
+		/* Exhaust tool card by turning face-down after use */
+		playerTool[selection - 1].flipCard();
+	}
+
+	// TO DO: get selection from player
+	// TO DO: turn fill target buffer bit into its own function
+	// TO DO: add flag to print functions that show number selection by each item
+}
+
+//void Farm::moveCard(Card* cardToMove, std::string sendTo)
+//{
+//	//Card movedCard = *cardToMove;
+//	std::vector<Card>* sendToPtr{Farm::pointTo(sendTo)};
+//	
+//	(*sendToPtr).push_back(movedCard); // NEEDS TESTING
+//
+//
+//}
+
+//		removedCard = seedStall[selection - 1];
+//		seedStall.erase(seedStall.begin() + (selection));
