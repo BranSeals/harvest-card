@@ -79,7 +79,13 @@ int Card::getCardTarget(void)
 
 void Card::setCardTarget(int target)
 {
-	cardTarget = target;
+	if (target == 50000) {
+		cardTarget = 5000;
+	} else if (target > 70000) {
+		cardTarget = target - 70000;
+	} else {
+		std::cout << "\n*** Error in setCardTarget() ***\n";
+	}
 }
 
 /* Cost of card in Market */
