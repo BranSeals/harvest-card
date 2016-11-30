@@ -97,27 +97,27 @@ void Player::print(void)
 
 void Player::printFarm(void)
 {
-	playerFarm.print();
+    playerFarm.print();
 }
 
 void Player::buy(Market* market, int selection)
 {
-	if (getPlayerGold() > market->getCostAt(selection)) {
-		boughtCard = market->removeFromStall(selection);
-		removeGold(boughtCard.getCardCost());
-		playerFarm.addCard(boughtCard);
-		std::cout << "\n> Bought " << boughtCard.getCardName() << " for "
-			<< boughtCard.getCardCost() << " gold.\n";
-	} else {
-		std::cout << "\nNot enough gold.";
-	}
+    if (getPlayerGold() > market->getCostAt(selection)) {
+        boughtCard = market->removeFromStall(selection);
+        removeGold(boughtCard.getCardCost());
+        playerFarm.addCard(boughtCard);
+        std::cout << "\n> Bought " << boughtCard.getCardName() << " for "
+            << boughtCard.getCardCost() << " gold.\n";
+    } else {
+        std::cout << "\nNot enough gold.";
+    }
 }
 
 void Player::sell(int seasonCards)
 {
-	addGold(playerFarm.sellProduct(seasonCards));
+    addGold(playerFarm.sellProduct(seasonCards));
 }
 
 void Player::useTool(int selection) {
-	playerFarm.workFarm(selection);
+    playerFarm.workFarm(selection);
 }
