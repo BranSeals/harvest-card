@@ -4,6 +4,7 @@ Season
 Name
 Description
 Effect
+Effect Target (1st digit is type of card to target, followed by ID)
 Value
 Cost
 Initially Face Up (true) or Down (false) 
@@ -69,6 +70,8 @@ Description for Spring Event (test).
 0
 0
 0
+0
+0
 
 1001
 1
@@ -77,11 +80,15 @@ Description
 0
 0
 0
+0
+0
 
 1002
 1
 Egg Hunt
 Description
+0
+0
 0
 0
 0
@@ -94,12 +101,16 @@ Description for Summer Event (test).
 0
 0
 0
+0
+0
 
 
 2001
 1
 Fireworks Festival
 Description
+0
+0
 0
 0
 0
@@ -111,11 +122,15 @@ Description
 8
 2
 0
+0
+0
 
 3000
 3
 Autumn Event (test)
 Description for Autumn Event (test).
+0
+0
 0
 0
 0
@@ -127,11 +142,15 @@ Description
 0
 0
 0
+0
+0
 
 3002
 3
 Pumpkin Carving
 Description
+0
+0
 0
 0
 0
@@ -143,6 +162,8 @@ Description
 0
 0
 0
+0
+0
 
 3004
 3
@@ -151,11 +172,15 @@ Description
 0
 0
 0
+0
+0
 
 4000
 4
 Winter Event (test)
 Description for Winter Event (test).
+0
+0
 0
 0
 0
@@ -168,6 +193,7 @@ Spring Crop (test)
 Description for Spring Crop (test)
 2
 0
+0
 1
 0
 
@@ -176,6 +202,7 @@ Description for Spring Crop (test)
 Radish
 Description
 2
+0
 40
 20
 0
@@ -185,8 +212,9 @@ Description
 Cabbage
 Description
 2
-Value
-Cost
+0
+100
+50
 0
 
 5103
@@ -194,8 +222,9 @@ Cost
 Potato
 Description
 2
-Value
-Cost
+0
+100
+60
 0
 
 5104
@@ -203,8 +232,9 @@ Cost
 Turnip
 Description
 2
-Value
-Cost
+0
+80
+40
 0
 
 5200
@@ -212,6 +242,7 @@ Cost
 Summer Crop (test)
 Description for Summer Crop (test)
 2
+0
 0
 1
 0
@@ -221,6 +252,7 @@ Description for Summer Crop (test)
 Tomato
 Description
 2
+0
 Value
 Cost
 0
@@ -230,6 +262,7 @@ Cost
 Wheat
 Description
 2
+0
 Value
 Cost
 0
@@ -239,6 +272,7 @@ Cost
 Eggplant
 Description
 2
+0
 Value
 Cost
 0
@@ -248,6 +282,7 @@ Cost
 Watermelon
 Description
 2
+0
 Value
 Cost
 0
@@ -258,6 +293,7 @@ Autumn Crop (test)
 Description for Autumn Crop (test)
 2
 0
+0
 1
 0
 
@@ -266,6 +302,7 @@ Description for Autumn Crop (test)
 Corn
 Description
 2
+0
 Value
 Cost
 0
@@ -275,6 +312,7 @@ Cost
 Pumpkin
 Description
 2
+0
 Value
 Cost
 0
@@ -284,6 +322,7 @@ Cost
 Yam
 Description
 2
+0
 Value
 Cost
 0
@@ -293,6 +332,7 @@ Cost
 Beet
 Description
 2
+0
 Value
 Cost
 0
@@ -303,6 +343,7 @@ Winter Crop (test)
 Description for Winter Crop (test)
 2
 0
+0
 1
 0
 
@@ -311,6 +352,7 @@ Description for Winter Crop (test)
 Onion
 Description
 2
+0
 Value
 Cost
 0
@@ -320,6 +362,7 @@ Cost
 Garlic
 Description
 2
+0
 Value
 Cost
 0
@@ -329,6 +372,7 @@ Cost
 Leek
 Description
 2
+0
 Value
 Cost
 0
@@ -338,6 +382,7 @@ Cost
 Peas
 Description
 2
+0
 Value
 Cost
 0
@@ -347,6 +392,7 @@ Cost
 Tool Card (test)
 Description for Tool Card (test)
 0
+50000
 0
 0
 1
@@ -356,6 +402,7 @@ Description for Tool Card (test)
 Garden Hoe
 Flip one Seed Card per turn.
 1
+50000
 1
 Cost
 1
@@ -365,6 +412,7 @@ Cost
 Fertilizer
 Flip one Seed Card per turn.
 1
+50000
 1
 Cost
 1
@@ -374,6 +422,7 @@ Cost
 Watering Can
 Flip one Seed Card per turn.
 1
+50000
 1
 Cost
 1
@@ -383,6 +432,7 @@ Cost
 Sprinkler
 Flip two Seed Cards per turn.
 1
+50000
 2
 Cost
 1
@@ -392,6 +442,7 @@ Cost
 Milk Pail
 Used by Cow to collect milk.
 1
+77001
 1
 Cost
 1
@@ -401,6 +452,7 @@ Cost
 Shears
 Used by Sheep to cut wool.
 1
+77003
 1
 Cost
 1
@@ -419,6 +471,7 @@ Cost
 Saddle
 Used by Horse to work.
 1
+77004
 1
 Cost
 1
@@ -428,8 +481,9 @@ Cost
 Hay
 Used by Chicken to lay eggs.
 1
+77002
 1
-Cost
+50
 1
 
 7000
@@ -440,13 +494,15 @@ Description for Livestock Card (test)
 0
 0
 0
+0
 
 7001
 0
 Cow
 With Milk Pail, can sell milk once per turn.
 2
-Value
+0
+200
 20
 0
 
@@ -455,7 +511,8 @@ Value
 Chicken
 With Hay, can sell egg once per turn.
 2
-Value
+0
+50
 21
 0
 
@@ -464,8 +521,9 @@ Value
 Sheep
 With Shears, can sell wool once per turn.
 2
-Value
-Cost
+0
+100
+60
 0
 
 7004
@@ -473,6 +531,7 @@ Cost
 Horse
 With Saddle, can flip a Seed Card once per turn.
 1
-1
+50000
+100
 23
 0
