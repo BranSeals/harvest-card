@@ -129,7 +129,7 @@ int Market::getCostAt(int selection)
     }
 }
 
-Card Market::removeFromStall(int selection)
+Card Market::removeFromStall(int selection)								
 {
     Card removedCard;
 
