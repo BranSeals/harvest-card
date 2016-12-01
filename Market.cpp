@@ -55,6 +55,10 @@ void Market::printMarket(void)
 	std::cout << std::setw(50) << "-- Market ";
 	std::cout.fill(' ');
 	std::cout << std::endl;
+	std::cout << std::right;
+	std::cout << std::setw(10) << "Seeds:" << std::setw(17) << "Tools:" 
+		<< std::setw(21) << "Livestock:" << std::endl;
+	std::cout << std::left;
 	for (int i{0}; i < numberInStall; ++i) {
 		if (seedStall.size() > i) {
 			std::cout << "[" << i + 1 << "] " << std::setw(13);
