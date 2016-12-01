@@ -46,7 +46,6 @@ void Farm::print(void)
 	print("Tool");
 	print("Livestock");
 	//print("Crop");
-	//print("Target"); // hide until time for selection
 }
 
 void Farm::print(std::string playerLot)
@@ -66,8 +65,6 @@ std::vector<Card>* Farm::pointTo(std::string playerLot)
 		return &playerTool;
 	} else if (playerLot == "Livestock") {
 		return &playerLivestock;
-	} else if (playerLot == "Target") {
-		return &playerTarget;
 	} else if (playerLot == "Crop") {
 		return &playerCrop;
 	} else {
@@ -108,7 +105,7 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 	int targetID = playerTool[selectedTool].getCardTarget();
 
 	/* Point to deck of cards that tool card will target */
-	/* Makes sure there is something to target */
+	/* Internal if statements make sure there is something to target */
 	std::vector<Card>* lotPtr{nullptr};
 	if (targetID == 5000) {
 		if (playerSeed.size() == 0) {
@@ -132,14 +129,11 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 
 	// flip card if it can be flipped
 
+	// if seed card is flipped, send to crop vector and remove from seed vector
+
 
 	/* Exhaust tool card by turning face-down after use */
 	playerTool[selectedTool].flipCard();
-
-	// put livestock back into livestock lot and flipped seeds into crops
-
-	// TO DO: turn fill playerTarget bit into its own function
-	// TO DO: add flag to print functions that show number selection by each item
 }
 
 //void Farm::moveCard(Card* cardToMove, std::string sendTo)

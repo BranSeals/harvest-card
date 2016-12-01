@@ -35,7 +35,6 @@ private:
     std::vector<Card> playerSeed;
     std::vector<Card> playerTool;
     std::vector<Card> playerLivestock;
-    std::vector<Card> playerTarget;
 	std::vector<Card> playerCrop;
 };
 
