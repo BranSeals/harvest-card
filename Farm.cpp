@@ -128,7 +128,6 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		std::cout << "\n*** Error in assigning pointer in workFarm() ***\n";
 	}
 
-	// get target selection from player
 
 
 	// flip card if it can be flipped
@@ -139,7 +138,6 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 
 	// put livestock back into livestock lot and flipped seeds into crops
 
-	// TO DO: get selection from player
 	// TO DO: turn fill playerTarget bit into its own function
 	// TO DO: add flag to print functions that show number selection by each item
 }
@@ -227,7 +225,7 @@ bool Farm::canSelectTool(int selection)
 		if (playerTool[selection].getCardTarget() == 5000 && playerSeed.size() == 0) {
 			std::cout << "\n> No seeds can be worked on.\n";
 			return false;
-		} else if (playerLivestock.size() == 0) {
+		} else if (playerTool[selection].getCardTarget() >= 7000 && playerLivestock.size() == 0) {
 			std::cout << "\n> No livestock can be worked on.\n";
 			return false;
 		} else {
