@@ -151,7 +151,7 @@ void Player::work(void)
 		return;
 	}
 
-	/* Player selects a tool - reduces number to proper tool index */
+	/* Player selects a tool - automatically reduces number to proper tool index */
 	int selectedTool = select("Use which tool?", 1 + playerFarm.sizeOf("Seed"), playerFarm.sizeOf("Seed") + playerFarm.sizeOf("Tool")) 
 		- playerFarm.sizeOf("Seed") - 1;
 
@@ -166,11 +166,4 @@ void Player::work(void)
 	/* Work farm - if target is improper; workFarm will say so */
 	playerFarm.workFarm(selectedTool, selectedTarget);
 	
-
-	/*if (playerFarm.sizeOf("Target")) {
-		playerFarm.print("Target");
-		select("Use which tool? ", 1, playerFarm.sizeOf("Tool"));
-	} else {
-		std::cout << "\n> No tools to work with.\n";
-	}*/
 }
