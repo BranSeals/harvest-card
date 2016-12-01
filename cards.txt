@@ -253,8 +253,8 @@ Tomato
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5202
@@ -263,8 +263,8 @@ Wheat
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5203
@@ -273,8 +273,8 @@ Eggplant
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5204
@@ -283,8 +283,8 @@ Watermelon
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5300
@@ -303,8 +303,8 @@ Corn
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5302
@@ -313,8 +313,8 @@ Pumpkin
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5303
@@ -323,8 +323,8 @@ Yam
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5304
@@ -333,8 +333,8 @@ Beet
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5400
@@ -353,8 +353,8 @@ Onion
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5402
@@ -363,8 +363,8 @@ Garlic
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5403
@@ -373,8 +373,8 @@ Leek
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 5404
@@ -383,8 +383,8 @@ Peas
 Description
 2
 0
-Value
-Cost
+5
+2
 0
 
 6000
@@ -404,7 +404,7 @@ Flip one Seed Card per turn.
 1
 50000
 1
-Cost
+2
 1
 
 6002
@@ -414,7 +414,7 @@ Flip one Seed Card per turn.
 1
 50000
 1
-Cost
+2
 1
 
 6003
@@ -424,7 +424,7 @@ Flip one Seed Card per turn.
 1
 50000
 1
-Cost
+10
 1
 
 6004
@@ -434,7 +434,7 @@ Flip two Seed Cards per turn.
 1
 50000
 2
-Cost
+2
 1
 
 6005
@@ -444,7 +444,7 @@ Used by Cow to collect milk.
 1
 77001
 1
-Cost
+20
 1
 
 6006
@@ -454,7 +454,7 @@ Used by Sheep to cut wool.
 1
 77003
 1
-Cost
+2
 1
 
 6007
@@ -462,8 +462,9 @@ Cost
 Animal Feed
 Description
 1
+0
 1
-Cost
+2
 1
 
 6008
@@ -473,7 +474,7 @@ Used by Horse to work.
 1
 77004
 1
-Cost
+2
 1
 
 6009
