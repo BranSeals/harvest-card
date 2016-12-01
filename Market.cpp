@@ -46,16 +46,42 @@ void Market::print(std::string stallName)
 
 /* Formatted Market for game display */
 // TO DO: express i + 4 and i + 7 in terms of numberInStall
+// TO DO: save top and bottom border into bar output
 void Market::printMarket(void)
 {
-	std::cout << "\n-- Market --\n";
+	std::cout << std::left;
+	std::cout << std::endl;
+	std::cout.fill('-');
+	std::cout << std::setw(50) << "-- Market ";
+	std::cout.fill(' ');
+	std::cout << std::endl;
 	for (int i{0}; i < numberInStall; ++i) {
-		std::cout << std::left;
-		std::cout << "[" << i + 1 << "] " << std::setw(13) << seedStall[i].getCardName()
-			<< "[" << i + 4 << "] " << std::setw(13) << toolStall[i].getCardName()
-			<< "[" << i + 7 << "] " << std::setw(13) << livestockStall[i].getCardName();
+		if (seedStall.size() > i) {
+			std::cout << "[" << i + 1 << "] " << std::setw(13);
+			std::cout << seedStall[i].getCardName();	
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
+		if (toolStall.size() > i) {
+			std::cout << "[" << i + 4 << "] " << std::setw(13);
+			std::cout << toolStall[i].getCardName();
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
+		if (livestockStall.size() > i) {
+			std::cout << "[" << i + 7 << "] " << std::setw(13);
+			std::cout << livestockStall[i].getCardName();
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
 		std::cout << std::endl;
 	}
+	std::cout.fill('-');
+	std::cout << std::setw(50) << "";
+	std::cout.fill(' ');
 }
 
 std::vector<Card>* Market::pointTo(std::string stallName)
@@ -105,7 +131,7 @@ Card Market::removeFromStall(int selection)
 
     if (selection == 1 || selection == 2 || selection == 3) {
         removedCard = seedStall[selection - 1];
-        seedStall.erase(seedStall.begin() + (selection));
+        seedStall.erase(seedStall.begin() + (selection - 1));
     } else if (selection == 4 || selection == 5 || selection == 6) {
         removedCard = toolStall[selection - 4];
         toolStall.erase(toolStall.begin() + (selection - 4));
@@ -116,4 +142,21 @@ Card Market::removeFromStall(int selection)
         std::cout << "\n*** Error in removeFromStall() ***\n";
     }
     return removedCard;
+}
+
+bool Market::canSelect(int selection) {
+
+	if ((selection == 1 || selection == 2 || selection == 3)
+		&& (selection <= seedStall.size())) {
+		return true;
+	} else if ((selection == 4 || selection == 5 || selection == 6)
+		&& (selection - 3 <= toolStall.size())) {
+		return true;
+	} else if ((selection == 7 || selection == 8 || selection == 9)
+		&& (selection - 6 <= livestockStall.size())) {
+		return true;
+	} else {
+		std::cout << "\n> Cannot select.\n";
+		return false;
+	}
 }

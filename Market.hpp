@@ -25,6 +25,7 @@ public:
     void fillStalls(void);
     int getCostAt(int);
     Card removeFromStall(int);
+	bool canSelect(int);
     
 private:
     std::vector<Card> seedStall;
