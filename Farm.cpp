@@ -8,6 +8,7 @@
 
 #include "Farm.hpp"
 #include <iostream>
+#include <iomanip>
 
 Farm::Farm()
 {
@@ -152,3 +153,75 @@ void Farm::workFarm(int selection)
 
 //		removedCard = seedStall[selection - 1];
 //		seedStall.erase(seedStall.begin() + (selection));
+
+void Farm::printFarm(void)
+{
+	/* Find how many number selectors to use */
+	/* Pull this out into own function */
+	std::vector<int> intCompare;
+	intCompare.push_back(playerSeed.size());
+	intCompare.push_back(playerTool.size());
+	intCompare.push_back(playerLivestock.size());
+	int biggestLotSize{0};
+	for (int i{0}; i < 3; ++i) {
+		if (intCompare[i] > biggestLotSize) {
+			biggestLotSize = intCompare[i];
+		}
+	}
+
+	/* Start Farm formatting */
+	std::cout << std::left;
+	std::cout << std::endl;
+	std::cout.fill('-');
+	std::cout << std::setw(50) << "-- Farm ";
+	std::cout.fill(' ');
+	std::cout << std::endl;
+	std::cout << std::right;
+	std::cout << std::setw(10) << "Seeds:" << std::setw(17) << "Tools:"
+		<< std::setw(21) << "Livestock:" << std::endl;
+	std::cout << std::left;
+	for (int i{0}; i < biggestLotSize; ++i) {
+		if (playerSeed.size() > i) {
+			std::cout << "[" << i + 1 << "] " << std::setw(13);
+			std::cout << playerSeed[i].getCardName();
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
+		if (playerTool.size() > i) {
+			std::cout << "[" << i + playerSeed.size() + 1 << "] " << std::setw(13);
+			std::cout << playerTool[i].getCardName();
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
+		if (playerLivestock.size() > i) {
+			std::cout << "[" << i + playerSeed.size() + playerTool.size() + 1 << "] " << std::setw(13);
+			std::cout << playerLivestock[i].getCardName();
+		} else {
+			std::cout << "[" << " " << "] " << std::setw(13);
+			std::cout << "";
+		}
+		std::cout << std::endl;
+	}
+	std::cout.fill('-');
+	std::cout << std::setw(50) << "";
+	std::cout.fill(' ');
+}
+
+int Farm::sizeOf(std::string playerLot)
+{
+	std::vector<Card>* lotPtr{Farm::pointTo(playerLot)};
+	return (*lotPtr).size();
+
+}
+
+bool Farm::canSelect(int selection)
+{
+	if (selection <= playerTool.size() && playerTool[selection - 1].isCardFaceUp()) {
+		return true;
+	} else {
+		std::cout << "\n> Cannot select.\n";
+		return false;
+	}
+}

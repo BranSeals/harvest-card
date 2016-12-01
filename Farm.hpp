@@ -24,9 +24,12 @@ public:
     virtual void print(void);
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
+	void printFarm(void);
     int sellProduct(int);
     void workFarm(int);
     //void moveCard(Card*, std::string);
+	int sizeOf(std::string);
+	bool canSelect(int);
 
 private:
     std::vector<Card> playerSeed;
