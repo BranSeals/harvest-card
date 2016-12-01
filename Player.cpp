@@ -100,17 +100,21 @@ void Player::printFarm(void)
     playerFarm.print();
 }
 
-void Player::buy(Market* market, int selection)
+void Player::buy(Market* market)
 {
-    if (getPlayerGold() > market->getCostAt(selection)) {
-        boughtCard = market->removeFromStall(selection);
-        removeGold(boughtCard.getCardCost());
-        playerFarm.addCard(boughtCard);
-        std::cout << "\n> Bought " << boughtCard.getCardName() << " for "
-            << boughtCard.getCardCost() << " gold.\n";
-    } else {
-        std::cout << "\nNot enough gold.";
-    }
+	int selection = select("Buy anything?", 1, 9);
+
+	if (selection && market->canSelect(selection)) {
+		if (getPlayerGold() > market->getCostAt(selection)) {
+			boughtCard = market->removeFromStall(selection);
+			removeGold(boughtCard.getCardCost());
+			playerFarm.addCard(boughtCard);
+			std::cout << "\n> Bought " << boughtCard.getCardName() << " for "
+				<< boughtCard.getCardCost() << " gold.\n";
+		} else {
+			std::cout << "\nNot enough gold.";
+		}
+	}
 }
 
 void Player::sell(int seasonCards)
@@ -125,7 +129,7 @@ void Player::useTool(int selection) {
 int Player::select(std::string message, int low, int high) {
 	if (low > high) {
 		std::cout << "\n*** Error, first number must be lower than second ***\n";
-		return -1;
+		return 0;
 	}
 	int selection{low - 1};
 	while (selection < low || selection > high) {
@@ -136,3 +140,4 @@ int Player::select(std::string message, int low, int high) {
 	}
 	return selection;
 }
+

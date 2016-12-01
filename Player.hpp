@@ -44,11 +44,11 @@ public:
     virtual void print(void);
     void printFarm(void);
 
-    void buy(Market*, int);
+    void buy(Market*);
     void sell(int);
     void useTool(int);
 	int select(std::string, int, int);
-    
+	
     
     
 private:
