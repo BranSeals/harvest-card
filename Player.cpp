@@ -97,7 +97,7 @@ void Player::print(void)
 
 void Player::printFarm(void)
 {
-    playerFarm.print();
+    playerFarm.printFarm();
 }
 
 void Player::buy(Market* market)
@@ -141,3 +141,21 @@ int Player::select(std::string message, int low, int high) {
 	return selection;
 }
 
+void Player::work(void)
+{
+	printFarm();
+	playerFarm.sizeOf("Seed");
+	if (playerFarm.canSelect(select("Use which tool? ", 1, playerFarm.sizeOf("Tool")))) {
+		std::cout << "\n*** SUCCESS ***\n";
+	}
+	// if tool can be selected
+		// select tool
+
+	//playerFarm.workFarm(); // use this when I have a selection to make
+	/*if (playerFarm.sizeOf("Target")) {
+		playerFarm.print("Target");
+		select("Use which tool? ", 1, playerFarm.sizeOf("Tool"));
+	} else {
+		std::cout << "\n> No tools to work with.\n";
+	}*/
+}
