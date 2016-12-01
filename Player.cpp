@@ -133,7 +133,11 @@ int Player::select(std::string message, int low, int high) {
 	}
 	int selection{low - 1};
 	while (selection < low || selection > high) {
-		std::cout << "\n" << message << " [" << low << "-" << high << "] ";
+		if (low == high) {
+			std::cout << "\n" << message << " [" << high << "] ";
+		} else {
+			std::cout << "\n" << message << " [" << low << "-" << high << "] ";
+		}
 		std::cin >> selection;
 		std::cin.clear();
 		std::cin.ignore();
@@ -145,11 +149,17 @@ void Player::work(void)
 {
 	printFarm();
 	playerFarm.sizeOf("Seed");
-	if (playerFarm.canSelect(select("Use which tool? ", 1, playerFarm.sizeOf("Tool")))) {
-		std::cout << "\n*** SUCCESS ***\n";
+
+	/* Finds if a player can select a tool to use */
+	int selection = select("Use which tool? ",
+		1 + playerFarm.sizeOf("Seed"), playerFarm.sizeOf("Seed")
+		+ playerFarm.sizeOf("Tool")) - playerFarm.sizeOf("Seed");
+
+	if (playerFarm.canSelect(selection)) {
+		playerFarm.workFarm(selection);
 	}
-	// if tool can be selected
-		// select tool
+	
+	//playerFarm.workFarm();
 
 	//playerFarm.workFarm(); // use this when I have a selection to make
 	/*if (playerFarm.sizeOf("Target")) {
