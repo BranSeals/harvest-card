@@ -122,10 +122,6 @@ void Player::sell(int seasonCards)
     addGold(playerFarm.sellProduct(seasonCards));
 }
 
-void Player::useTool(int selection) {
-    playerFarm.workFarm(selection);
-}
-
 int Player::select(std::string message, int low, int high) {
 	if (low > high) {
 		std::cout << "\n*** Error, first number must be lower than second ***\n";
@@ -148,20 +144,29 @@ int Player::select(std::string message, int low, int high) {
 void Player::work(void)
 {
 	printFarm();
-	playerFarm.sizeOf("Seed");
-
-	/* Finds if a player can select a tool to use */
-	int selection = select("Use which tool? ",
-		1 + playerFarm.sizeOf("Seed"), playerFarm.sizeOf("Seed")
-		+ playerFarm.sizeOf("Tool")) - playerFarm.sizeOf("Seed");
-
-	if (playerFarm.canSelect(selection)) {
-		playerFarm.workFarm(selection);
-	}
 	
-	//playerFarm.workFarm();
+	/* Make sure there are tools to work with */
+	if (playerFarm.sizeOf("Tool") == 0) {
+		std::cout << "\n> No tools to work with.\n";
+		return;
+	}
 
-	//playerFarm.workFarm(); // use this when I have a selection to make
+	/* Player selects a tool - reduces number to proper tool index */
+	int selectedTool = select("Use which tool?", 1 + playerFarm.sizeOf("Seed"), playerFarm.sizeOf("Seed") + playerFarm.sizeOf("Tool")) 
+		- playerFarm.sizeOf("Seed") - 1;
+
+	/* Checks if a tool can be used */
+	if (!playerFarm.canSelectTool(selectedTool)) {
+		return;
+	}
+
+	/* Player selects a target */
+	int selectedTarget = select("Use tool on which card?", 1, playerFarm.sizeOf("Seed") + playerFarm.sizeOf("Tool") + playerFarm.sizeOf("Livestock"));
+	
+	/* Work farm - if target is improper; workFarm will say so */
+	playerFarm.workFarm(selectedTool, selectedTarget);
+	
+
 	/*if (playerFarm.sizeOf("Target")) {
 		playerFarm.print("Target");
 		select("Use which tool? ", 1, playerFarm.sizeOf("Tool"));

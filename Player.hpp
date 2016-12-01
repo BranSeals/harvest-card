@@ -47,7 +47,7 @@ public:
     void buy(Market*);
     void sell(int);
 	void work(void);
-    void useTool(int);
+    //void useTool(int);
 	int select(std::string, int, int);
 	
     
