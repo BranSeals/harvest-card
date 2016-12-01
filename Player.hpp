@@ -16,7 +16,7 @@
 class Player : public Farm
 {
 public:
-	Player();
+    Player();
     Player(int, std::string, int, int);
     ~Player();
     
@@ -42,10 +42,13 @@ public:
     void addGold(int);
     void removeGold(int);
     virtual void print(void);
-	void printFarm(void);
+    void printFarm(void);
 
-	void buy(Market*, int);
-	void sell(Card);
+    void buy(Market*);
+    void sell(int);
+    void useTool(int);
+	int select(std::string, int, int);
+	
     
     
 private:
@@ -53,7 +56,7 @@ private:
     std::string playerName{""};
     int playerAge{0};
     int playerGold{0};
-	Card boughtCard;
+    Card boughtCard;
     Farm playerFarm;
 };
 

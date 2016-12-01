@@ -15,14 +15,14 @@ class Card
 {
 public:
     Card();
-	Card(int);
+    Card(int);
     ~Card();
     
     //* Getters / Setters *//
 
-	/* ID of card */
-	int getCardID(void);
-	void setCardID(int);
+    /* ID of card */
+    int getCardID(void);
+    void setCardID(int);
     
     /* Name of card */
     std::string getCardName(void);
@@ -34,7 +34,11 @@ public:
     /* Effect on card, referring to list of effects */
     int getCardEffect(void);
     void setCardEffect(int);
-    
+
+    /* Effect's target */
+    int getCardTarget(void);
+    void setCardTarget(int);
+
     /* Cost of card in Market */
     int getCardCost(void);
     void setCardCost(int);
@@ -47,25 +51,26 @@ public:
     std::string getCardDescription(void);
     void setCardDescription(std::string);
 
-	/* Season of card */
-	int getCardSeason(void);
-	void setCardSeason(int);
+    /* Season of card */
+    int getCardSeason(void);
+    void setCardSeason(int);
     
     //* Methods *//
     
-	void createByID(int);
+    void createByID(int);
     void flipCard(void);
-	virtual void print(void);
-	void resetCard(void);
+    virtual void print(void);
+    void resetCard(void);
     
 private:
-	int cardID{0};
+    int cardID{0};
     std::string cardName{""};
     bool cardFaceUp{false};
     int cardEffect{0};
+    int cardTarget{0};
     int cardCost{0};
     int cardValue{0};
-	int cardSeason{0};
+    int cardSeason{0};
     std::string cardDescription{""};
 };
 

@@ -16,7 +16,7 @@ class Game
 {
 public:
     Game();
-	Game(std::string, std::string, int, int, int);
+    Game(std::string, std::string, int, int, int);
     ~Game();
     
     //* Getters / Setters *//
@@ -55,17 +55,17 @@ public:
     void beginGame(void);
     void quitGame(void);
     void getPlayers(void);
-	bool confirmYN(std::string);
-	void printPlayers(void);
+    bool confirmYN(std::string);
+    void printPlayers(void);
     
 private:
     int numPlayers{1};
-	int startingGold; // get from constant during construction of game object
-	std::string gameTitle;
-	std::string gameDescription;
+    int startingGold; // get from constant during construction of game object
+    std::string gameTitle;
+    std::string gameDescription;
     std::vector<int> playerAges;
     std::vector<std::string> playerNames;
-	std::vector<Player> player; // filled in after players are sorted
+    std::vector<Player> player; // filled in after players are sorted
     int gameLength{0};
     int seasonLength{0};
     bool gameStatus{false};
