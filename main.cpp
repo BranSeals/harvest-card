@@ -335,6 +335,126 @@ void fillMarket(Market* market)
     market->addCard(7002);
     market->addCard(7004);
 
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
     market->fillDecks();
     market->fillStalls();
 }
