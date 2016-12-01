@@ -121,3 +121,18 @@ void Player::sell(int seasonCards)
 void Player::useTool(int selection) {
     playerFarm.workFarm(selection);
 }
+
+int Player::select(std::string message, int low, int high) {
+	if (low > high) {
+		std::cout << "\n*** Error, first number must be lower than second ***\n";
+		return -1;
+	}
+	int selection{low - 1};
+	while (selection < low || selection > high) {
+		std::cout << "\n" << message << " [" << low << "-" << high << "] ";
+		std::cin >> selection;
+		std::cin.clear();
+		std::cin.ignore();
+	}
+	return selection;
+}
