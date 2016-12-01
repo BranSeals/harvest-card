@@ -9,6 +9,7 @@
 #include "Market.hpp"
 #include "Card.hpp"
 #include <iostream>
+#include <iomanip>
 
 Market::Market()
 {
@@ -20,12 +21,14 @@ Market::~Market()
     //std::cout << "\n> Market destructed\n";
 }
 
+/* Basic print function for testing */
 void Market::print(void)
 {
     std::cout << "\n-- Market --";
     print("Seed");
     print("Tool");
     print("Livestock");
+	print("Target");
 }
 
 void Market::print(std::string stallName)
@@ -39,6 +42,20 @@ void Market::print(std::string stallName)
             std::cout << (*stallPtr)[i].getCardName() << "\n";
         }
     }
+}
+
+/* Formatted Market for game display */
+// TO DO: express i + 4 and i + 7 in terms of numberInStall
+void Market::printMarket(void)
+{
+	std::cout << "\n-- Market --\n";
+	for (int i{0}; i < numberInStall; ++i) {
+		std::cout << std::left;
+		std::cout << "[" << i + 1 << "] " << std::setw(13) << seedStall[i].getCardName()
+			<< "[" << i + 4 << "] " << std::setw(13) << toolStall[i].getCardName()
+			<< "[" << i + 7 << "] " << std::setw(13) << livestockStall[i].getCardName();
+		std::cout << std::endl;
+	}
 }
 
 std::vector<Card>* Market::pointTo(std::string stallName)

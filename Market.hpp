@@ -21,6 +21,7 @@ public:
     virtual void print(void);
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
+	void printMarket(void);
     void fillStalls(void);
     int getCostAt(int);
     Card removeFromStall(int);
@@ -29,5 +30,6 @@ private:
     std::vector<Card> seedStall;
     std::vector<Card> toolStall;
     std::vector<Card> livestockStall;
+	int numberInStall{3};
 };
 #endif /* Market_hpp */
