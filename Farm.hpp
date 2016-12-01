@@ -26,16 +26,17 @@ public:
     void print(std::string);
 	void printFarm(void);
     int sellProduct(int);
-    void workFarm(int);
+    void workFarm(int, int);
     //void moveCard(Card*, std::string);
 	int sizeOf(std::string);
-	bool canSelect(int);
+	bool canSelectTool(int);
 
 private:
     std::vector<Card> playerSeed;
     std::vector<Card> playerTool;
     std::vector<Card> playerLivestock;
-    std::vector<Card> targetBuffer;
+    std::vector<Card> playerTarget;
+	std::vector<Card> playerCrop;
 };
 
 #endif /* Farm_hpp */
