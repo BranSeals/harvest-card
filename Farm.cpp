@@ -125,6 +125,8 @@ void Farm::workFarm(int selection)
 		// print number of targets with a number to select
 		if (targetBuffer.size() > 0) {
 			print("Target"); // but with numbers to select
+		} else {
+			std::cout << "\n> Nothing to work on.\n";
 		}
 
 		// flip card if it can be flipped
@@ -216,6 +218,8 @@ int Farm::sizeOf(std::string playerLot)
 
 }
 
+/* TO DO: implement pointer function to choose from multiple types of decks */
+/* TO DO: add flag to check which bool value is required to use */
 bool Farm::canSelect(int selection)
 {
 	if (selection <= playerTool.size() && playerTool[selection - 1].isCardFaceUp()) {
