@@ -85,14 +85,20 @@ int main()
 	Market testMarket;
 	fillMarket(&testMarket);
 	testMarket.fillStalls();
-	Player testPlayer(1, "Bran", 31, 100);
+	Player testPlayer(1, "Bran", 31, 1000);
 	while (gameStatus) {
 		testMarket.printMarket();
 		
 		testPlayer.buy(&testMarket);
 		testPlayer.printFarm();
 
-		if (testPlayer.getPlayerGold() < 20) {
+		if (confirmYN("Work farm? [y/n]: ")) {
+			testPlayer.work();
+		}
+
+		testMarket.fillStalls();
+
+		if (gameStatus) {
 			if (confirmYN("Quit game? [y/n]: ")) {
 				std::cout << "\n> Quitting game...\n";
 				gameStatus = false;
