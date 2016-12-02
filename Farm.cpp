@@ -45,7 +45,7 @@ void Farm::print(void)
 	print("Seed");
 	print("Tool");
 	print("Livestock");
-	//print("Crop");
+	print("Crop");
 }
 
 void Farm::print(std::string playerLot)
@@ -113,6 +113,7 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 			return;
 		} else {
 			lotPtr = Farm::pointTo("Seed");
+			--selectedTarget;
 		}
 	} else if (targetID > 7000) {
 		if (playerLivestock.size() == 0) {
@@ -120,20 +121,32 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 			return;
 		} else {
 			lotPtr = Farm::pointTo("Livestock");
+			selectedTarget = selectedTarget - playerSeed.size() - playerTool.size() - 1;
 		}
 	} else {
 		std::cout << "\n*** Error in assigning pointer in workFarm() ***\n";
 	}
 
-
-
-	// flip card if it can be flipped
-
-	// if seed card is flipped, send to crop vector and remove from seed vector
-
+	// flip card if it hasn't been flipped already
+	if ((*lotPtr)[selectedTarget].isCardFaceUp()) {
+		std::cout << "\n> Target already face-up.\n";
+		return;
+	} else {
+		(*lotPtr)[selectedTarget].flipCard();
+	}
+	
+	std::cout << "\n> Used " << playerTool[selectedTool].getCardName() << " on "
+		<< (*lotPtr)[selectedTarget].getCardName() << std::endl;
 
 	/* Exhaust tool card by turning face-down after use */
 	playerTool[selectedTool].flipCard();
+	// TO DO : send flipped crop card to field
+	if (targetID == 5000) {
+		playerCrop.push_back((*lotPtr)[selectedTarget]);
+		(*lotPtr).erase((*lotPtr).begin() + (selectedTarget));			// need 1 here on selected target like market?
+	}
+
+
 }
 
 //void Farm::moveCard(Card* cardToMove, std::string sendTo)
@@ -199,8 +212,22 @@ void Farm::printFarm(void)
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 	std::cout.fill('-');
-	std::cout << std::setw(50) << "";
+	if (playerCrop.size() > 0) {
+		std::cout << std::setw(50) << "-- Crop ";
+		std::cout.fill(' ');
+		std::cout << std::endl;
+		//playerCrop.sortByName() // sort crops alphabetically
+		for (int i{0}; i < playerCrop.size(); ++i) {
+			std::cout << playerCrop[i].getCardName() << " ";
+		}
+		std::cout << std::endl;
+		std::cout.fill('-');
+		std::cout << std::setw(50) << "";
+	} else {
+		std::cout << std::setw(50) << "";
+	}
 	std::cout.fill(' ');
 }
 
