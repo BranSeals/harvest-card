@@ -85,14 +85,24 @@ int main()
 	Market testMarket;
 	fillMarket(&testMarket);
 	testMarket.fillStalls();
-	Player testPlayer(1, "Bran", 31, 100);
+	Player testPlayer(1, "Bran", 31, 1000);
 	while (gameStatus) {
-		testMarket.printMarket();
 		
-		testPlayer.buy(&testMarket);
-		testPlayer.printFarm();
+		testPlayer.setPlayerPhase(2);
+		while (testPlayer.getPlayerPhase() == 2) {
+			testMarket.printMarket();
+			testPlayer.buy(&testMarket);
+		}
+		while (testPlayer.getPlayerPhase() == 3) {
+			//testPlayer.printFarm();
+			testPlayer.work();
+			/*if (confirmYN("Work farm? [y/n]: ")) {
+				testPlayer.work();
+			}*/
+		}
+		testMarket.fillStalls();
 
-		if (testPlayer.getPlayerGold() < 20) {
+		if (gameStatus) {
 			if (confirmYN("Quit game? [y/n]: ")) {
 				std::cout << "\n> Quitting game...\n";
 				gameStatus = false;
@@ -300,6 +310,7 @@ int select(std::string message, int low, int high) {
 void fillMarket(Market* market)
 {
     market->addCard(5101);
+
     market->addCard(5303);
     market->addCard(5301);
     market->addCard(6003);
@@ -328,6 +339,126 @@ void fillMarket(Market* market)
     market->addCard(7001);
     market->addCard(7002);
     market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
+
+	market->addCard(5101);
+	market->addCard(5303);
+	market->addCard(5301);
+	market->addCard(6003);
+	market->addCard(6005);
+	market->addCard(6001);
+	market->addCard(7001);
+	market->addCard(7002);
+	market->addCard(7004);
 
     market->fillDecks();
     market->fillStalls();

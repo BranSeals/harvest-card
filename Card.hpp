@@ -64,14 +64,14 @@ public:
     
 private:
     int cardID{0};
-    std::string cardName{""};
+    std::string cardName{"Empty Card"};
     bool cardFaceUp{false};
     int cardEffect{0};
     int cardTarget{0};
     int cardCost{0};
     int cardValue{0};
     int cardSeason{0};
-    std::string cardDescription{""};
+    std::string cardDescription{"If this card appears, a deck ran out of cards."};
 };
 
 #endif /* Card_hpp */

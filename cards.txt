@@ -419,7 +419,7 @@ Flip one Seed Card per turn.
 
 6003
 0
-Watering Can
+Water Can
 Flip one Seed Card per turn.
 1
 50000

@@ -46,13 +46,19 @@ public:
 
     void buy(Market*);
     void sell(int);
-    void useTool(int);
+	void work(void);
+    //void useTool(int);
 	int select(std::string, int, int);
+	
+	int advancePhase(void);
+	int getPlayerPhase(void);
+	void setPlayerPhase(int);
 	
     
     
 private:
     int playerNumber{0};
+	int playerPhase{0};
     std::string playerName{""};
     int playerAge{0};
     int playerGold{0};
