@@ -87,15 +87,19 @@ int main()
 	testMarket.fillStalls();
 	Player testPlayer(1, "Bran", 31, 1000);
 	while (gameStatus) {
-		testMarket.printMarket();
 		
-		testPlayer.buy(&testMarket);
-		testPlayer.printFarm();
-
-		if (confirmYN("Work farm? [y/n]: ")) {
-			testPlayer.work();
+		testPlayer.setPlayerPhase(2);
+		while (testPlayer.getPlayerPhase() == 2) {
+			testMarket.printMarket();
+			testPlayer.buy(&testMarket);
 		}
-
+		while (testPlayer.getPlayerPhase() == 3) {
+			//testPlayer.printFarm();
+			testPlayer.work();
+			/*if (confirmYN("Work farm? [y/n]: ")) {
+				testPlayer.work();
+			}*/
+		}
 		testMarket.fillStalls();
 
 		if (gameStatus) {
@@ -306,6 +310,7 @@ int select(std::string message, int low, int high) {
 void fillMarket(Market* market)
 {
     market->addCard(5101);
+
     market->addCard(5303);
     market->addCard(5301);
     market->addCard(6003);
