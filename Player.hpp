@@ -19,26 +19,26 @@ public:
     Player();
     Player(int, std::string, int, int);
     ~Player();
-    
+
     //* Getters / Setters *//
-    
+
     int getPlayerNumber(void);
     void setPlayerNumber(int);
-    
+
     /* Player name */
     std::string getPlayerName(void);
     void setPlayerName(std::string);
-    
+
     /* Player age */
     int getPlayerAge(void);
     void setPlayerAge(int);
-    
+
     /* Player gold */
     int getPlayerGold(void);
     void setPlayerGold(int);
-    
+
     //* Methods *//
-    
+
     void addGold(int);
     void removeGold(int);
     virtual void print(void);
@@ -49,13 +49,13 @@ public:
 	void work(void);
     //void useTool(int);
 	int select(std::string, int, int);
-	
+
 	int advancePhase(void);
 	int getPlayerPhase(void);
 	void setPlayerPhase(int);
-	
-    
-    
+
+
+
 private:
     int playerNumber{0};
 	int playerPhase{0};

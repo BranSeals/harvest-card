@@ -162,7 +162,7 @@ int Player::select(std::string message, int low, int high) {
 void Player::work(void)
 {
 	printFarm();
-	
+
 	/* Make sure there are tools to work with */
 	if (playerFarm.sizeOf("Tool") == 0) {
 		std::cout << "\n> No tools to work with.\n";
@@ -189,7 +189,7 @@ void Player::work(void)
 
 	/* Player selects a target */
 	int selectedTarget = select("Use tool on which card?", 1, playerFarm.sizeOf("Seed") + playerFarm.sizeOf("Tool") + playerFarm.sizeOf("Livestock"));
-	
+
 	/* Work farm - if target is improper; workFarm will say so */
 	playerFarm.workFarm(selectedTool, selectedTarget);
 }
