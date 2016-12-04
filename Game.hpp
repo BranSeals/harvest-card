@@ -76,7 +76,7 @@ private:
 
     Market gameMarket;
     Deck gameDeck;
-    Season gameTime;
+    Season gameTime(seasonLength, &gameDeck); // can I do this?
     int currentPlayer;
     int currentPhase;
 };

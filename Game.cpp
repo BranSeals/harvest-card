@@ -279,6 +279,7 @@ void Game::gameLoop(void)
     if (player[currentPlayer].getCurrentPhase() == 2) {
         while (player[currentPlayer].getPlayerPhase() == 2) {
     			player[currentPlayer].printMarket();
+          std::cout << "\nGold: " << player[currentPlayer].getPlayerGold() << std::endl;
     			player[currentPlayer].buy(&gameMarket);
     		}
         gameMarket.fillStalls();
@@ -296,7 +297,7 @@ void Game::gameLoop(void)
     // if game phase = 4; sell phase
     if (player[currentPlayer].getCurrentPhase() == 4) {
       while (player[currentPlayer].getPlayerPhase() == 4) {
-          player[currentPlayer].sell();                       // make sure phase increments inside sell()
+          player[currentPlayer].sell(gameTime.getDaysLeft()); // make sure phase increments inside sell()
       }
       player[currentPlayer].setCurrentPhase(5)
     }
@@ -313,4 +314,11 @@ void Game::gameLoop(void)
 		}
 	} // end game loop
   ++currentPlayer;
+
+  /* if end of season, harvest */
+  if (gameTime.getDaysLeft() == 0) {
+    for (size_t i{0}; i < player.size(); ++i) {
+      player[currentPlayer].sell(gameTime.getDaysLeft());
+    }
+  }
 }
