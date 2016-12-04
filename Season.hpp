@@ -3,6 +3,7 @@
 #ifndef Season_hpp
 #define Season_hpp
 
+#include <vector>
 #include "Deck.hpp"
 #include "Card.hpp"
 
