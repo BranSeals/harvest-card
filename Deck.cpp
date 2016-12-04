@@ -49,7 +49,7 @@ void Deck::print(std::string deckName)
 
 void Deck::shuffleDecks(void)
 {
-    
+
 }
 
 // Reminder: check when calling function to ensure cards exist in deck
@@ -70,8 +70,14 @@ std::vector<int>* Deck::pointTo(std::string deckName)
 {
     if (deckName == "Main") {
         return &deck;
-    } else if (deckName == "Season") {
-        return &seasonDeck;
+    } else if (deckName == "Spring") {
+        return &springDeck;
+    } else if (deckName == "Summer") {
+        return &summerDeck;
+    } else if (deckName == "Autumn") {
+        return &autumnDeck;
+    } else if (deckName == "Winter") {
+        return &winterDeck;
     } else if (deckName == "Seed") {
         return &seedDeck;
     } else if (deckName == "Tool") {
@@ -98,8 +104,14 @@ void Deck::fillDecks(void)
     int tempCard{0};
     while (deck.size() > 0) {
         tempCard = dealCard("Main");
-        if (tempCard < 5000) {
-            seasonDeck.push_back(tempCard);
+        if (tempCard < 2000) {
+            springDeck.push_back(tempCard);
+        } else if (tempCard < 3000) {
+            summerDeck.push_back(tempCard);
+        } else if (tempCard < 4000) {
+            autumnDeck.push_back(tempCard);
+        } else if (tempCard < 5000) {
+            winterDeck.push_back(tempCard);
         } else if (tempCard < 6000) {
             seedDeck.push_back(tempCard);
         } else if (tempCard < 7000) {
