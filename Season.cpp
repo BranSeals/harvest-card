@@ -42,6 +42,16 @@ void Season::setDaysLeft(int days)
   daysLeft = days;
 }
 
+int Season::getCurrentSeason(void)
+{
+  return currentSeason;
+}
+
+void Season::setCurrentSeason(int season)
+{
+  currentSeason = season;
+}
+
 void Season::printSeason(void)
 {
   std::vector<Card>* seasonPtr{pointTo(currentSeason)};

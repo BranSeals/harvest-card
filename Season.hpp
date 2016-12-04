@@ -17,6 +17,9 @@ public:
   int getDaysLeft(void);
   void setDaysLeft(int);
 
+  int getCurrentSeason(void);
+  void setCurrentSeason(int);
+
   void printSeason(void);
   void resolveSeason(void);
   void fillSeasons(void);
