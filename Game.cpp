@@ -17,7 +17,7 @@ Game::Game()
 
 Game::Game(std::string title, std::string description, int seasonLen, int years, int gold)
     : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen},
-    gameLength{years * seasonLen}, startingGold{gold}
+    gameLength{years}, startingGold{gold}
 {
 }
 
@@ -101,6 +101,9 @@ void Game::setGameStatus(bool tf)
 void Game::beginGame(void)
 {
     setGameStatus(true);
+    fillDecks();
+    gameTime.fillSeasons(&gameDeck);
+    gameMarket.fillStalls(&gameDeck);
     getPlayers();
     gameLoop();
 }
@@ -284,7 +287,7 @@ void Game::gameLoop(void)
           std::cout << "\nGold: " << player[currentPlayer].getPlayerGold() << std::endl;
     			player[currentPlayer].buy(&gameMarket);
     		}
-        gameMarket.fillStalls();
+        gameMarket.fillStalls(&gameDeck);
         player[currentPlayer].getCurrentPhase(3)
     }
 
@@ -318,11 +321,55 @@ void Game::gameLoop(void)
         /* if end of season, harvest */
         if (!gameTime.getDaysLeft()) {
           for (size_t i{0}; i < player.size(); ++i) {
-              player[currentPlayer].sell(gameTime.getDaysLeft());
+              player[i].sell(gameTime.getDaysLeft());
           }
 
           /* Increment season */
           gameTime.setCurrentSeason(gameTime.getCurrentSeason() + 1);
 	} // end game loop
-  ++currentPlayer;
+    ++currentPlayer;
+}
+}
+
+void Game::fillDecks(void)
+{
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
 }

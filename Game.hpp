@@ -62,6 +62,8 @@ public:
     void printPlayers(void);
     void gameLoop(void);
 
+    void fillDecks(void);
+
 private:
     int numPlayers{1};
     int startingGold; // get from constant during construction of game object
@@ -74,9 +76,9 @@ private:
     int seasonLength{0};
     bool gameStatus{false};
 
-    Market gameMarket;
+    Market gameMarket();
     Deck gameDeck;
-    Season gameTime(seasonLength, &gameDeck); // can I do this?
+    Season gameTime(seasonLength); // can I do this?
     int currentPlayer;
     int currentPhase;
 };
