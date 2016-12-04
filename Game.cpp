@@ -149,8 +149,9 @@ void Game::getPlayers() {
             std::cin.clear();
             std::cin.ignore();
         } while ((numPlayers < 1) || (numPlayers > 150));
-        playerAges.push_back(age);
-        playerNames.push_back(name);
+        // playerAges.push_back(age);
+        // playerNames.push_back(name);
+        addPlayer(name, age);
     }
 
     /* Sort players by age and name (youngest first, then alphabetically) */
