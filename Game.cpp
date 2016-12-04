@@ -255,8 +255,7 @@ bool Game::confirmYN(std::string message)
 
 void Game::gameLoop(void)
 {
-  currentPlayer = 0;  // these two are probably not necessary because they are default values
-  currentPhase = 0;
+  currentPlayer = 0;  // these are probably not necessary because they are default values
 
   while (gameStatus) {
 
@@ -266,6 +265,9 @@ void Game::gameLoop(void)
     }
     if (player[currentPlayer].getCurrentPhase() == 0 || player[currentPlayer].getCurrentPhase() > 4) {
       player[currentPlayer].setCurrentPhase(1);
+    }
+    if (gameTime.getCurrentSeason() == 0 || gameTime.getCurrentSeason() > 4) {
+      gameTime.setCurrentSeason(1);
     }
 
     // if game phase = 1; season phase
@@ -312,13 +314,15 @@ void Game::gameLoop(void)
 				gameStatus = true;
 			}
 		}
+
+        /* if end of season, harvest */
+        if (!gameTime.getDaysLeft()) {
+          for (size_t i{0}; i < player.size(); ++i) {
+              player[currentPlayer].sell(gameTime.getDaysLeft());
+          }
+
+          /* Increment season */
+          gameTime.setCurrentSeason(gameTime.getCurrentSeason() + 1);
 	} // end game loop
   ++currentPlayer;
-
-  /* if end of season, harvest */
-  if (gameTime.getDaysLeft() == 0) {
-    for (size_t i{0}; i < player.size(); ++i) {
-      player[currentPlayer].sell(gameTime.getDaysLeft());
-    }
-  }
 }
