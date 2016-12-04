@@ -78,5 +78,6 @@ private:
     Deck gameDeck;
     Season gameTime;
     int currentPlayer;
+    int currentPhase;
 };
 #endif /* Game_hpp */

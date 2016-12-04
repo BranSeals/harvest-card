@@ -1,4 +1,4 @@
-//                          DEPRECATED
+//
 //  Game.cpp
 //  Contains game rules
 //  Harvest Game
@@ -255,23 +255,53 @@ bool Game::confirmYN(std::string message)
 
 void Game::gameLoop(void)
 {
-  currentPlayer = 0;
+  currentPlayer = 0;  // these two are probably not necessary because they are default values
+  currentPhase = 0;
+
   while (gameStatus) {
 
-		player[currentPlayer].setPlayerPhase(2);
-		while (player[currentPlayer].getPlayerPhase() == 2) {
-			player[currentPlayer].printMarket();
-			player[currentPlayer].buy(&gameMarket);
-		}
-		while (player[currentPlayer].getPlayerPhase() == 3) {
-			//player[currentPlayer].printFarm();
-			player[currentPlayer].work();
-			/*if (confirmYN("Work farm? [y/n]: ")) {
-				player[currentPlayer].work();
-			}*/
-		}
-		gameMarket.fillStalls();
+    /* If player number is 0 or over 4, is player 1's turn */
+    if (currentPlayer == 0 || currentPlayer > 4) {
+      currentPlayer = 1;
+    }
+    if (player[currentPlayer].getCurrentPhase() == 0 || player[currentPlayer].getCurrentPhase() > 4) {
+      player[currentPlayer].setCurrentPhase(1);
+    }
 
+    // if game phase = 1; season phase
+    if (player[currentPlayer].getCurrentPhase() == 1) {
+      gameTime.printSeason();
+      gameTime.resolveSeason();
+      player[currentPlayer].setCurrentPhase(2);
+    }
+
+    // if game phase = 2; market phase
+    if (player[currentPlayer].getCurrentPhase() == 2) {
+        while (player[currentPlayer].getPlayerPhase() == 2) {
+    			player[currentPlayer].printMarket();
+    			player[currentPlayer].buy(&gameMarket);
+    		}
+        gameMarket.fillStalls();
+        player[currentPlayer].getCurrentPhase(3)
+    }
+
+    // if game phase = 3; work phase
+    if (player[currentPlayer].getCurrentPhase() == 3) {
+      while (player[currentPlayer].getPlayerPhase() == 3) {
+          player[currentPlayer].work();
+      }
+      player[currentPlayer].getCurrentPhase(4)
+    }
+
+    // if game phase = 4; sell phase
+    if (player[currentPlayer].getCurrentPhase() == 4) {
+      while (player[currentPlayer].getPlayerPhase() == 4) {
+          player[currentPlayer].sell();                       // make sure phase increments inside sell()
+      }
+      player[currentPlayer].setCurrentPhase(5)
+    }
+
+    /* Change to include this in a menu instead of explicitly asking */
 		if (gameStatus) {
 			if (confirmYN("Quit game? [y/n]: ")) {
 				std::cout << "\n> Quitting game...\n";
@@ -281,5 +311,6 @@ void Game::gameLoop(void)
 				gameStatus = true;
 			}
 		}
-	}
+	} // end game loop
+  ++currentPlayer;
 }
