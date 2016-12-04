@@ -100,12 +100,15 @@ void Game::setGameStatus(bool tf)
 
 void Game::beginGame(void)
 {
-    setGameStatus(true);
+    getPlayers();
+    sortPlayers();
+    setGameStatus(true); // check with player before or after above getting players
     fillDecks();
     gameTime.fillSeasons(&gameDeck);
     gameMarket.fillStalls(&gameDeck);
     getPlayers();
     gameLoop();
+    printPlayers();
 }
 
 void Game::addPlayer(std::string name, int age)
