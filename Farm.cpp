@@ -69,11 +69,12 @@ std::vector<Card>* Farm::pointTo(std::string playerLot)
 		return &playerCrop;
 	} else {
 		std::cout << "\n*** Error in Farm::pointTo() ***\n";
+		return nullptr;
 	}
 }
 
 int Farm::sellProduct(int seasonCards)
-{ 
+{
 	int goldEarned{0};
 	if (seasonCards) {
 		for (size_t i{0}; i < playerLivestock.size(); ++i) {
@@ -111,7 +112,10 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		if (playerSeed.size() == 0) {
 			std::cout << "\n> Nothing to work on.\n";
 			return;
-		} else {
+		} else if (selectedTarget > sizeOf("Seed")) {																// NEEDS TESTING
+			std::cout << "\n> Wrong target selected.\n";
+			return;
+		}else {
 			lotPtr = Farm::pointTo("Seed");
 			--selectedTarget;
 		}
@@ -119,7 +123,10 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		if (playerLivestock.size() == 0) {
 			std::cout << "\n> Nothing to work on.\n";
 			return;
-		} else {
+		} else if (selectedTarget < sizeOf("Seed") {																// NEEDS TESTING
+			std::cout << "\n> Wrong target selected\n";
+			return;
+		}else {
 			lotPtr = Farm::pointTo("Livestock");
 			selectedTarget = selectedTarget - playerSeed.size() - playerTool.size() - 1;
 		}
@@ -127,14 +134,14 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		std::cout << "\n*** Error in assigning pointer in workFarm() ***\n";
 	}
 
-	// flip card if it hasn't been flipped already
+  /* See if card has already been worked on */
 	if ((*lotPtr)[selectedTarget].isCardFaceUp()) {
 		std::cout << "\n> Target already face-up.\n";
 		return;
 	} else {
 		(*lotPtr)[selectedTarget].flipCard();
 	}
-	
+
 	std::cout << "\n> Used " << playerTool[selectedTool].getCardName() << " on "
 		<< (*lotPtr)[selectedTarget].getCardName() << std::endl;
 
@@ -145,15 +152,13 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		playerCrop.push_back((*lotPtr)[selectedTarget]);
 		(*lotPtr).erase((*lotPtr).begin() + (selectedTarget));			// need 1 here on selected target like market?
 	}
-
-
 }
 
 //void Farm::moveCard(Card* cardToMove, std::string sendTo)
 //{
 //	//Card movedCard = *cardToMove;
 //	std::vector<Card>* sendToPtr{Farm::pointTo(sendTo)};
-//	
+//
 //	(*sendToPtr).push_back(movedCard); // NEEDS TESTING
 //
 //
@@ -235,14 +240,13 @@ int Farm::sizeOf(std::string playerLot)
 {
 	std::vector<Card>* lotPtr{Farm::pointTo(playerLot)};
 	return (*lotPtr).size();
-
 }
 
 /* TO DO: implement pointer function to choose from multiple types of decks */
 /* TO DO: add flag to check which bool value is required to use */
-bool Farm::canSelectTool(int selection)	
+bool Farm::canSelectTool(int selection)
 {
-	if (selection <= playerTool.size() && playerTool[selection].isCardFaceUp()) {	
+	if (selection <= playerTool.size() && playerTool[selection].isCardFaceUp()) {
 		if (playerTool[selection].getCardTarget() == 5000 && playerSeed.size() == 0) {
 			std::cout << "\n> No seeds can be worked on.\n";
 			return false;
