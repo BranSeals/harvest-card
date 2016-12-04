@@ -101,12 +101,10 @@ void Game::setGameStatus(bool tf)
 void Game::beginGame(void)
 {
     getPlayers();
-    sortPlayers();
     setGameStatus(true); // check with player before or after above getting players
     fillDecks();
     gameTime.fillSeasons(&gameDeck);
     gameMarket.fillStalls(&gameDeck);
-    getPlayers();
     gameLoop();
     printPlayers();
 }
@@ -169,24 +167,28 @@ void Game::getPlayers() {
     Player1.setPlayerName(playerNames[0]);
     Player1.setPlayerAge(playerAges[0]);
     Player1.setPlayerGold(startingGold);
+    player.push_back(Player1);
 
     if (numPlayers > 1) {
         Player2.setPlayerNumber(2);
         Player2.setPlayerName(playerNames[1]);
         Player2.setPlayerAge(playerAges[1]);
         Player2.setPlayerGold(startingGold);
+        player.push_back(Player2);
     }
     if (numPlayers > 2) {
         Player3.setPlayerNumber(3);
         Player3.setPlayerName(playerNames[2]);
         Player3.setPlayerAge(playerAges[2]);
         Player3.setPlayerGold(startingGold);
+        player.push_back(Player3);
     }
     if (numPlayers > 3) {
         Player4.setPlayerNumber(4);
         Player4.setPlayerName(playerNames[3]);
         Player4.setPlayerAge(playerAges[3]);
         Player4.setPlayerGold(startingGold);
+        player.push_back(Player4);
     }
 }
 
