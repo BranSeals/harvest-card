@@ -6,17 +6,17 @@
 #include <iostream>
 #include <iomanip>
 
-Season(int length) : seasonLength{length}
+Season::Season(int length) : seasonLength{length}
 {
 
 }
 
-~Season()
+Season::~Season()
 {
 
 }
 
-std::vector<Card>* pointTo(int currentSeason)
+std::vector<Card>* Season::pointTo(int currentSeason)
 {
   if (currentSeason == 1) {
       return &springTime;
@@ -32,17 +32,17 @@ std::vector<Card>* pointTo(int currentSeason)
   }
 }
 
-int getDaysLeft(void)
+int Season::getDaysLeft(void)
 {
   return daysLeft;
 }
 
-void setDaysLeft(int days)
+void Season::setDaysLeft(int days)
 {
   daysLeft = days;
 }
 
-void printSeason(void)
+void Season::printSeason(void)
 {
   std::vector<Card>* seasonPtr{pointTo(currentSeason)};
 
@@ -64,7 +64,12 @@ void printSeason(void)
 	std::cout.fill(' ');
 }
 
-void fillSeasons(void)
+void Season::resolveSeason(void)
+{
+    std::cout << "\n> Season did a thing.\n";
+}
+
+void Season::fillSeasons(void)
 {
     while (springTime.size() < seasonLength) {
         springTime.push_back(dealCardObject("Spring"));

@@ -18,6 +18,7 @@ public:
   void setDaysLeft(int);
 
   void printSeason(void);
+  void resolveSeason(void);
   void fillSeasons(void);
 
 private:
