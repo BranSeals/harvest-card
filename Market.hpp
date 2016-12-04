@@ -17,16 +17,16 @@ class Market : public Deck
 public:
     Market();
     ~Market();
-    
+
     virtual void print(void);
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
 	void printMarket(void);
-    void fillStalls(void);
+    void fillStalls(Deck*); // is this right?
     int getCostAt(int);
     Card removeFromStall(int);
 	bool canSelect(int);
-    
+
 private:
     std::vector<Card> seedStall;
     std::vector<Card> toolStall;
