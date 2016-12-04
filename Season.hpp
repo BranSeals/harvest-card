@@ -26,7 +26,7 @@ private:
   std::vector<Card> autumnTime;
   std::vector<Card> winterTime;
   int daysLeft{0};
-  int season{0}; // is this needed, or does this need to be in the game loop?
+  int currentSeason{0};
   int seasonLength{0};
 };
 

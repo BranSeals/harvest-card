@@ -4,6 +4,7 @@
 #include "Season.hpp"
 #include "Card.hpp"
 #include <iostream>
+#include <iomanip>
 
 Season(int length) : seasonLength{length}
 {
@@ -15,18 +16,18 @@ Season(int length) : seasonLength{length}
 
 }
 
-std::vector<Card>* pointTo(int season)
+std::vector<Card>* pointTo(int currentSeason)
 {
-  if (season == 1) {
+  if (currentSeason == 1) {
       return &springTime;
-  } else if (season == 2) {
+  } else if (currentSeason == 2) {
       return &summerTime;
-  } else if (season == 3) {
+  } else if (currentSeason == 3) {
       return &autumnTime;
-  } else if (season == 4) {
+  } else if (currentSeason == 4) {
       return &winterTime;
   } else {
-      std::cout << "\n*** Error in Market::pointTo() ***\n";
+      std::cout << "\n*** Error in Season::pointTo() ***\n";
       return nullptr;
   }
 }
@@ -43,7 +44,24 @@ void setDaysLeft(int days)
 
 void printSeason(void)
 {
+  std::vector<Card>* seasonPtr{pointTo(currentSeason)};
 
+  /* Top bar */
+  std::cout << std::left;
+  std::cout << std::endl;
+  std::cout.fill('-');
+  std::cout << std::setw(50) << "-- Season ";
+  std::cout.fill(' ');
+  std::cout << std::endl;
+
+  std::cout << (*seasonPtr).getCardName() << " - Day "                          // DAYS LEFT NEEDS TESTING
+      << seasonLength - daysLeft + 1 << " of " << seasonLength
+      << "\n" << (*seasonPtr).getCardDescription() << std::endl;
+
+  /* Bottom bar */
+  std::cout.fill('-');
+	std::cout << std::setw(50) << "";
+	std::cout.fill(' ');
 }
 
 void fillSeasons(void)
