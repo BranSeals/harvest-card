@@ -16,7 +16,7 @@ Game::Game()
 }
 
 Game::Game(std::string title, std::string description, int seasonLen, int years, int gold)
-    : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen}, 
+    : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen},
     gameLength{years * seasonLen}, startingGold{gold}
 {
 }
@@ -102,6 +102,7 @@ void Game::beginGame(void)
 {
     setGameStatus(true);
     getPlayers();
+    gameLoop();
 }
 
 void Game::addPlayer(std::string name, int age)
@@ -250,4 +251,35 @@ bool Game::confirmYN(std::string message)
         }
     }
     return false;
+}
+
+void Game::gameLoop(void)
+{
+  currentPlayer = 0;
+  while (gameStatus) {
+
+		player[currentPlayer].setPlayerPhase(2);
+		while (player[currentPlayer].getPlayerPhase() == 2) {
+			player[currentPlayer].printMarket();
+			player[currentPlayer].buy(&gameMarket);
+		}
+		while (player[currentPlayer].getPlayerPhase() == 3) {
+			//player[currentPlayer].printFarm();
+			player[currentPlayer].work();
+			/*if (confirmYN("Work farm? [y/n]: ")) {
+				player[currentPlayer].work();
+			}*/
+		}
+		gameMarket.fillStalls();
+
+		if (gameStatus) {
+			if (confirmYN("Quit game? [y/n]: ")) {
+				std::cout << "\n> Quitting game...\n";
+				gameStatus = false;
+			} else {
+				std::cout << "\n> Continuing game...\n";
+				gameStatus = true;
+			}
+		}
+	}
 }
