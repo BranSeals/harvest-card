@@ -12,7 +12,7 @@
 /* Game Rules */
 const std::string gameTitle{"Harvest Card Game"};
 const std::string gameDescription{"A terminal-based farming card game for 1 - 4 players.\n"};
-const int seasonLength{2};
+const int seasonLength{2};	// use multiples of the number of players to be fair
 const int gameLength{seasonLength * 4}; // use multiples of 4 to play full years
 const int startingGold{100};
 
