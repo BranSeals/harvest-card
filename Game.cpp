@@ -338,7 +338,7 @@ void Game::gameLoop(void)
 				<< " harvest! --\n";
             for (size_t i{0}; i < player.size(); ++i) {
 				std::cout << "> " << player[i].getPlayerName();
-				player[i].harvestCrops();
+				player[i].harvestCrops(gameSeason.getCurrentSeason());
             }
             /* Increment season */
 			gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
