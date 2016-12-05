@@ -11,10 +11,6 @@
 #include "Farm.hpp"
 #include <iostream>
 
-Game::Game()
-{
-}
-
 Game::Game(std::string title, std::string description, int seasonLen, int years, int gold)
     : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen},
     gameLength{years}, startingGold{gold}
@@ -101,11 +97,15 @@ void Game::setGameStatus(bool tf)
 void Game::beginGame(void)
 {
     getPlayers();
+	printPlayers();
     setGameStatus(true); // check with player before or after above getting players
-    fillDecks();
-    gameTime.fillSeasons(&gameDeck);
+	populateDeck();
+    gameDeck.fillDecks();
+	gameSeason.setSeasonLength(seasonLength);
+	gameSeason.fillSeasons(&gameDeck);
     gameMarket.fillStalls(&gameDeck);
-    gameLoop();
+	gameSeason.setCurrentSeason(1);
+	gameLoop();
     printPlayers();
 }
 
@@ -149,8 +149,8 @@ void Game::getPlayers() {
             std::cin.clear();
             std::cin.ignore();
         } while ((numPlayers < 1) || (numPlayers > 150));
-        // playerAges.push_back(age);
-        // playerNames.push_back(name);
+
+		/* Add player to age and name vectors for sorting purposes */
         addPlayer(name, age);
     }
 
@@ -264,56 +264,67 @@ bool Game::confirmYN(std::string message)
 
 void Game::gameLoop(void)
 {
-  currentPlayer = 0;  // these are probably not necessary because they are default values
+    currentPlayer = 0;  // these are probably not necessary because they are default values
 
-  while (gameStatus) {
+    while (gameStatus) {
 
-    /* If player number is 0 or over 4, is player 1's turn */
-    if (currentPlayer == 0 || currentPlayer > 4) {
-      currentPlayer = 1;
-    }
-    if (player[currentPlayer].getCurrentPhase() == 0 || player[currentPlayer].getCurrentPhase() > 4) {
-      player[currentPlayer].setCurrentPhase(1);
-    }
-    if (gameTime.getCurrentSeason() == 0 || gameTime.getCurrentSeason() > 4) {
-      gameTime.setCurrentSeason(1);
-    }
+		/* If last player has finished their turn, reset back to Player 1 control */
+		if (currentPlayer >= numPlayers) {
+			currentPlayer = 0;
+		}	
+		if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
+			player[currentPlayer].setPlayerPhase(1);
+		}
+		if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
+			gameSeason.setCurrentSeason(1);
+		}
 
-    // if game phase = 1; season phase
-    if (player[currentPlayer].getCurrentPhase() == 1) {
-      gameTime.printSeason();
-      gameTime.resolveSeason();
-      player[currentPlayer].setCurrentPhase(2);
-    }
+		/* Phase 1 - Season */
+		if (player[currentPlayer].getPlayerPhase() == 1) {
+			gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()));
+			gameSeason.resolveSeason();
+			player[currentPlayer].advancePhase();
+		}
 
-    // if game phase = 2; market phase
-    if (player[currentPlayer].getCurrentPhase() == 2) {
-        while (player[currentPlayer].getPlayerPhase() == 2) {
-    			player[currentPlayer].printMarket();
-          std::cout << "\nGold: " << player[currentPlayer].getPlayerGold() << std::endl;
+		/* Phase 2 - Market */
+		if (player[currentPlayer].getPlayerPhase() == 2) {
+			while (player[currentPlayer].getPlayerPhase() == 2) {
+
+				/* Print current marketplace and player information */
+    			gameMarket.printMarket();
+				std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName()
+					<< "\nGold: " << player[currentPlayer].getPlayerGold();
+
+				/* Allow player to buy -- will auto-advance phase when finished */
     			player[currentPlayer].buy(&gameMarket);
     		}
-        gameMarket.fillStalls(&gameDeck);
-        player[currentPlayer].getCurrentPhase(3)
-    }
 
-    // if game phase = 3; work phase
-    if (player[currentPlayer].getCurrentPhase() == 3) {
-      while (player[currentPlayer].getPlayerPhase() == 3) {
-          player[currentPlayer].work();
-      }
-      player[currentPlayer].getCurrentPhase(4)
-    }
+			/* Refill market for the next player after current player finished buying */
+			gameMarket.fillStalls(&gameDeck);
+		}
 
-    // if game phase = 4; sell phase
-    if (player[currentPlayer].getCurrentPhase() == 4) {
-      while (player[currentPlayer].getPlayerPhase() == 4) {
-          player[currentPlayer].sell(gameTime.getDaysLeft()); // make sure phase increments inside sell()
-      }
-      player[currentPlayer].setCurrentPhase(5)
-    }
+		/* Phase 3 - Work */
+		if (player[currentPlayer].getPlayerPhase() == 3) {
+		    while (player[currentPlayer].getPlayerPhase() == 3) {
+				std::cout << std::endl;
+				std::cout << "\Player: " << player[currentPlayer].getPlayerName() << std::endl;
 
-    /* Change to include this in a menu instead of explicitly asking */
+				/* Allow player to work -- will auto-advance phase when finished */
+			    player[currentPlayer].work();
+		    }
+		}
+
+		/* TO DO: sell needs to be worked on */
+		/* Phase 4 - Sell */
+		if (player[currentPlayer].getPlayerPhase() == 4) {
+		    while (player[currentPlayer].getPlayerPhase() == 4) {
+			    player[currentPlayer].sell(gameSeason.getDaysLeft()); // make sure phase increments inside sell()
+		    }
+		    player[currentPlayer].advancePhase();
+		}
+
+		// (n)ext turn	(q)uit game
+		/* Change to include this in a menu instead of explicitly asking */
 		if (gameStatus) {
 			if (confirmYN("Quit game? [y/n]: ")) {
 				std::cout << "\n> Quitting game...\n";
@@ -325,19 +336,21 @@ void Game::gameLoop(void)
 		}
 
         /* if end of season, harvest */
-        if (!gameTime.getDaysLeft()) {
-          for (size_t i{0}; i < player.size(); ++i) {
-              player[i].sell(gameTime.getDaysLeft());
-          }
+        if (!gameSeason.getDaysLeft()) {
+            for (size_t i{0}; i < player.size(); ++i) {
+                player[i].sell(gameSeason.getDaysLeft());
+            }
 
-          /* Increment season */
-          gameTime.setCurrentSeason(gameTime.getCurrentSeason() + 1);
-	} // end game loop
-    ++currentPlayer;
-}
+            /* Increment season */
+			gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
+		} // end game loop
+
+		++currentPlayer;
+		quitGame();
+	}
 }
 
-void Game::fillDecks(void)
+void Game::populateDeck(void)
 {
     gameDeck.addCard(5101);
     gameDeck.addCard(5303);
@@ -378,4 +391,49 @@ void Game::fillDecks(void)
     gameDeck.addCard(7001);
     gameDeck.addCard(7002);
     gameDeck.addCard(7004);
+
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
 }
