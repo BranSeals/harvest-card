@@ -281,7 +281,7 @@ void Game::gameLoop(void)
 
 		/* Phase 1 - Season */
 		if (player[currentPlayer].getPlayerPhase() == 1) {
-			gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()));
+			gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()) - 1);
 			gameSeason.resolveSeason();
 			player[currentPlayer].advancePhase();
 		}
@@ -305,9 +305,13 @@ void Game::gameLoop(void)
 
 		/* Phase 3 - Work */
 		if (player[currentPlayer].getPlayerPhase() == 3) {
+
+			/* Refresh any exhausted tools from last turn */
+			player[currentPlayer].refreshTools();
+
 		    while (player[currentPlayer].getPlayerPhase() == 3) {
 				std::cout << std::endl;
-				std::cout << "\Player: " << player[currentPlayer].getPlayerName() << std::endl;
+				std::cout << "\Player: " << player[currentPlayer].getPlayerName();
 
 				/* Allow player to work -- will auto-advance phase when finished */
 			    player[currentPlayer].work();
@@ -318,33 +322,22 @@ void Game::gameLoop(void)
 		/* Phase 4 - Sell */
 		if (player[currentPlayer].getPlayerPhase() == 4) {
 		    while (player[currentPlayer].getPlayerPhase() == 4) {
-			    player[currentPlayer].sell(gameSeason.getDaysLeft()); // make sure phase increments inside sell()
+			    player[currentPlayer].sellProduct();
 		    }
-		    player[currentPlayer].advancePhase();
-		}
-
-		// (n)ext turn	(q)uit game
-		/* Change to include this in a menu instead of explicitly asking */
-		if (gameStatus) {
-			if (confirmYN("Quit game? [y/n]: ")) {
-				std::cout << "\n> Quitting game...\n";
-				gameStatus = false;
-			} else {
-				std::cout << "\n> Continuing game...\n";
-				gameStatus = true;
-			}
+		    player[currentPlayer].advancePhase(); // is this needed, since phase increments inside sellproduct()?
 		}
 
         /* if end of season, harvest */
         if (!gameSeason.getDaysLeft()) {
             for (size_t i{0}; i < player.size(); ++i) {
-                player[i].sell(gameSeason.getDaysLeft());
+                player[i].harvestCrops();
             }
 
             /* Increment season */
 			gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
 		} // end game loop
 
+		 // (n)ext turn	(q)uit game
 		++currentPlayer;
 		quitGame();
 	}

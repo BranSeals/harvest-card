@@ -18,7 +18,6 @@
 class Game
 {
 public:
-    Game();
     Game(std::string, std::string, int, int, int);
     ~Game();
 
@@ -62,7 +61,7 @@ public:
     void printPlayers(void);
     void gameLoop(void);
 
-    void fillDecks(void);
+    void populateDeck(void);
 
 private:
     int numPlayers{1};
@@ -76,9 +75,9 @@ private:
     int seasonLength{0};
     bool gameStatus{false};
 
-    Market gameMarket();
+    Market gameMarket;
     Deck gameDeck;
-    Season gameTime(seasonLength); // can I do this?
+	Season gameSeason; // can I do this?
     int currentPlayer;
     int currentPhase;
 };
