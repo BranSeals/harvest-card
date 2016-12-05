@@ -54,7 +54,7 @@ public:
 	int getPlayerPhase(void);
 	void setPlayerPhase(int);
 	virtual void refreshTools(void);
-	void harvestCrops(void);
+	void harvestCrops(int);
 
 
 

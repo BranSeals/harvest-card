@@ -199,7 +199,7 @@ void Player::refreshTools(void)
 {
 	playerFarm.refreshTools();
 }
-void Player::harvestCrops(void)
+void Player::harvestCrops(int season)
 {
-	addGold(playerFarm.harvest());
+	addGold(playerFarm.harvest(season));
 }
