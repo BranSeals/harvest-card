@@ -138,6 +138,7 @@ void Player::setPlayerPhase(int phase)
 void Player::sell(int seasonCards)
 {
     addGold(playerFarm.sellProduct(seasonCards));
+	advancePhase();
 }
 
 int Player::select(std::string message, int low, int high) {
