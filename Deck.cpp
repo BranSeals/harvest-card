@@ -32,7 +32,10 @@ void Deck::print()
 {
     std::cout << "\n-- Decks --";
     print("Main");
-    print("Season");
+    print("Spring");
+	print("Summer");
+	print("Autumn");
+	print("Winter");
     print("Seed");
     print("Tool");
     print("Livestock");
