@@ -125,9 +125,9 @@ void Season::printSeason(void)
 	std::cout << std::endl;
 
 	std::cout << printString(currentSeason) << " - Day "
-		<< seasonLength - daysLeft + 1 << " of " << seasonLength << std::endl;
-    std::cout << (*seasonPtr)[currentSeason - 1].getCardName() 
-		<< "\n" << (*seasonPtr)[currentSeason - 1].getCardDescription() << std::endl;
+		<< seasonLength - daysLeft << " of " << seasonLength << std::endl;
+    std::cout << (*seasonPtr)[(*seasonPtr).size() - 1].getCardName()
+		<< "\n" << (*seasonPtr)[(*seasonPtr).size() - 1].getCardDescription() << std::endl;
 
     /* Bottom bar */
     std::cout.fill('-');
