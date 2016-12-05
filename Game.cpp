@@ -1,4 +1,4 @@
-//                          DEPRECATED
+//
 //  Game.cpp
 //  Contains game rules
 //  Harvest Game
@@ -11,13 +11,9 @@
 #include "Farm.hpp"
 #include <iostream>
 
-Game::Game()
-{
-}
-
-Game::Game(std::string title, std::string description, int seasonLen, int years, int gold)
-    : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen}, 
-    gameLength{years * seasonLen}, startingGold{gold}
+Game::Game(std::string title, std::string description, int seasonLen, int seasons, int gold)
+    : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen},
+    gameLength{seasons}, startingGold{gold}
 {
 }
 
@@ -100,8 +96,18 @@ void Game::setGameStatus(bool tf)
 
 void Game::beginGame(void)
 {
-    setGameStatus(true);
+	std::cout << "-- " << gameTitle << " --\n" << gameDescription;
     getPlayers();
+	printPlayers();
+    setGameStatus(true); // check with player before or after above getting players
+	populateDeck();
+    gameDeck.fillDecks();
+	gameSeason.setSeasonLength(seasonLength);
+	gameSeason.fillSeasons(&gameDeck);
+    gameMarket.fillStalls(&gameDeck);
+	gameSeason.setCurrentSeason(1);
+	gameLoop();
+    printPlayers();
 }
 
 void Game::addPlayer(std::string name, int age)
@@ -144,8 +150,9 @@ void Game::getPlayers() {
             std::cin.clear();
             std::cin.ignore();
         } while ((numPlayers < 1) || (numPlayers > 150));
-        playerAges.push_back(age);
-        playerNames.push_back(name);
+
+		/* Add player to age and name vectors for sorting purposes */
+        addPlayer(name, age);
     }
 
     /* Sort players by age and name (youngest first, then alphabetically) */
@@ -162,24 +169,28 @@ void Game::getPlayers() {
     Player1.setPlayerName(playerNames[0]);
     Player1.setPlayerAge(playerAges[0]);
     Player1.setPlayerGold(startingGold);
+    player.push_back(Player1);
 
     if (numPlayers > 1) {
         Player2.setPlayerNumber(2);
         Player2.setPlayerName(playerNames[1]);
         Player2.setPlayerAge(playerAges[1]);
         Player2.setPlayerGold(startingGold);
+        player.push_back(Player2);
     }
     if (numPlayers > 2) {
         Player3.setPlayerNumber(3);
         Player3.setPlayerName(playerNames[2]);
         Player3.setPlayerAge(playerAges[2]);
         Player3.setPlayerGold(startingGold);
+        player.push_back(Player3);
     }
     if (numPlayers > 3) {
         Player4.setPlayerNumber(4);
         Player4.setPlayerName(playerNames[3]);
         Player4.setPlayerAge(playerAges[3]);
         Player4.setPlayerGold(startingGold);
+        player.push_back(Player4);
     }
 }
 
@@ -250,4 +261,214 @@ bool Game::confirmYN(std::string message)
         }
     }
     return false;
+}
+
+void Game::gameLoop(void)
+{
+	int turns{0};
+    while (gameStatus) {
+
+		if (turns == gameLength) {
+			gameOver();
+			return;
+		}
+
+		/* If last player has finished their turn, reset back to Player 1 control */
+		if (currentPlayer >= numPlayers) {
+			currentPlayer = 0;
+		}	
+		if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
+			player[currentPlayer].setPlayerPhase(1);
+		}
+		if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
+			gameSeason.setCurrentSeason(1);
+		}
+
+		/* Phase 1 - Season */
+		if (player[currentPlayer].getPlayerPhase() == 1) {
+			gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()) - 1);
+			gameSeason.resolveSeason();
+			player[currentPlayer].advancePhase();
+		}
+
+		/* Phase 2 - Market */
+		if (player[currentPlayer].getPlayerPhase() == 2) {
+			while (player[currentPlayer].getPlayerPhase() == 2) {
+
+				/* Print current marketplace and player information */
+    			gameMarket.printMarket();
+				std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName()
+					<< "\nGold: " << player[currentPlayer].getPlayerGold();
+
+				/* Allow player to buy -- will auto-advance phase when finished */
+    			player[currentPlayer].buy(&gameMarket);
+    		}
+
+			/* Refill market for the next player after current player finished buying */
+			gameMarket.fillStalls(&gameDeck);
+		}
+
+		/* Phase 3 - Work */
+		if (player[currentPlayer].getPlayerPhase() == 3) {
+
+			/* Refresh any exhausted tools from last turn */
+			player[currentPlayer].refreshTools();
+
+		    while (player[currentPlayer].getPlayerPhase() == 3) {
+				std::cout << std::endl;
+			
+				std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName();
+				/* Allow player to work -- will auto-advance phase when finished */
+			    player[currentPlayer].work();
+		    }
+		}
+
+		/* TO DO: sell needs to be worked on */
+		/* Phase 4 - Sell */
+		if (player[currentPlayer].getPlayerPhase() == 4) {
+		    while (player[currentPlayer].getPlayerPhase() == 4) {
+			    player[currentPlayer].sellProduct();
+		    }
+		    player[currentPlayer].advancePhase(); // is this needed, since phase increments inside sellproduct()?
+		}
+
+        /* if end of season, harvest */
+        if (!gameSeason.getDaysLeft()) {
+			std::cout << "\n-- " << gameSeason.printString(gameSeason.getCurrentSeason()) 
+				<< " harvest! --\n";
+            for (size_t i{0}; i < player.size(); ++i) {
+				std::cout << "> " << player[i].getPlayerName();
+				player[i].harvestCrops(gameSeason.getCurrentSeason());
+            }
+            /* Increment season */
+			gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
+		}
+
+		++currentPlayer;
+		++turns;
+		
+		// (n)ext turn	(q)uit game
+		gameStatus = continueGame();
+	} /* end game loop */
+}
+
+void Game::populateDeck(void)
+{
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+    gameDeck.addCard(5101);
+    gameDeck.addCard(5303);
+    gameDeck.addCard(5301);
+    gameDeck.addCard(6003);
+    gameDeck.addCard(6005);
+    gameDeck.addCard(6001);
+    gameDeck.addCard(7001);
+    gameDeck.addCard(7002);
+    gameDeck.addCard(7004);
+
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+	gameDeck.addCard(1001);
+
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+	gameDeck.addCard(2000);
+
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+	gameDeck.addCard(3000);
+
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+	gameDeck.addCard(4000);
+}
+
+void Game::gameOver(void)
+{
+	gameStatus = false;
+	std::cout << "\n-- Game Over --\n";
+	rankPlayers();
+	return;
+}
+
+void Game::rankPlayers(void)
+{
+	std::cout << "\nPlayers ranked\n";
+	// TO DO: pull similar function from Five Crowns
+}
+
+bool Game::continueGame()
+{
+	char cxAnswer{};
+	while ((tolower(cxAnswer) != 'c') || (tolower(cxAnswer)) != 'x') {
+		std::cout << "\n(c)ontinue\te(x)it ";
+		std::cin >> cxAnswer;
+		std::cin.clear();
+		std::cin.ignore();
+		if (tolower(cxAnswer) == 'c') {
+			return true;
+		} else if (tolower(cxAnswer) == 'x') {
+			return false;
+		} else {
+			std::cout << "\n*** Answer must be 'c' or 'x' ***\n";
+		}
+	}
+	return false;
 }

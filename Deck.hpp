@@ -17,13 +17,13 @@ class Deck : public Card
 public:
     Deck();
     ~Deck();
-    
+
     //* Getters / Setters *//
-    
+
     unsigned long getDeckSize(void);
-    
+
     //* Methods *//
-    
+
     virtual void print(void);
     void print(std::string);
     void shuffleDecks(void);
@@ -32,10 +32,13 @@ public:
     void addCard(int);
     Card dealCardObject(std::string);
     void fillDecks(void);
-    
+
 private:
     std::vector<int> deck;
-    std::vector<int> seasonDeck;
+    std::vector<int> springDeck;
+    std::vector<int> summerDeck;
+    std::vector<int> autumnDeck;
+    std::vector<int> winterDeck;
     std::vector<int> seedDeck;
     std::vector<int> toolDeck;
     std::vector<int> livestockDeck;

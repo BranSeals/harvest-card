@@ -76,7 +76,7 @@ Description for Spring Event (test).
 1001
 1
 Blossom Festival
-Description
+Relax and enjoy the spring blossoms.
 0
 0
 0
@@ -193,7 +193,7 @@ Spring Crop (test)
 Description for Spring Crop (test)
 2
 0
-0
+2
 1
 0
 
@@ -203,8 +203,8 @@ Radish
 Description
 2
 0
-40
-20
+2
+1
 0
 
 5102
@@ -213,8 +213,8 @@ Cabbage
 Description
 2
 0
-100
-50
+2
+1
 0
 
 5103
@@ -223,8 +223,8 @@ Potato
 Description
 2
 0
-100
-60
+2
+1
 0
 
 5104
@@ -233,8 +233,8 @@ Turnip
 Description
 2
 0
-80
-40
+2
+1
 0
 
 5200
@@ -243,7 +243,7 @@ Summer Crop (test)
 Description for Summer Crop (test)
 2
 0
-0
+2
 1
 0
 
@@ -253,8 +253,8 @@ Tomato
 Description
 2
 0
-5
 2
+1
 0
 
 5202
@@ -263,8 +263,8 @@ Wheat
 Description
 2
 0
-5
 2
+1
 0
 
 5203
@@ -273,8 +273,8 @@ Eggplant
 Description
 2
 0
-5
 2
+1
 0
 
 5204
@@ -283,7 +283,7 @@ Watermelon
 Description
 2
 0
-5
+4
 2
 0
 
@@ -293,7 +293,7 @@ Autumn Crop (test)
 Description for Autumn Crop (test)
 2
 0
-0
+2
 1
 0
 
@@ -303,8 +303,8 @@ Corn
 Description
 2
 0
-5
 2
+1
 0
 
 5302
@@ -313,7 +313,7 @@ Pumpkin
 Description
 2
 0
-5
+4
 2
 0
 
@@ -323,8 +323,8 @@ Yam
 Description
 2
 0
-5
 2
+1
 0
 
 5304
@@ -333,8 +333,8 @@ Beet
 Description
 2
 0
-5
 2
+1
 0
 
 5400
@@ -343,7 +343,7 @@ Winter Crop (test)
 Description for Winter Crop (test)
 2
 0
-0
+2
 1
 0
 
@@ -353,8 +353,8 @@ Onion
 Description
 2
 0
-5
 2
+1
 0
 
 5402
@@ -363,8 +363,8 @@ Garlic
 Description
 2
 0
-5
 2
+1
 0
 
 5403
@@ -373,8 +373,8 @@ Leek
 Description
 2
 0
-5
 2
+1
 0
 
 5404
@@ -383,8 +383,8 @@ Peas
 Description
 2
 0
-5
 2
+1
 0
 
 6000

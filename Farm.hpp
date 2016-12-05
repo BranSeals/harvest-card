@@ -25,17 +25,20 @@ public:
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
 	void printFarm(void);
-    int sellProduct(int);
+    int sellProduct();
     void workFarm(int, int);
     //void moveCard(Card*, std::string);
 	int sizeOf(std::string);
 	bool canSelectTool(int);
+	virtual void refreshTools(void);
+	virtual int harvest(int);
 
 private:
     std::vector<Card> playerSeed;
     std::vector<Card> playerTool;
     std::vector<Card> playerLivestock;
 	std::vector<Card> playerCrop;
+	int seasonBonus{1};
 };
 
 #endif /* Farm_hpp */
