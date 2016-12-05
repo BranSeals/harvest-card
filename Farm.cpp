@@ -73,24 +73,16 @@ std::vector<Card>* Farm::pointTo(std::string playerLot)
 	}
 }
 
-int Farm::sellProduct(int seasonCards)
+int Farm::sellProduct()
 {
 	int goldEarned{0};
-	if (seasonCards) {
-		for (size_t i{0}; i < playerLivestock.size(); ++i) {
-			if (playerLivestock[i].isCardFaceUp()) {
-				goldEarned += playerLivestock[i].getCardValue();
-				playerLivestock[i].resetCard();
-			}
-		}
-	} else {
-		for (size_t i{0}; i < playerSeed.size(); ++i) {
-			if (playerSeed[i].isCardFaceUp()) {
-				goldEarned += playerSeed[i].getCardValue();
-				playerSeed[i].resetCard();
-			}
+	for (size_t i{0}; i < playerLivestock.size(); ++i) {
+		if (playerLivestock[i].isCardFaceUp()) {
+			goldEarned += playerLivestock[i].getCardValue();
+			playerLivestock[i].resetCard();
 		}
 	}
+	std::cout << "\n> Earned " << goldEarned << " gold from livestock \n";
 	return goldEarned;
 }
 
@@ -110,10 +102,10 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 	std::vector<Card>* lotPtr{nullptr};
 	if (targetID == 5000) {
 		if (playerSeed.size() == 0) {
-			std::cout << "\n> Nothing to work on.\n";
+			std::cout << "\n> Nothing to work on\n";
 			return;
-		} else if (selectedTarget > sizeOf("Seed")) {																// NEEDS TESTING
-			std::cout << "\n> Wrong target selected.\n";
+		} else if (selectedTarget > sizeOf("Seed")) {
+			std::cout << "\n> Wrong target selected\n";
 			return;
 		}else {
 			lotPtr = Farm::pointTo("Seed");
@@ -121,9 +113,9 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 		}
 	} else if (targetID > 7000) {
 		if (playerLivestock.size() == 0) {
-			std::cout << "\n> Nothing to work on.\n";
+			std::cout << "\n> Nothing to work on\n";
 			return;
-		} else if (selectedTarget < sizeOf("Seed") {																// NEEDS TESTING
+		} else if (selectedTarget < sizeOf("Seed")) {
 			std::cout << "\n> Wrong target selected\n";
 			return;
 		}else {
@@ -136,7 +128,7 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 
   /* See if card has already been worked on */
 	if ((*lotPtr)[selectedTarget].isCardFaceUp()) {
-		std::cout << "\n> Target already face-up.\n";
+		std::cout << "\n> Target already face-up\n";
 		return;
 	} else {
 		(*lotPtr)[selectedTarget].flipCard();
@@ -147,25 +139,13 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 
 	/* Exhaust tool card by turning face-down after use */
 	playerTool[selectedTool].flipCard();
-	// TO DO : send flipped crop card to field
+
+	/* Send flipped seed card to crop field */
 	if (targetID == 5000) {
 		playerCrop.push_back((*lotPtr)[selectedTarget]);
-		(*lotPtr).erase((*lotPtr).begin() + (selectedTarget));			// need 1 here on selected target like market?
+		(*lotPtr).erase((*lotPtr).begin() + (selectedTarget));
 	}
 }
-
-//void Farm::moveCard(Card* cardToMove, std::string sendTo)
-//{
-//	//Card movedCard = *cardToMove;
-//	std::vector<Card>* sendToPtr{Farm::pointTo(sendTo)};
-//
-//	(*sendToPtr).push_back(movedCard); // NEEDS TESTING
-//
-//
-//}
-
-//		removedCard = seedStall[selection - 1];
-//		seedStall.erase(seedStall.begin() + (selection));
 
 void Farm::printFarm(void)
 {
@@ -248,19 +228,41 @@ bool Farm::canSelectTool(int selection)
 {
 	if (selection <= playerTool.size() && playerTool[selection].isCardFaceUp()) {
 		if (playerTool[selection].getCardTarget() == 5000 && playerSeed.size() == 0) {
-			std::cout << "\n> No seeds can be worked on.\n";
+			std::cout << "\n> No seeds can be worked on\n";
 			return false;
 		} else if (playerTool[selection].getCardTarget() >= 7000 && playerLivestock.size() == 0) {
-			std::cout << "\n> No livestock can be worked on.\n";
+			std::cout << "\n> No livestock can be worked on\n";
 			return false;
 		} else {
 			return true;
 		}
 	} else if (!playerTool[selection].isCardFaceUp()) {
-		std::cout << "\n> Tool already used this turn.\n";
+		std::cout << "\n> Tool already used this turn\n";
 		return false;
 	} else {
-		std::cout << "\n> Cannot select.\n";
+		std::cout << "\n> Cannot select\n";
 		return false;
 	}
+}
+
+void Farm::refreshTools(void) {
+	for (size_t i{0}; i < playerTool.size(); ++i) {
+		if (!playerTool[i].isCardFaceUp()) {
+			playerTool[i].flipCard();
+		}
+	}
+}
+
+int Farm::harvest(void) {
+	int earnedGold{0};
+	if (!playerCrop.size()) {
+		return 0;
+	} else {
+		for (size_t i{0}; i > playerCrop.size(); ++i) {
+			earnedGold += playerCrop[i].getCardValue();
+		}
+		playerCrop.erase(playerCrop.begin() + playerCrop.size());
+	}
+	std::cout << "\n> Made " << earnedGold << " during the harvest\n";
+	return earnedGold;
 }

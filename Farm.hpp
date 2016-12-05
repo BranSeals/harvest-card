@@ -25,11 +25,13 @@ public:
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
 	void printFarm(void);
-    int sellProduct(int);
+    int sellProduct();
     void workFarm(int, int);
     //void moveCard(Card*, std::string);
 	int sizeOf(std::string);
 	bool canSelectTool(int);
+	virtual void refreshTools(void);
+	virtual int harvest(void);
 
 private:
     std::vector<Card> playerSeed;
