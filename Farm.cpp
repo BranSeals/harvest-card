@@ -255,14 +255,12 @@ void Farm::refreshTools(void) {
 
 int Farm::harvest(void) {
 	int earnedGold{0};
-	if (!playerCrop.size()) {
-		return 0;
-	} else {
-		for (size_t i{0}; i > playerCrop.size(); ++i) {
-			earnedGold += playerCrop[i].getCardValue();
-		}
-		playerCrop.erase(playerCrop.begin() + playerCrop.size());
+	for (size_t i{0}; i < playerCrop.size(); ++i) {
+		earnedGold += playerCrop[i].getCardValue();
 	}
-	std::cout << "\n> Made " << earnedGold << " during the harvest\n";
+	if (playerCrop.size()) {
+		playerCrop.erase(playerCrop.begin() + playerCrop.size() - 1);
+	}
+	std::cout << " made " << earnedGold << " gold during the harvest\n";
 	return earnedGold;
 }
