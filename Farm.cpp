@@ -253,14 +253,20 @@ void Farm::refreshTools(void) {
 	}
 }
 
-int Farm::harvest(void) {
+int Farm::harvest(int season) {
 	int earnedGold{0};
+	int bonusGold{0};
 	for (size_t i{0}; i < playerCrop.size(); ++i) {
 		earnedGold += playerCrop[i].getCardValue();
+		if (playerCrop[i].getCardSeason() == season) {
+			bonusGold += seasonBonus;
+		}
 	}
 	if (playerCrop.size()) {
 		playerCrop.erase(playerCrop.begin() + playerCrop.size() - 1);
 	}
-	std::cout << " made " << earnedGold << " gold during the harvest\n";
+	earnedGold += bonusGold;
+	std::cout << " made " << earnedGold << " gold during the harvest (+" 
+		<< bonusGold << " bonus gold for seasonal crops)\n";
 	return earnedGold;
 }

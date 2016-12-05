@@ -31,13 +31,14 @@ public:
 	int sizeOf(std::string);
 	bool canSelectTool(int);
 	virtual void refreshTools(void);
-	virtual int harvest(void);
+	virtual int harvest(int);
 
 private:
     std::vector<Card> playerSeed;
     std::vector<Card> playerTool;
     std::vector<Card> playerLivestock;
 	std::vector<Card> playerCrop;
+	int seasonBonus{1};
 };
 
 #endif /* Farm_hpp */
