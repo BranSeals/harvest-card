@@ -26,8 +26,8 @@
 /* Constants */
 const std::string gameTitle{"Harvest Card Game"};
 const std::string gameDescription{"A terminal-based farming card game for 1 - 4 players.\n"};
-const int seasonLength{0};
-const int gameLength{seasonLength * 4};
+const int seasonLength{4};
+const int gameLength{seasonLength * 1};
 const int startingGold{100};
 
 int main()
@@ -49,7 +49,7 @@ int main()
 	//Market gameMarket;
 
     Game harvestGame(gameTitle, gameDescription, seasonLength, gameLength, startingGold);
-    harvestGame.
+	harvestGame.beginGame();
 
     /* Testing */
 	/* Fill market with cards */
