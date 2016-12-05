@@ -11,9 +11,9 @@
 #include "Farm.hpp"
 #include <iostream>
 
-Game::Game(std::string title, std::string description, int seasonLen, int years, int gold)
+Game::Game(std::string title, std::string description, int seasonLen, int seasons, int gold)
     : gameTitle{title}, gameDescription{description}, seasonLength{seasonLen},
-    gameLength{years}, startingGold{gold}
+    gameLength{seasons}, startingGold{gold}
 {
 }
 
@@ -96,6 +96,7 @@ void Game::setGameStatus(bool tf)
 
 void Game::beginGame(void)
 {
+	std::cout << "-- " << gameTitle << " --\n" << gameDescription;
     getPlayers();
 	printPlayers();
     setGameStatus(true); // check with player before or after above getting players
@@ -264,9 +265,13 @@ bool Game::confirmYN(std::string message)
 
 void Game::gameLoop(void)
 {
-    currentPlayer = 0;  // these are probably not necessary because they are default values
-
+	int turns{0};
     while (gameStatus) {
+
+		if (turns == gameLength) {
+			gameOver();
+			return;
+		}
 
 		/* If last player has finished their turn, reset back to Player 1 control */
 		if (currentPlayer >= numPlayers) {
@@ -311,8 +316,8 @@ void Game::gameLoop(void)
 
 		    while (player[currentPlayer].getPlayerPhase() == 3) {
 				std::cout << std::endl;
-				std::cout << "\Player: " << player[currentPlayer].getPlayerName();
-
+			
+				std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName();
 				/* Allow player to work -- will auto-advance phase when finished */
 			    player[currentPlayer].work();
 		    }
@@ -329,18 +334,22 @@ void Game::gameLoop(void)
 
         /* if end of season, harvest */
         if (!gameSeason.getDaysLeft()) {
+			std::cout << "\n-- " << gameSeason.printString(gameSeason.getCurrentSeason()) 
+				<< " harvest! --\n";
             for (size_t i{0}; i < player.size(); ++i) {
-                player[i].harvestCrops();
+				std::cout << "> " << player[i].getPlayerName();
+				player[i].harvestCrops();
             }
-
             /* Increment season */
 			gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
-		} // end game loop
+		}
 
-		 // (n)ext turn	(q)uit game
 		++currentPlayer;
-		quitGame();
-	}
+		++turns;
+		
+		// (n)ext turn	(q)uit game
+		gameStatus = continueGame();
+	} /* end game loop */
 }
 
 void Game::populateDeck(void)
@@ -429,4 +438,37 @@ void Game::populateDeck(void)
 	gameDeck.addCard(4000);
 	gameDeck.addCard(4000);
 	gameDeck.addCard(4000);
+}
+
+void Game::gameOver(void)
+{
+	gameStatus = false;
+	std::cout << "\n-- Game Over --\n";
+	rankPlayers();
+	return;
+}
+
+void Game::rankPlayers(void)
+{
+	std::cout << "\nPlayers ranked\n";
+	// TO DO: pull similar function from Five Crowns
+}
+
+bool Game::continueGame()
+{
+	char cxAnswer{};
+	while ((tolower(cxAnswer) != 'c') || (tolower(cxAnswer)) != 'x') {
+		std::cout << "\n(c)ontinue\te(x)it ";
+		std::cin >> cxAnswer;
+		std::cin.clear();
+		std::cin.ignore();
+		if (tolower(cxAnswer) == 'c') {
+			return true;
+		} else if (tolower(cxAnswer) == 'x') {
+			return false;
+		} else {
+			std::cout << "\n*** Answer must be 'c' or 'x' ***\n";
+		}
+	}
+	return false;
 }
