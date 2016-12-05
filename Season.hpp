@@ -10,29 +10,37 @@
 class Season : public Deck
 {
 public:
-  Season(int length);
-  ~Season();
+	Season();
+    Season(int length);
+    ~Season();
 
-  std::vector<Card>* pointTo(int); // uses season int as input, so increment can happen in game loop
+    std::vector<Card>* pointTo(int); // uses season int as input, so increment can happen in game loop
 
-  int getDaysLeft(void);
-  void setDaysLeft(int);
+    int getDaysLeft(void);
+    void setDaysLeft(int);
 
-  int getCurrentSeason(void);
-  void setCurrentSeason(int);
+    int getCurrentSeason(void);
+    void setCurrentSeason(int);
 
-  void printSeason(void);
-  void resolveSeason(void);
-  void fillSeasons(void);
+	int getSeasonLength(void);
+	void setSeasonLength(int);
+
+	void print(int);
+	std::string printString(int);
+    void printSeason(void);
+    void resolveSeason(void);
+    void fillSeasons(Deck*);
+
+	int sizeOf(int);
 
 private:
-  std::vector<Card> springTime;
-  std::vector<Card> summerTime;
-  std::vector<Card> autumnTime;
-  std::vector<Card> winterTime;
-  int daysLeft{0};
-  int currentSeason{0};
-  int seasonLength{0};
+    std::vector<Card> springTime;
+    std::vector<Card> summerTime;
+    std::vector<Card> autumnTime;
+    std::vector<Card> winterTime;
+    int daysLeft{0};
+    int currentSeason{0};
+    int seasonLength{0};
 };
 
 #endif
