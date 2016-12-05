@@ -63,6 +63,10 @@ public:
 
     void populateDeck(void);
 
+	void gameOver(void);
+	void rankPlayers(void);
+	bool continueGame();
+
 private:
     int numPlayers{1};
     int startingGold; // get from constant during construction of game object
