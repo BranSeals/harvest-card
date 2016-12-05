@@ -68,21 +68,29 @@ public:
 	bool continueGame();
 
 private:
-    int numPlayers{1};
-    int startingGold; // get from constant during construction of game object
-    std::string gameTitle;
-    std::string gameDescription;
+  
+	/* Filled in from game rule constants when Game object constructed */
+	std::string gameTitle;
+	std::string gameDescription;
+    int startingGold;
+	int gameLength{0};
+	int seasonLength{0};
+
+	/* Used to find and assign order of players */
+	int numPlayers{1};
     std::vector<int> playerAges;
     std::vector<std::string> playerNames;
-    std::vector<Player> player; // filled in after players are sorted
-    int gameLength{0};
-    int seasonLength{0};
-    bool gameStatus{false};
 
+	/* Used together in game loop to iterate through each player */
+    std::vector<Player> player;
+	int currentPlayer;
+
+    bool gameStatus{false}; // used to exit game loop
+
+	/* Game objects */
     Market gameMarket;
     Deck gameDeck;
-	Season gameSeason; // can I do this?
-    int currentPlayer;
-    int currentPhase;
+	Season gameSeason;
+    
 };
 #endif /* Game_hpp */
