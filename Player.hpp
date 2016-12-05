@@ -45,7 +45,7 @@ public:
     void printFarm(void);
 
     void buy(Market*);
-    void sell(int);
+    void sellProduct();
 	void work(void);
     //void useTool(int);
 	int select(std::string, int, int);
@@ -53,6 +53,8 @@ public:
 	int advancePhase(void);
 	int getPlayerPhase(void);
 	void setPlayerPhase(int);
+	virtual void refreshTools(void);
+	void harvestCrops(void);
 
 
 
