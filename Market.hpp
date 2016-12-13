@@ -22,7 +22,7 @@ public:
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
 	void printMarket(void);
-    void fillStalls(Deck*); // is this right?
+    void fillStalls(Deck*);
     int getCostAt(int);
     Card removeFromStall(int);
 	bool canSelect(int);

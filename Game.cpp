@@ -265,7 +265,7 @@ bool Game::confirmYN(std::string message)
 
 void Game::gameLoop(void)
 {
-	int turns{0};
+	int turns{0}; // keeps track of total game time
     while (gameStatus) {
 
 		if (turns == gameLength) {
@@ -286,6 +286,7 @@ void Game::gameLoop(void)
 
 		/* Phase 1 - Season */
 		if (player[currentPlayer].getPlayerPhase() == 1) {
+			std::cout << "\n=================\n Phase 1: Season\n=================\n";
 			gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()) - 1);
 			gameSeason.resolveSeason();
 			player[currentPlayer].advancePhase();
@@ -294,7 +295,7 @@ void Game::gameLoop(void)
 		/* Phase 2 - Market */
 		if (player[currentPlayer].getPlayerPhase() == 2) {
 			while (player[currentPlayer].getPlayerPhase() == 2) {
-
+				std::cout << "\n=================\n Phase 2: Market\n=================\n";
 				/* Print current marketplace and player information */
     			gameMarket.printMarket();
 				std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName()
@@ -310,7 +311,7 @@ void Game::gameLoop(void)
 
 		/* Phase 3 - Work */
 		if (player[currentPlayer].getPlayerPhase() == 3) {
-
+			std::cout << "\n===============\n Phase 3: Work\n===============";
 			/* Refresh any exhausted tools from last turn */
 			player[currentPlayer].refreshTools();
 
@@ -323,13 +324,13 @@ void Game::gameLoop(void)
 		    }
 		}
 
-		/* TO DO: sell needs to be worked on */
 		/* Phase 4 - Sell */
 		if (player[currentPlayer].getPlayerPhase() == 4) {
+			std::cout << "\n===============\n Phase 4: Sell\n===============\n";
 		    while (player[currentPlayer].getPlayerPhase() == 4) {
 			    player[currentPlayer].sellProduct();
 		    }
-		    player[currentPlayer].advancePhase(); // is this needed, since phase increments inside sellproduct()?
+		    player[currentPlayer].advancePhase();
 		}
 
         /* if end of season, harvest */
@@ -347,7 +348,6 @@ void Game::gameLoop(void)
 		++currentPlayer;
 		++turns;
 		
-		// (n)ext turn	(q)uit game
 		gameStatus = continueGame();
 	} /* end game loop */
 }

@@ -171,7 +171,7 @@ void Farm::printFarm(void)
 	std::cout << std::endl;
 	std::cout << std::right;
 	std::cout << std::setw(10) << "Seeds:" << std::setw(19) << "Tools:"
-		<< std::setw(21) << "Livestock:" << std::endl;
+		<< std::setw(23) << "Livestock:" << std::endl;
 	std::cout << std::left;
 	for (int i{0}; i < biggestLotSize; ++i) {
 		if (playerSeed.size() > i) {
@@ -253,6 +253,7 @@ void Farm::refreshTools(void) {
 	}
 }
 
+// TO DO: use clear to empty crop field after harvest
 int Farm::harvest(int season) {
 	int earnedGold{0};
 	int bonusGold{0};

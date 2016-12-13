@@ -102,6 +102,7 @@ std::vector<Card>* Market::pointTo(std::string stallName)
     }
 }
 
+// TO DO: express 3 in terms of numberInStall
 void Market::fillStalls(Deck* deck)
 {
     while (seedStall.size() < 3) {
