@@ -18,8 +18,8 @@ Effects:
 5 Discard Crop (Number of Cards Lost)
 6 Discard Tool (Number of Cards Lost)
 7 Discard Livestock (Number of Cards Lost)
-8 Discount (Divided By)
-9 Bonus Gold (Multiplied By)
+8 Discount (Subtract value)
+9 Bonus Gold (Add value)
 
 Will need functions:
 Determine if crop is in season and give bonus amount determined by constant
@@ -28,8 +28,8 @@ Brainstorming:
 Hurricane
 Tornado
 Swimming
-Drought - can’t use watering can
-Farmer’s Market - sell one or all crops
+Drought - can’t use watering can for turn
+Farmer’s Market - sell one or all crops in middle of season
 Plant Sale
 Bug-catching 
 Locusts!
