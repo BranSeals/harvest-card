@@ -83,7 +83,7 @@ private:
 
 	/* Used together in game loop to iterate through each player */
     std::vector<Player> player;
-	int currentPlayer;
+	int currentPlayer{0};
 
     bool gameStatus{false}; // used to exit game loop
 
