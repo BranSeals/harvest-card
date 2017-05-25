@@ -12,7 +12,7 @@
 #include "Card.hpp"
 #include <vector>
 
-class Deck : public Card
+class Deck
 {
 public:
     Deck();
