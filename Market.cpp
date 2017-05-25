@@ -33,15 +33,11 @@ void Market::print(void)
 
 void Market::print(std::string stallName)
 {
-    if (stallName == "Decks") {
-        Deck::print();
-    } else {
-        std::vector<Card>* stallPtr{Market::pointTo(stallName)};
-        std::cout << "\n" << stallName << ":\n";
-        for (size_t i{0}; i < (*stallPtr).size(); ++i) {
-            std::cout << (*stallPtr)[i].getCardName() << "\n";
-        }
-    }
+	std::vector<Card>* stallPtr{ Market::pointTo(stallName) };
+	std::cout << "\n" << stallName << ":\n";
+	for (size_t i{ 0 }; i < (*stallPtr).size(); ++i) {
+		std::cout << (*stallPtr)[i].getCardName() << "\n";
+	}
 }
 
 /* Formatted Market for game display */

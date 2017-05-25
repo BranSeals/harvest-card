@@ -12,7 +12,7 @@
 #include "Deck.hpp"
 #include "Card.hpp"
 
-class Market : public Deck
+class Market
 {
 public:
     Market();
