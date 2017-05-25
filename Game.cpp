@@ -119,7 +119,7 @@ void Game::addPlayer(std::string name, int age)
 void Game::quitGame(void)
 {
     // TO DO: Replace below with confirmYN function from main
-    if (confirmYN("\Quit game? [y/n]: ")) {
+    if (confirmYN("\nQuit game? [y/n]: ")) {
         std::cout << "\n> Quitting game...\n";
         gameStatus = false;
     } else {
@@ -272,18 +272,20 @@ void Game::gameLoop(void)
 			gameOver();
 			return;
 		}
-
+		
 		/* If last player has finished their turn, reset back to Player 1 control */
 		if (currentPlayer >= numPlayers) {
 			currentPlayer = 0;
-		}	
+		}
+		//std::cout << "\nCurrent player: " << currentPlayer << std::endl;
 		if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
 			player[currentPlayer].setPlayerPhase(1);
 		}
+		
 		if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
 			gameSeason.setCurrentSeason(1);
 		}
-
+		
 		/* Phase 1 - Season */
 		if (player[currentPlayer].getPlayerPhase() == 1) {
 			std::cout << "\n=================\n Phase 1: Season\n=================\n";
@@ -291,7 +293,7 @@ void Game::gameLoop(void)
 			gameSeason.resolveSeason();
 			player[currentPlayer].advancePhase();
 		}
-
+		
 		/* Phase 2 - Market */
 		if (player[currentPlayer].getPlayerPhase() == 2) {
 			while (player[currentPlayer].getPlayerPhase() == 2) {
