@@ -29,7 +29,7 @@ Card::~Card()
 //* Getters / Setters *//
 
 /* ID of card */
-int Card::getCardID(void)
+int Card::getCardID(void) const
 {
     return cardID;
 }
@@ -164,7 +164,7 @@ void Card::createByID(int id)
     std::ifstream file;
     std::string lineContent{""};
     
-    file.open("cards.txt", std::ifstream::in);
+	file.open("..\\cards.txt", std::ifstream::in);
 
     while (!file.eof()) {
         getline(file, lineContent);
@@ -199,3 +199,13 @@ void Card::createByID(int id)
     file.close();
 }
 
+/* These are used for linked lists during evaluation */
+bool Card::operator==(const Card& otherCard) const
+{
+	return getCardID() == otherCard.getCardID();
+}
+
+bool Card::operator!=(const Card& otherCard) const
+{
+	return !(getCardID() == otherCard.getCardID());
+}
