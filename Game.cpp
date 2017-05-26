@@ -278,11 +278,9 @@ void Game::gameLoop(void)
 		if (currentPlayer >= numPlayers) {
 			currentPlayer = 0;
 		}
-		//std::cout << "\nCurrent player: " << currentPlayer << std::endl;
 		if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
 			player[currentPlayer].setPlayerPhase(1);
 		}
-		
 		if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
 			gameSeason.setCurrentSeason(1);
 		}
@@ -357,6 +355,8 @@ void Game::gameLoop(void)
 
 void Game::populateDeck(void)
 {
+	/* This list is manually controlled for balance purposes */
+
     gameDeck.addCard(5101);
     gameDeck.addCard(5303);
     gameDeck.addCard(5301);
@@ -453,8 +453,15 @@ void Game::gameOver(void)
 
 void Game::rankPlayers(void)
 {
-	std::cout << "\nPlayers ranked\n";
-	// TO DO: pull similar function from Five Crowns
+	int winner{ 0 };
+	std::cout << "\n== Winner ==\n";
+	for (size_t i{ 1 }; i < player.size(); ++i) {
+		if (player[i].getPlayerGold() > player[winner].getPlayerGold()) {
+			winner = i;
+		}
+	}
+	std::cout << player[winner].getPlayerName() << " with " << player[winner].getPlayerGold()
+		<< " gold!\n";
 }
 
 bool Game::continueGame()
