@@ -196,4 +196,13 @@ class Season {
 -seasonLength : int
 }
 
+Game "1" *-up- "1" Market: Composition
+Game "1" *-up- "1" Deck: Composition
+Game "1" *-up- "1" Season: Composition
+Player "1" *-up- "1" Farm: Composition
+Player "1" *-up- "1" Card: Composition
+Farm "1" *-up- "many" Card: Composition
+Market "1" *-up- "many" Card: Composition
+Game "1" *-up- "many" Player: Composition
+
 @enduml
