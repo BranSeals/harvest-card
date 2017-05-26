@@ -11,6 +11,7 @@
 
 #include "Card.hpp"
 #include <vector>
+#include <algorithm>
 
 class Deck
 {
@@ -26,7 +27,7 @@ public:
 
     virtual void print(void);
     void print(std::string);
-    void shuffleDecks(void);
+    void shuffleDeck(void);
     int dealCard(std::string);
     std::vector<int>* pointTo(std::string);
     void addCard(int);

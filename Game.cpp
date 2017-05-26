@@ -101,6 +101,7 @@ void Game::beginGame(void)
 	printPlayers();
     setGameStatus(true); // check with player before or after above getting players
 	populateDeck();
+	gameDeck.shuffleDeck();
     gameDeck.fillDecks();
 	gameSeason.setSeasonLength(seasonLength);
 	gameSeason.fillSeasons(&gameDeck);
