@@ -18,9 +18,6 @@ Player::~Player()
 {
 }
 
-//* Getters / Setters *//
-
-/* Player order number */
 int Player::getPlayerNumber(void)
 {
     return playerNumber;
@@ -31,7 +28,6 @@ void Player::setPlayerNumber(int number)
     playerNumber = number;
 }
 
-/* Player name */
 std::string Player::getPlayerName(void)
 {
     return playerName;
@@ -42,8 +38,6 @@ void Player::setPlayerName(std::string name)
     playerName = name;
 }
 
-
-/* Player age */
 int Player::getPlayerAge(void)
 {
     return playerAge;
@@ -54,8 +48,6 @@ void Player::setPlayerAge(int age)
     playerAge = age;
 }
 
-
-/* Player gold */
 int Player::getPlayerGold(void)
 {
     return playerGold;
@@ -65,9 +57,6 @@ void Player::setPlayerGold(int gold)
 {
     playerGold = gold;
 }
-
-
-//* Methods *//
 
 void Player::addGold(int gold)
 {

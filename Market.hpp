@@ -29,4 +29,4 @@ private:
     std::vector<Card> livestockStall;
 	int numberInStall{3};
 };
-#endif /* Market_hpp */
+#endif

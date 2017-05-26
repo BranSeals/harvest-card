@@ -14,51 +14,38 @@ public:
     Card(int);
     ~Card();
     
-    //* Getters / Setters *//
-
-    /* ID of card */
     int getCardID(void) const;
     void setCardID(int);
     
-    /* Name of card */
     std::string getCardName(void);
     void setCardName(std::string);
     
     bool isCardFaceUp(void);
     void setCardFaceUp(bool);
-    
-    /* Effect on card, referring to list of effects */
+
     int getCardEffect(void);
     void setCardEffect(int);
 
-    /* Effect's target */
     int getCardTarget(void);
     void setCardTarget(int);
 
-    /* Cost of card in Market */
     int getCardCost(void);
     void setCardCost(int);
     
-    /* Value of card when sold */
     int getCardValue(void);
     void setCardValue(int);
     
-    /* Description of card */
     std::string getCardDescription(void);
     void setCardDescription(std::string);
 
-    /* Season of card */
     int getCardSeason(void);
     void setCardSeason(int);
-    
-    //* Methods *//
     
     void createByID(int);
     void flipCard(void);
     virtual void print(void);
     void resetCard(void);
 
-	/* Created during Metrics */
 	bool operator==(const Card& otherCard) const;
 	bool operator!=(const Card& otherCard) const;
     
@@ -74,4 +61,4 @@ private:
     std::string cardDescription{"If this card appears, a deck ran out of cards."};
 };
 
-#endif /* Card_hpp */
+#endif

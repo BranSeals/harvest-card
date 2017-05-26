@@ -36,4 +36,4 @@ private:
 	int seasonBonus{1};
 };
 
-#endif /* Farm_hpp */
+#endif

@@ -15,12 +15,7 @@ public:
     Deck();
     ~Deck();
 
-    //* Getters / Setters *//
-
     unsigned long getDeckSize(void);
-
-    //* Methods *//
-
     virtual void print(void);
     void print(std::string);
     void shuffleDeck(void);
@@ -41,4 +36,4 @@ private:
     std::vector<int> livestockDeck;
 };
 
-#endif /* Deck_hpp */
+#endif

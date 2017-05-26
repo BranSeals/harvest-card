@@ -16,9 +16,6 @@ Game::~Game()
 {
 }
 
-//* Getters / Setters *//
-
-/* Number of players */
 int Game::getNumPlayers(void)
 {
     return numPlayers;
@@ -31,7 +28,6 @@ void Game::setNumPlayers(int players)
     }
 }
 
-/* Age of player; needs element number */
 int Game::getPlayerAge(int index)
 {
     return playerAges[index];
@@ -42,7 +38,6 @@ void Game::setPlayerAge(int index, int age)
     playerAges[index] = age;
 }
 
-/* Name of player, needs element number */
 std::string Game::getPlayerName(int index)
 {
     return playerNames[index];
@@ -54,7 +49,6 @@ void Game::setPlayerName(int index, std::string name)
 }
 
 
-/* Number of seasons played */
 int Game::getGameLength(void)
 {
     return gameLength;
@@ -65,7 +59,6 @@ void Game::setGameLength(int length)
     gameLength = length;
 }
 
-/* Number of cards in season deck */
 int Game::getSeasonLength(void)
 {
     return seasonLength;
@@ -76,7 +69,6 @@ void Game::setSeasonLength(int length)
     seasonLength = length;
 }
 
-/* Get status of game */
 bool Game::getGameStatus(void)
 {
     return gameStatus;
@@ -86,8 +78,6 @@ void Game::setGameStatus(bool tf)
 {
     gameStatus = tf;
 }
-
-//* Methods *//
 
 void Game::beginGame(void)
 {

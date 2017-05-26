@@ -32,7 +32,7 @@ void Farm::addCard(Card card)
 
 void Farm::removeCard(Card card)
 {
-	/* TODO: unsure if needed, but will still be useful */
+	/* TODO: unsure if needed, but could be useful */
 }
 
 void Farm::print(void)
@@ -53,6 +53,7 @@ void Farm::print(std::string playerLot)
 		std::cout << (*lotPtr)[i].getCardName() << "\n";
 	}
 }
+
 std::vector<Card>* Farm::pointTo(std::string playerLot)
 {
 	if (playerLot == "Seed") {

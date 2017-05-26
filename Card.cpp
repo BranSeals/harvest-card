@@ -20,9 +20,6 @@ Card::~Card()
 {
 }
 
-//* Getters / Setters *//
-
-/* ID of card */
 int Card::getCardID(void) const
 {
     return cardID;
@@ -33,7 +30,6 @@ void Card::setCardID(int id)
     cardID = id;
 }
 
-/* Name of card */
 std::string Card::getCardName(void)
 {
     return cardName;
@@ -54,7 +50,6 @@ void Card::setCardFaceUp(bool tf)
     cardFaceUp = tf;
 }
 
-/* Effect on card, referring to list of effects */
 int Card::getCardEffect(void)
 {
     return cardEffect;
@@ -65,7 +60,6 @@ void Card::setCardEffect(int effect)
     cardEffect = effect;
 }
 
-/* Target of card effect */
 int Card::getCardTarget(void)
 {
     return cardTarget;
@@ -73,7 +67,6 @@ int Card::getCardTarget(void)
 
 void Card::setCardTarget(int target)
 {
-    //std::cout << "target value: " << cardTarget << std::endl;
     if (target == 50000) {
         cardTarget = 5000;
     } 
@@ -82,7 +75,6 @@ void Card::setCardTarget(int target)
     }
 }
 
-/* Cost of card in Market */
 int Card::getCardCost(void)
 {
     return cardCost;
@@ -93,7 +85,6 @@ void Card::setCardCost(int cost)
     cardCost = cost;
 };
 
-/* Value of card when sold */
 int Card::getCardValue(void)
 {
     return cardValue;
@@ -104,7 +95,6 @@ void Card::setCardValue(int value)
     cardValue = value;
 }
 
-/* Season of card */
 int Card::getCardSeason(void)
 {
     return cardSeason;
@@ -114,7 +104,6 @@ void Card::setCardSeason(int season)
     cardSeason = season;
 }
 
-/* Description of card */
 std::string Card::getCardDescription(void)
 {
     return cardDescription;
@@ -125,8 +114,6 @@ void Card::setCardDescription(std::string description)
     cardDescription = description;
 }
 
-//* Methods *//
-
 void Card::flipCard(void)
 {
     if (cardFaceUp == true) {
@@ -136,7 +123,6 @@ void Card::flipCard(void)
     }
 }
 
-/* Resets card to default value */
 void Card::resetCard(void)
 {
     createByID(getCardID());
@@ -149,10 +135,8 @@ void Card::print(void)
         << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
 }
 
-/* Assigns default values to card object from text file */
 void Card::createByID(int id)
 {
-    /* Set ID attribute */
     setCardID(id);
 
     std::ifstream file;
