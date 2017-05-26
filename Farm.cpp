@@ -36,7 +36,7 @@ void Farm::addCard(Card card)
 
 void Farm::removeCard(Card card)
 {
-
+	/* TODO: unsure if needed, but will still be useful */
 }
 
 void Farm::print(void)
