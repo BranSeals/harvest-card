@@ -50,9 +50,9 @@ void Deck::print(std::string deckName)
     }
 }
 
-void Deck::shuffleDecks(void)
+void Deck::shuffleDeck(void)
 {
-
+	std::random_shuffle(deck.begin(), deck.end());
 }
 
 // Reminder: check when calling function to ensure cards exist in deck

@@ -21,7 +21,7 @@ public:
     //* Getters / Setters *//
 
     /* ID of card */
-    int getCardID(void);
+    int getCardID(void) const;
     void setCardID(int);
     
     /* Name of card */
@@ -61,6 +61,10 @@ public:
     void flipCard(void);
     virtual void print(void);
     void resetCard(void);
+
+	/* Created during Metrics */
+	bool operator==(const Card& otherCard) const;
+	bool operator!=(const Card& otherCard) const;
     
 private:
     int cardID{0};

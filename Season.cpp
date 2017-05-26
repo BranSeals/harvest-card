@@ -8,17 +8,14 @@
 
 Season::Season()
 {
-
 }
 
 Season::Season(int length) : seasonLength{length}
 {
-
 }
 
 Season::~Season()
 {
-
 }
 
 std::vector<Card>* Season::pointTo(int season)
@@ -86,10 +83,6 @@ void Season::print(int season)
 		seasonName = "Winter";
 		break;
 	}
-	/*std::cout << "\n" << seasonName << " Deck:\n";
-	for (size_t i{0}; i < (*seasonPtr).size(); ++i) {
-		std::cout << (*seasonPtr)[i].getCardName() << "\n";
-	}*/
 }
 
 std::string Season::printString(int season)

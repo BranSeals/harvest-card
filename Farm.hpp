@@ -27,7 +27,6 @@ public:
 	void printFarm(void);
     int sellProduct();
     void workFarm(int, int);
-    //void moveCard(Card*, std::string);
 	int sizeOf(std::string);
 	bool canSelectTool(int);
 	virtual void refreshTools(void);

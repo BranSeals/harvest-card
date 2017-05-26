@@ -13,15 +13,12 @@
 
 Market::Market()
 {
-    //std::cout << "\n> Market constructed\n";
 }
 
 Market::~Market()
 {
-    //std::cout << "\n> Market destructed\n";
 }
 
-/* Basic print function for testing */
 void Market::print(void)
 {
     std::cout << "\n-- Market --";
@@ -33,15 +30,11 @@ void Market::print(void)
 
 void Market::print(std::string stallName)
 {
-    if (stallName == "Decks") {
-        Deck::print();
-    } else {
-        std::vector<Card>* stallPtr{Market::pointTo(stallName)};
-        std::cout << "\n" << stallName << ":\n";
-        for (size_t i{0}; i < (*stallPtr).size(); ++i) {
-            std::cout << (*stallPtr)[i].getCardName() << "\n";
-        }
-    }
+	std::vector<Card>* stallPtr{ Market::pointTo(stallName) };
+	std::cout << "\n" << stallName << ":\n";
+	for (size_t i{ 0 }; i < (*stallPtr).size(); ++i) {
+		std::cout << (*stallPtr)[i].getCardName() << "\n";
+	}
 }
 
 /* Formatted Market for game display */
@@ -102,6 +95,7 @@ std::vector<Card>* Market::pointTo(std::string stallName)
     }
 }
 
+// TO DO: express 3 in terms of numberInStall
 void Market::fillStalls(Deck* deck)
 {
     while (seedStall.size() < 3) {
