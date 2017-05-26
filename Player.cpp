@@ -11,18 +11,15 @@
 
 Player::Player()
 {
-    //std::cout << "\n> Player constructed\n";
 }
 
 Player::Player(int playerNum, std::string name, int age, int gold) :
 playerNumber{playerNum}, playerName{name}, playerAge{age}, playerGold{gold}
 {
-    //std::cout << "\n> Player constructed\n";
 }
 
 Player::~Player()
 {
-    //std::cout << "\n> Player destructed\n";
 }
 
 //* Getters / Setters *//
@@ -199,6 +196,7 @@ void Player::refreshTools(void)
 {
 	playerFarm.refreshTools();
 }
+
 void Player::harvestCrops(int season)
 {
 	addGold(playerFarm.harvest(season));
