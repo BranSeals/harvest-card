@@ -13,15 +13,12 @@
 
 Market::Market()
 {
-    //std::cout << "\n> Market constructed\n";
 }
 
 Market::~Market()
 {
-    //std::cout << "\n> Market destructed\n";
 }
 
-/* Basic print function for testing */
 void Market::print(void)
 {
     std::cout << "\n-- Market --";
