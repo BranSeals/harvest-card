@@ -1,10 +1,6 @@
-//
-//  Player.cpp
-//  Harvest Game
-//
-//  Created by Bran Seals on 10/23/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
+// Updated: 2017-05-26
 
 #include "Player.hpp"
 #include <iostream>

@@ -1,3 +1,7 @@
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
+// Updated: 2017-05-26
+
 /* TO DO : make sure that season and market are pulling from the same deck
    that will be supplied by the game object / or main function */
 

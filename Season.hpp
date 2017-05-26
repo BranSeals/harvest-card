@@ -1,4 +1,6 @@
-// needs to be constructed with season length defined
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
+// Updated: 2017-05-26
 
 #ifndef Season_hpp
 #define Season_hpp

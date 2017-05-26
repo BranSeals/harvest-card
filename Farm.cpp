@@ -1,10 +1,6 @@
-//
-//  Farm.cpp
-//  harvest-card
-//
-//  Created by Brandon Seals on 11/8/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-11-08
+// Updated: 2017-05-26
 
 #include "Farm.hpp"
 #include <iostream>
