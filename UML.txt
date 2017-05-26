@@ -1,0 +1,199 @@
+@startuml
+
+title Harvest Card Game
+
+class Card {
++Card()
++~Card()
++getCardID () : int
++setCardID(int)
++getCardName() : string
++setCardName(string)
++isCardFaceUp() : bool
++setCardFaceUp(bool)
++getCardEffect() : int
++setCardEffect(int)
++getCardTarget() : int
++setCardTarget(int)
++getCardCost() : int
++setCardCost(int)
++getCardValue() : int
++setCardValue(int)
++getCardDescription() : string
++setCardDescription(string) : int
++getCardSeason() : int
++setCardSeason(int)
+-cardID : int
+-cardName : string
+-cardFaceUp : bool
+-cardEffect : int
+-cardTarget : int
+-cardDescription : string
+-cardCost : int
+-cardValue : int
+-cardSeason : int
+}
+
+class Deck {
++Deck()
++~Deck()
++print()
++print(string)
++getDeckSize(void) : unsigned int
++addCard(Card)
++pointTo(string) : vector<int>
++shuffleDeck()
++dealCard(string) : int
++dealCardObject(string) : Card
++fillDecks()
+-deck : vector<int>
+-springDeck : vector<int>
+-summerDeck : vector<int>
+-autumnDeck : vector<int>
+-winterDeck : vector<int>
+-seedDeck : vector<int>
+-toolDeck : vector<int>
+-livestockDeck : vector<int>
+}
+
+class Farm {
++Farm()
++~Farm()
++addCard(Card)
++removeCard(Card)
++print()
++printFarm()
++sellProduct()
++workFarm(int, int)
++pointTo(string) : vector<Card>
++sizeOf(string) : int
++canSelectTool(int) : bool
++refreshTools()
++harvest(int) : int
+playerSeed : vector<Card>
+playerTool : vector<Card>
+playerLivestock : vector<Card>
+playerCrop : vector<Card>
+seasonBonus : int
+}
+
+class Game {
++Game(string, string, int, int, int)
++~Game()
++getNumPlayers() : int
++setNumPlayers(int)
++getPlayerAge(int) : int
++setPlayerAge(int, int)
++getPlayerName(int) : string
++setPlayerName(string)
++getGameLength() : int
++setGameLength(int)
++getSeasonLength() : int
++setSeasonLength(int)
++getGameStatus() : bool
++setGameStatus(bool)
++addPlayer(string, int)
++sortPlayers(vector<int>*, vector<string>*)
++beginGame()
++quitGame()
++getPlayers()
++confirmYN(string) : bool
++printPlayers()
++gameLoop()
++populateDeck()
++gameOver()
++rankPlayers()
++continueGame() : bool
+-gameTitle : string
+-gameDescription : string
+-startingGold : int
+-gameLength : int
+-seasonLength : int
+-numPlayers : int
+-playerAges : vector<int>
+-playerNames : vector<string>
+-player : vector<Player>
+-currentPlayer : int
+-gameStatus : int
+-gameMarket : Market
+-gameDeck : Deck
+-gameSeason : Season
+}
+
+class Market {
++Market()
++~Market()
++print()
++print(string)
++pointTo(string) : vector<Card>*
++printMarket()
++fillStalls(Deck*)
++getCostAt(int) : int
++removeFromStall(int) : Card
++canSelect(int) : bool
+-seedStall : vector<Card>
+-toolStall : vector<Card>
+-livestockStall : vector<Card>
+-numberInStall : int
+}
+
+class Player {
++Player()
++~Player()
++getPlayerNumber() : int
++setPlayerNumber(int)
++getPlayerName() : string
++setPlayerName(string)
++getPlayerAge()	int
++setPlayerAge(int)
++getPlayerGold() : int
++setPlayerGold(int)
++addGold(int)
++removeGold(int)
++print()
++printFarm()
++buy(Market*)
++sellProduct()
++work()
++select(string, int, int) : int
++advancePhase() : int
++getPlayerPhase() : int
++setPlayerPhase(int)
++refreshTools()
++harvestCrops(int)
+-playerNumber : int
+-playerPhase : int
+-playerName : string
+-playerAge : int
+-playerGold : int
+-boughtCard : Card
+-playerFarm : Farm
+}
+
+class Season {
++Season()
++Season(int)
++~Season()
++pointTo(int) : vector<Card>*
++getDaysLeft() : int
++setDaysLeft(int)
++getCurrentSeason() : int
++setCurrentSeason(int)
++getSeasonLength() : int
++setSeasonLength(int)
++print(int)
++printString(int) : string
++printSeason()
++resolveSeason()
++fillSeasons(Deck*)
++sizeOf(int) : int
+-springTime : vector<Card>
+-summerTime : vector<Card>
+-autumnTime : vector<Card>
+-winterTime : vector<Card>
+-daysLeft : int
+-currentSeason : int
+-seasonLength : int
+}
+
+@enduml
