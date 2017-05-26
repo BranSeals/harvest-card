@@ -72,8 +72,8 @@ This plaintext file contains information on all cards made for use in this proje
 ### UML.txt
 To be added soon. Will contain a plaintext UML representation of the classes and their relationships that can be used with [PlantText](https://www.planttext.com/).
 
-### metrics.txt
-To be added soon. Contains execution speed and analysis of various data structures used during the Spring semester version of the program (not yet uploaded).
+### evaluation.txt
+Contains an analysis of various data structures used during the evaluation project for my Computer Science III (Data Structures) course. This version of the program is not currently uploaded, but the document described which structure I have chosen to implement going forward, and the data that supports this decision.
 
 
 ## Classes

@@ -1,0 +1,72 @@
+# Evaluation
+
+## About
+
+This document describes the evaluation process I went through for the final project of my Computer Science III (Data Structures) course. The target of this project is the current repository, which was created as the final project of Computer Science II.
+
+While Harvest Card Game works the way I want it to, it is not optimized. The goal of the evaluation project was to find a better way of structuring the data going forward. I experimented with the mechanics of loading, filling, and dealing from decks to find a more efficient way of creating and handling all of the Card objects.
+
+As of May 2017, this repository features the original code from Computer Science II, and over the following summer I will be updating this repo using the information I gained through the evaluation project described here.
+
+
+## Goal
+
+The problem I am trying to overcome is that in the original code for this game, Card objects are created by opening and sequentially reading a text file for every card created. Considering how much slower it is to read a file than to read from memory, I want to find a better way to do this. 
+
+In my original method, I filled a vector<int> with 4-digit integers representing Card IDs. These Card IDs match with data stored within a text file that contain information about that card such as a description or its value. Whenever a card is dealt from this initial vector<int> deck, the card file is opened and read. A Card object is created with the matching information and then dealt to a second vector<Card> deck. 
+
+Some other ways I could structure this are creating Card objects from the very beginning (instead of as they are dealt), loading the text file into memory (instead of reading from disk), and using linked lists (instead of vectors). I also experimented with reformatting the text file to be more compact, and to be read in a more efficient manner. The methods I am testing in this project are a combination of all of the above.
+
+Here are methods I am analyzing:
+1. Fill vector<int> at start; deal to vector<Card>
+2. Fill vector<Card> at start; deal to second vector<Card>
+3. Fill unorderedLinkedList<Card> at start; deal to a second uLL<Card>
+4. Fill unorderedLinkedList<int> at start; deal to uLL<Card>
+
+Each method above has four variants:
+1. Read from disk using original card file
+2. Read from disk using reformatted card file and new read function
+3. Load text file into memory; sequential search for Card ID
+4. Load text file into memory; binary search for Card ID
+
+
+## Method
+
+Instead of implementing multiple data structures into the game directly, I created an Evaluation class that features a simplified mechanic of filling and dealing cards between decks using multiple methods. This lets me focus on the performance of each data structure and see clear, easy-to-measure results. 
+
+Ultimately, I am measuring the time it takes to fill an initial deck with 1,000 cards and deal all of them to a second deck. I am also interested in the amount of memory required by each method. It's important for me to have the fastest program possible using the least amount of memory, as I could then port the game to platforms that might be resource-scarce such as a web browser, mobile device, or an older computer.
+
+To properly analyze the methods specified above under "Goal," I needed to keep track of the execution time, as well as the amount of memory being used for each. To calculate memory requirements, I used breakpoints and memory snapshots in the Visual Studio debugger to find how much memory was used by each method.
+
+For execution time, I used boost::timer::auto_cpu_timer, which reports on the timespan between creation of a timer and its destruction (i.e. when main ends). The time reported is in both "CPU Time" (the time the CPU devotes to the process) and "wall time" (the actual execution time). CPU Time is consistent over multiple runs, but gave the same time for different methods. Wall time was more accurate, but varied by microseconds. To get around this, I calculated and used an average of several wall time reports.
+
+I chose to use 1,000 cards in this process because 100 cards is already a high amount of cards for this game, and 1,000 offered large enough time in microseconds to be useful in comparing the methods.
+
+
+## Results
+
+[NOTE: My data is contained in a spreadsheet, but is described in general here.]
+
+As expected, reading from disk to create Card objects was highly inefficient for all methods, taking 140 ms to execute. With the reformatted card file, the execution time was almost halved to 78 ms, but it was nowhere close to being as fast as pulling the file into memory. With the file loaded in memory, execution time for each method was under 10 ms. Loading the card file into memory only took 0.2 ms. Using binary search instead of sequential search saved an additional 4 ms.
+
+In terms of memory requirements, the containers holding Card objects were significantly larger with no benefit to speed. When loading the card file into memory, these methods would require 240 KB. In comparison, containers holding integer Card IDs and reading from memory only needed 110 KB, and executed at about the same speed. The methods that read from disk could be under 10 KB, but were extremely slow to execute.
+
+Linked lists required a little more memory than vectors containing the same data type, but linked lists were slightly faster by about a millisecond. 
+
+The fastest method was using an unorderedLinkedList<int> and loading the card file into memory. Requiring 110 KB, it could fill one deck with 1,000 cards and deal to a second in a total of 4.67 ms.
+
+
+## Conclusion
+
+By far, the most efficient methods require loading the card file into memory. I was worried that the time spent loading a 72 KB text file into a vector<string> would cancel out the time it would save, but that is clearly not the case.
+
+The two most efficient methods are the unorderedLinkedList<int> and vector<int> methods that use Card IDs, load the card file into memory, and create Card objects only when dealing them. The linked list requires 4 KB more memory, but is faster by a millisecond. 
+
+Between the two, I have decided to implement the vector<int> method into the game. Vectors are easy to use and have a lot of built-in functions within the standard library like find, sort, and shuffle which are all useful for a game using cards. The smaller memory size is more important to me than the 1 ms speed difference, because if the game were to be hosted online somewhere, it could help save on bandwidth cost.
+
+
+## Future
+
+I will continue to work on this project after the semester is over because this is a game I would like to finish, balance, and release someday. Selecting the best data structure will be important in how well it performs as an application, especially since Card objects will become larger and eventually include graphics.
+
+Specifically, I want to experiment using a hash table of cards, a map, a B-Tree, and finding the best way to reduce the size of the list of cards. With a character being only one byte, I think I could compress and encode the card data even further. 
