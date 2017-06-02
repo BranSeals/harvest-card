@@ -13,7 +13,7 @@ class Season : public Deck
 {
 public:
 	Season();
-    Season(int length);
+    Season(size_t length);
     ~Season();
 
     std::vector<Card>* pointTo(int); // uses season int as input, so increment can happen in game loop
@@ -42,7 +42,7 @@ private:
     std::vector<Card> winterTime;
     int daysLeft{0};
     int currentSeason{0};
-    int seasonLength{0};
+    size_t seasonLength{0};
 };
 
 #endif

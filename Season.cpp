@@ -14,7 +14,7 @@ Season::Season()
 {
 }
 
-Season::Season(int length) : seasonLength{length}
+Season::Season(size_t length) : seasonLength{length}
 {
 }
 
