@@ -163,8 +163,6 @@ void Player::work(void)
 	}
 
 	int selectedTool = selection - playerFarm.sizeOf("Seed") - 1;
-	/*int selectedTool = select("Use which tool?", 1 + playerFarm.sizeOf("Seed"), playerFarm.sizeOf("Seed") + playerFarm.sizeOf("Tool"))
-		- playerFarm.sizeOf("Seed") - 1;*/
 
 	/* Checks if a tool can be used */
 	if (!playerFarm.canSelectTool(selectedTool)) {

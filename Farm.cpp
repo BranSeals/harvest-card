@@ -146,7 +146,7 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 void Farm::printFarm(void)
 {
 	/* Find how many number selectors to use */
-	/* Pull this out into own function */
+	/* TODO: Pull this out into own function */
 	std::vector<int> intCompare;
 	intCompare.push_back(playerSeed.size());
 	intCompare.push_back(playerTool.size());
