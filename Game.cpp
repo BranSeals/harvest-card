@@ -127,7 +127,7 @@ void Game::getPlayers() {
         std::cin.ignore();
     } while ((numPlayers < 1) || (numPlayers > 4));
 
-    for (size_t i{1}; i <= numPlayers; ++i) {
+    for (int i{1}; i <= numPlayers; ++i) {
         std::cout << "\nWhat is player " << i << "'s name?: ";
         std::cin >> name;
         do {
