@@ -17,7 +17,7 @@ const int startingGold{100};
 int main()
 {
     Game harvestGame(gameTitle, gameDescription, seasonLength, gameLength, startingGold);
-	harvestGame.beginGame();
+    harvestGame.beginGame();
 
     return 0;
 }
