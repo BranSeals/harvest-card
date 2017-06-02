@@ -90,16 +90,15 @@ std::vector<Card>* Market::pointTo(std::string stallName)
     }
 }
 
-// TO DO: express 3 in terms of numberInStall
 void Market::fillStalls(Deck* deck)
 {
-    while (seedStall.size() < 3) {
+    while (seedStall.size() < numberInStall) {
         seedStall.push_back((*deck).dealCardObject("Seed"));
     }
-    while (toolStall.size() < 3) {
+    while (toolStall.size() < numberInStall) {
         toolStall.push_back((*deck).dealCardObject("Tool"));
     }
-    while (livestockStall.size() < 3) {
+    while (livestockStall.size() < numberInStall) {
         livestockStall.push_back((*deck).dealCardObject("Livestock"));
     }
 }
