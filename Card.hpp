@@ -47,10 +47,10 @@ public:
     void flipCard(void);
     virtual void print(void);
     void resetCard(void);
-	std::vector<std::string> split(std::string);
+    std::vector<std::string> split(std::string);
 
-	bool operator==(const Card& otherCard) const;
-	bool operator!=(const Card& otherCard) const;
+    bool operator==(const Card& otherCard) const;
+    bool operator!=(const Card& otherCard) const;
     
 private:
     int cardID{0};
