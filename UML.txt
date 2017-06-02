@@ -47,9 +47,9 @@ class Deck {
 +~Deck()
 +print()
 +print(string)
-+getDeckSize(void) : unsigned int
-+addCard(Card)
-+pointTo(string) : vector<int>
++getDeckSize(void) : unsigned long
++addCard(int)
++pointTo(string) : vector<int>*
 +shuffleDeck()
 +dealCard(string) : int
 +dealCardObject(string) : Card
@@ -70,10 +70,11 @@ class Farm {
 +addCard(Card)
 +removeCard(Card)
 +print()
++print(string)
 +printFarm()
-+sellProduct()
++sellProduct() : int
 +workFarm(int, int)
-+pointTo(string) : vector<Card>
++pointTo(string) : vector<Card>*
 +sizeOf(string) : int
 +canSelectTool(int) : bool
 +refreshTools()
@@ -122,7 +123,7 @@ class Game {
 -playerNames : vector<string>
 -player : vector<Player>
 -currentPlayer : int
--gameStatus : int
+-gameStatus : bool
 -gameMarket : Market
 -gameDeck : Deck
 -gameSeason : Season
@@ -147,6 +148,7 @@ class Market {
 
 class Player {
 +Player()
++Player(int, string, int, int)
 +~Player()
 +getPlayerNumber() : int
 +setPlayerNumber(int)
@@ -180,7 +182,7 @@ class Player {
 
 class Season {
 +Season()
-+Season(int)
++Season(size_t)
 +~Season()
 +pointTo(int) : vector<Card>*
 +getDaysLeft() : int
@@ -201,7 +203,7 @@ class Season {
 -winterTime : vector<Card>
 -daysLeft : int
 -currentSeason : int
--seasonLength : int
+-seasonLength : size_t
 }
 
 Game "1" *-up- "1" Market: Composition
