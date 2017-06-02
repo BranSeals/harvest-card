@@ -1,10 +1,5 @@
-//
-//  Farm.hpp
-//  harvest-card
-//
-//  Created by Brandon Seals on 11/8/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-11-08
 
 #ifndef Farm_hpp
 #define Farm_hpp
@@ -24,20 +19,20 @@ public:
     virtual void print(void);
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
-	void printFarm(void);
+    void printFarm(void);
     int sellProduct();
     void workFarm(int, int);
-	int sizeOf(std::string);
-	bool canSelectTool(int);
-	virtual void refreshTools(void);
-	virtual int harvest(int);
+    int sizeOf(std::string);
+    bool canSelectTool(int);
+    virtual void refreshTools(void);
+    virtual int harvest(int);
 
 private:
     std::vector<Card> playerSeed;
     std::vector<Card> playerTool;
     std::vector<Card> playerLivestock;
-	std::vector<Card> playerCrop;
-	int seasonBonus{1};
+    std::vector<Card> playerCrop;
+    int seasonBonus{1};
 };
 
-#endif /* Farm_hpp */
+#endif

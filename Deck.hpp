@@ -1,10 +1,5 @@
-//
-//  Deck.hpp
-//  Harvest Game
-//
-//  Created by Bran Seals on 10/23/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
 
 #ifndef Deck_hpp
 #define Deck_hpp
@@ -19,12 +14,7 @@ public:
     Deck();
     ~Deck();
 
-    //* Getters / Setters *//
-
     unsigned long getDeckSize(void);
-
-    //* Methods *//
-
     virtual void print(void);
     void print(std::string);
     void shuffleDeck(void);
@@ -45,4 +35,4 @@ private:
     std::vector<int> livestockDeck;
 };
 
-#endif /* Deck_hpp */
+#endif

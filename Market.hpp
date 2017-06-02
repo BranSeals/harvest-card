@@ -1,10 +1,5 @@
-//
-//  Market.hpp
-//  Harvest Game
-//
-//  Created by Bran Seals on 10/23/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
 
 #ifndef Market_hpp
 #define Market_hpp
@@ -21,16 +16,16 @@ public:
     virtual void print(void);
     std::vector<Card>* pointTo(std::string);
     void print(std::string);
-	void printMarket(void);
+    void printMarket(void);
     void fillStalls(Deck*);
     int getCostAt(int);
     Card removeFromStall(int);
-	bool canSelect(int);
+    bool canSelect(int);
 
 private:
     std::vector<Card> seedStall;
     std::vector<Card> toolStall;
     std::vector<Card> livestockStall;
-	int numberInStall{3};
+    int numberInStall{3};
 };
-#endif /* Market_hpp */
+#endif

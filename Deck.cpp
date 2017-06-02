@@ -1,10 +1,5 @@
-//
-//  Deck.cpp
-//  Harvest Game
-//
-//  Created by Bran Seals on 10/23/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
 
 #include "Deck.hpp"
 #include "Card.hpp"
@@ -33,9 +28,9 @@ void Deck::print()
     std::cout << "\n-- Decks --";
     print("Main");
     print("Spring");
-	print("Summer");
-	print("Autumn");
-	print("Winter");
+    print("Summer");
+    print("Autumn");
+    print("Winter");
     print("Seed");
     print("Tool");
     print("Livestock");
@@ -45,6 +40,7 @@ void Deck::print(std::string deckName)
 {
     std::vector<int>* deckPtr{pointTo(deckName)};
     std::cout << "\n" << deckName << " Deck:\n";
+    
     for (size_t i{0}; i < (*deckPtr).size(); ++i) {
         std::cout << (*deckPtr)[i] << "\n";
     }
@@ -52,7 +48,7 @@ void Deck::print(std::string deckName)
 
 void Deck::shuffleDeck(void)
 {
-	std::random_shuffle(deck.begin(), deck.end());
+    std::random_shuffle(deck.begin(), deck.end());
 }
 
 // Reminder: check when calling function to ensure cards exist in deck
@@ -60,9 +56,9 @@ int Deck::dealCard(std::string deckName)
 {
     std::vector<int>* deckPtr{pointTo(deckName)};
 
-	if ((*deckPtr).size() == 0) {
-		return 0;
-	}
+    if ((*deckPtr).size() == 0) {
+	return 0;
+    }
 
     int dealtCard{(*deckPtr)[(*deckPtr).size() - 1]};
     (*deckPtr).pop_back();
@@ -96,8 +92,8 @@ Card Deck::dealCardObject(std::string deckName)
 {
     int dealtCard = dealCard(deckName);
 	if (dealtCard == 0) {
-		std::cout << "\n*** No more cards in " << deckName << std::endl;
-		return Card();
+	    std::cout << "\n*** No more cards in " << deckName << std::endl;
+	    return Card();
 	}
     return Card(dealtCard);
 }

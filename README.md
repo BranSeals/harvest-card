@@ -70,7 +70,7 @@ Header and implementation files for the project's classes, each of which are des
 This plaintext file contains information on all cards made for use in this project. This file is opened and read from when creating Card objects during gameplay. In the optimized version (to be added soon) this file is pulled into memory to greatly speed up card creation. 
 
 ### UML.txt
-To be added soon. Will contain a plaintext UML representation of the classes and their relationships that can be used with [PlantText](https://www.planttext.com/).
+Contains a plaintext UML representation of the classes and their relationships. Can be used with [PlantText](https://www.planttext.com/).
 
 ### evaluation.txt
 Contains an analysis of various data structures used during the evaluation project for my Computer Science III (Data Structures) course. This version of the program is not currently uploaded, but the document described which structure I have chosen to implement going forward, and the data that supports this decision.

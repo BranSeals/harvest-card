@@ -1,10 +1,5 @@
-//
-//  Card.cpp
-//  Harvest Game
-//
-//  Created by Bran Seals on 10/23/16.
-//  Copyright © 2016 Brandon Seals. All rights reserved.
-//
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
 
 #include "Card.hpp"
 #include <iostream>
@@ -13,7 +8,6 @@
 
 Card::Card()
 {
-    //std::cout << "\n> Card constructed\n";
 }
 
 Card::Card(int id)
@@ -23,12 +17,8 @@ Card::Card(int id)
 
 Card::~Card()
 {
-    //std::cout << "\n> Card destructed\n";
 }
 
-//* Getters / Setters *//
-
-/* ID of card */
 int Card::getCardID(void) const
 {
     return cardID;
@@ -39,7 +29,6 @@ void Card::setCardID(int id)
     cardID = id;
 }
 
-/* Name of card */
 std::string Card::getCardName(void)
 {
     return cardName;
@@ -60,7 +49,6 @@ void Card::setCardFaceUp(bool tf)
     cardFaceUp = tf;
 }
 
-/* Effect on card, referring to list of effects */
 int Card::getCardEffect(void)
 {
     return cardEffect;
@@ -71,7 +59,6 @@ void Card::setCardEffect(int effect)
     cardEffect = effect;
 }
 
-/* Target of card effect */
 int Card::getCardTarget(void)
 {
     return cardTarget;
@@ -79,16 +66,14 @@ int Card::getCardTarget(void)
 
 void Card::setCardTarget(int target)
 {
-    //std::cout << "target value: " << cardTarget << std::endl;
     if (target == 50000) {
         cardTarget = 5000;
-    } 
-	if (target > 70000) {
+    }
+    if (target > 70000) {
         cardTarget = target - 70000;
     }
 }
 
-/* Cost of card in Market */
 int Card::getCardCost(void)
 {
     return cardCost;
@@ -97,9 +82,8 @@ int Card::getCardCost(void)
 void Card::setCardCost(int cost)
 {
     cardCost = cost;
-};
+}
 
-/* Value of card when sold */
 int Card::getCardValue(void)
 {
     return cardValue;
@@ -110,7 +94,6 @@ void Card::setCardValue(int value)
     cardValue = value;
 }
 
-/* Season of card */
 int Card::getCardSeason(void)
 {
     return cardSeason;
@@ -120,7 +103,6 @@ void Card::setCardSeason(int season)
     cardSeason = season;
 }
 
-/* Description of card */
 std::string Card::getCardDescription(void)
 {
     return cardDescription;
@@ -131,18 +113,15 @@ void Card::setCardDescription(std::string description)
     cardDescription = description;
 }
 
-//* Methods *//
-
 void Card::flipCard(void)
 {
     if (cardFaceUp == true) {
-        cardFaceUp = false;
+	cardFaceUp = false;
     } else {
-        cardFaceUp = true;
+	cardFaceUp = true;
     }
 }
 
-/* Resets card to default value */
 void Card::resetCard(void)
 {
     createByID(getCardID());
@@ -151,61 +130,68 @@ void Card::resetCard(void)
 void Card::print(void)
 {
     std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
-        << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
-        << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
+	      << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
+	      << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
 }
 
-/* Assigns default values to card object from text file */
 void Card::createByID(int id)
 {
-    /* Set ID attribute */
     setCardID(id);
 
     std::ifstream file;
     std::string lineContent{""};
-    
-	file.open("..\\cards.txt", std::ifstream::in);
+    std::vector<std::string> fields;
+
+    file.open("..\\cards.txt", std::ifstream::in);
 
     while (!file.eof()) {
-        getline(file, lineContent);
-        if (std::to_string(id) == lineContent) {
+	getline(file, lineContent);
 
-            getline(file, lineContent);
-            setCardSeason(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardName(lineContent);
-
-            getline(file, lineContent);
-            setCardDescription(lineContent);
-
-            getline(file, lineContent);
-            setCardEffect(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardTarget(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardValue(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardCost(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardFaceUp(std::stoi(lineContent.c_str()));
-        }
+	/* When ID matched, create Card object using data from file*/
+	if (std::to_string(id) == lineContent.substr(0, 4)) {
+	    fields = split(lineContent);
+			
+	    setCardID(std::stoi(fields[0].c_str()));
+	    setCardSeason(atoi(fields[1].c_str()));
+	    setCardName(fields[2]);
+	    setCardDescription(fields[3]);
+	    setCardEffect(atoi(fields[4].c_str()));
+	    setCardTarget(atoi(fields[5].c_str()));
+	    setCardValue(atoi(fields[6].c_str()));
+	    setCardCost(std::stoi(fields[7].c_str()));
+	    setCardFaceUp(atoi(fields[8].c_str()));
+	}
+	// TODO: use boolean flag and protect against case where ID not found
+	// This should not be an issue since cards are manually selected, but 
+	// this will be useful in case of a typo during balancing card choice
     }
-
     file.close();
+}
+
+std::vector<std::string> Card::split(std::string cardInfo)
+{
+    // Referencing vincenzo-pii from:
+    // https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
+
+    std::vector<std::string> fields;
+    std::string delim = "|";
+    size_t pos = 0;
+
+    /* Split data between | - requires final | at end of record */
+    while ((pos = cardInfo.find(delim)) != std::string::npos) {
+	fields.push_back(cardInfo.substr(0, pos));
+	cardInfo.erase(0, pos + delim.length());
+    }
+    return fields;
 }
 
 /* These are used for linked lists during evaluation */
 bool Card::operator==(const Card& otherCard) const
 {
-	return getCardID() == otherCard.getCardID();
+    return getCardID() == otherCard.getCardID();
 }
 
 bool Card::operator!=(const Card& otherCard) const
 {
-	return !(getCardID() == otherCard.getCardID());
+    return !(getCardID() == otherCard.getCardID());
 }

@@ -1,8 +1,6 @@
-/* Project name: Harvest Card Game
- * Author: Brandon Seals
- * Last revised: 2016-12-04
- * Description: CLI version of farming card game
- */
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
+// Updated: 2017-12-04
 
 #include <iostream>
 #include <string>
@@ -19,8 +17,7 @@ const int startingGold{100};
 int main()
 {
     Game harvestGame(gameTitle, gameDescription, seasonLength, gameLength, startingGold);
-	harvestGame.beginGame();
+    harvestGame.beginGame();
 
-	system("pause");
     return 0;
 }

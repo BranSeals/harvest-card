@@ -1,538 +1,89 @@
-﻿Card Format:
-Card ID
-Season
-Name
-Description
-Effect
-Effect Target (1st digit is type of card to target, followed by ID)
-Value
-Cost
-Initially Face Up (true) or Down (false) 
-
-Effects:
-0 No effect
-1 Flip Card (0 = face down, 1 = face up)
-2 Gain Gold (Amount of Gold Gained)
-3 Lose Gold (Amount of Gold Lost)
-4 Discard Seed (Number of Cards Lost)
-5 Discard Crop (Number of Cards Lost)
-6 Discard Tool (Number of Cards Lost)
-7 Discard Livestock (Number of Cards Lost)
-8 Discount (Subtract value)
-9 Bonus Gold (Add value)
-
-Will need functions:
-Determine if crop is in season and give bonus amount determined by constant
-
-Brainstorming:
-Hurricane
-Tornado
-Swimming
-Drought - can’t use watering can for turn
-Farmer’s Market - sell one or all crops in middle of season
-Plant Sale
-Bug-catching 
-Locusts!
-Sheep Shearing Contest
-Apple Bobbing
-Watermelon Festival
-Cooking Contest
-Apple picking
-Baking Contest
-Butter Churning Contest
-Animal Contest
-Horse Racing
-Dog Racing
-Chicken Fights
-Wine Festival
-Groundhog’s Day
-Fishing Tournament
-Costume Contest
-Snowstorm
-Snowball Fight
-
-Fox Attack
-Rainy Day
-Hole in a bucket
-Farm injury
-Elves
-Person Needs X
-Animal Gets Sick
-
-Find Honey
-Get Bees
-Find Coin
-
-1000
-1
-Spring Event (test)
-Description for Spring Event (test).
-0
-0
-0
-0
-0
-
-1001
-1
-Blossom Festival
-Relax and enjoy the spring blossoms.
-0
-0
-0
-0
-0
-
-1002
-1
-Egg Hunt
-Description
-0
-0
-0
-0
-0
-
-
-2000
-2
-Summer Event (test)
-Description for Summer Event (test).
-0
-0
-0
-0
-0
-
-
-2001
-1
-Fireworks Festival
-Description
-0
-0
-0
-0
-0
-
-2002
-2
-Farmer’s Market
-Description
-8
-2
-0
-0
-0
-
-3000
-3
-Autumn Event (test)
-Description for Autumn Event (test).
-0
-0
-0
-0
-0
-
-3001
-3
-Thanksgiving
-Description
-0
-0
-0
-0
-0
-
-3002
-3
-Pumpkin Carving
-Description
-0
-0
-0
-0
-0
-
-3003
-3
-Apple Bobbing
-Description
-0
-0
-0
-0
-0
-
-3004
-3
-Ghost Story
-Description
-0
-0
-0
-0
-0
-
-4000
-4
-Winter Event (test)
-Description for Winter Event (test).
-0
-0
-0
-0
-0
-
-4001
-
-5100
-1
-Spring Crop (test)
-Description for Spring Crop (test)
-2
-0
-2
-1
-0
-
-5101
-1
-Radish
-Description
-2
-0
-2
-1
-0
-
-5102
-1
-Cabbage
-Description
-2
-0
-2
-1
-0
-
-5103
-1
-Potato
-Description
-2
-0
-2
-1
-0
-
-5104
-1
-Turnip
-Description
-2
-0
-2
-1
-0
-
-5200
-2
-Summer Crop (test)
-Description for Summer Crop (test)
-2
-0
-2
-1
-0
-
-5201
-2
-Tomato
-Description
-2
-0
-2
-1
-0
-
-5202
-2
-Wheat
-Description
-2
-0
-2
-1
-0
-
-5203
-2
-Eggplant
-Description
-2
-0
-2
-1
-0
-
-5204
-2
-Watermelon
-Description
-2
-0
-4
-2
-0
-
-5300
-3
-Autumn Crop (test)
-Description for Autumn Crop (test)
-2
-0
-2
-1
-0
-
-5301
-3
-Corn
-Description
-2
-0
-2
-1
-0
-
-5302
-3
-Pumpkin
-Description
-2
-0
-4
-2
-0
-
-5303
-3
-Yam
-Description
-2
-0
-2
-1
-0
-
-5304
-3
-Beet
-Description
-2
-0
-2
-1
-0
-
-5400
-4
-Winter Crop (test)
-Description for Winter Crop (test)
-2
-0
-2
-1
-0
-
-5401
-4
-Onion
-Description
-2
-0
-2
-1
-0
-
-5402
-4
-Garlic
-Description
-2
-0
-2
-1
-0
-
-5403
-4
-Leek
-Description
-2
-0
-2
-1
-0
-
-5404
-4
-Peas
-Description
-2
-0
-2
-1
-0
-
-6000
-0
-Tool Card (test)
-Description for Tool Card (test)
-0
-50000
-0
-0
-1
-
-6001
-0
-Garden Hoe
-Flip one Seed Card per turn.
-1
-50000
-1
-2
-1
-
-6002
-0
-Fertilizer
-Flip one Seed Card per turn.
-1
-50000
-1
-2
-1
-
-6003
-0
-Water Can
-Flip one Seed Card per turn.
-1
-50000
-1
-10
-1
-
-6004
-0
-Sprinkler
-Flip two Seed Cards per turn.
-1
-50000
-2
-2
-1
-
-6005
-0
-Milk Pail
-Used by Cow to collect milk.
-1
-77001
-1
-20
-1
-
-6006
-0
-Shears
-Used by Sheep to cut wool.
-1
-77003
-1
-2
-1
-
-6007
-0
-Animal Feed
-Description
-1
-0
-1
-2
-1
-
-6008
-0
-Saddle
-Used by Horse to work.
-1
-77004
-1
-2
-1
-
-6009
-0
-Hay
-Used by Chicken to lay eggs.
-1
-77002
-1
-50
-1
-
-7000
-0
-Livestock Card (test)
-Description for Livestock Card (test)
-0
-0
-0
-0
-0
-
-7001
-0
-Cow
-With Milk Pail, can sell milk once per turn.
-2
-0
-200
-20
-0
-
-7002
-0
-Chicken
-With Hay, can sell egg once per turn.
-2
-0
-50
-21
-0
-
-7003
-0
-Sheep
-With Shears, can sell wool once per turn.
-2
-0
-100
-60
-0
-
-7004
-0
-Horse
-With Saddle, can flip a Seed Card once per turn.
-1
-50000
-100
-23
-0
+1000|1|Spring Event (test)|Description for Spring Event (test).|0|0|0|0|0|
+1001|1|Blossom Festival|Relax and enjoy the spring blossoms.|0|0|0|0|0|
+1002|1|Egg Hunt|Description|0|0|0|0|0|
+2000|2|Summer Event (test)|Description for Summer Event (test).|0|0|0|0|0|
+2001|1|Fireworks Festival|Description|0|0|0|0|0|
+2002|2|Farmer's Market|Description|8|2|0|0|0|
+3000|3|Autumn Event (test)|Description for Autumn Event (test).|0|0|0|0|0|
+3001|3|Thanksgiving|Description|0|0|0|0|0|
+3002|3|Pumpkin Carving|Description|0|0|0|0|0|
+3003|3|Apple Bobbing|Description|0|0|0|0|0|
+3004|3|Ghost Story|Description|0|0|0|0|0|
+4000|4|Winter Event (test)|Description for Winter Event (test).|0|0|0|0|0|
+5100|1|Spring Crop (test)|Description for Spring Crop (test)|2|0|2|1|0|
+5101|1|Radish|Description|2|0|2|1|0|
+5102|1|Cabbage|Description|2|0|2|1|0|
+5103|1|Potato|Description|2|0|2|1|0|
+5104|1|Turnip|Description|2|0|2|1|0|
+5200|2|Summer Crop (test)|Description for Summer Crop (test)|2|0|2|1|0|
+5201|2|Tomato|Description|2|0|2|1|0|
+5202|2|Wheat|Description|2|0|2|1|0|
+5203|2|Eggplant|Description|2|0|2|1|0|
+5204|2|Watermelon|Description|2|0|4|2|0|
+5300|3|Autumn Crop (test)|Description for Autumn Crop (test)|2|0|2|1|0|
+5301|3|Corn|Description|2|0|2|1|0|
+5302|3|Pumpkin|Description|2|0|4|2|0|
+5303|3|Yam|Description|2|0|2|1|0|
+5304|3|Beet|Description|2|0|2|1|0|
+5400|4|Winter Crop (test)|Description for Winter Crop (test)|2|0|2|1|0|
+5401|4|Onion|Description|2|0|2|1|0|
+5402|4|Garlic|Description|2|0|2|1|0|
+5403|4|Leek|Description|2|0|2|1|0|
+5404|4|Peas|Description|2|0|2|1|0|
+6000|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+6001|0|Garden Hoe|Flip one Seed Card per turn.|1|50000|1|2|1|
+6002|0|Fertilizer|Flip one Seed Card per turn.|1|50000|1|2|1|
+6003|0|Water Can|Flip one Seed Card per turn.|1|50000|1|10|1|
+6004|0|Sprinkler|Flip two Seed Cards per turn.|1|50000|2|2|1|
+6005|0|Milk Pail|Used by Cow to collect milk.|1|77001|1|20|1|
+6006|0|Shears|Used by Sheep to cut wool.|1|77003|1|2|1|
+6007|0|Animal Feed|Description|1|0|1|2|1|
+6008|0|Saddle|Used by Horse to work.|1|77004|1|2|1|
+6009|0|Hay|Used by Chicken to lay eggs.|1|77002|1|50|1|
+7000|0|Livestock Card (test)|Description for Livestock Card (test)|0|0|0|0|0|
+7001|0|Cow|With Milk Pail, can sell milk once per turn.|2|0|200|20|0|
+7002|0|Chicken|With Hay, can sell egg once per turn.|2|0|50|21|0|
+7003|0|Sheep|With Shears, can sell wool once per turn.|2|0|100|60|0|
+7004|0|Horse|With Saddle, can flip a Seed Card once per turn.|1|50000|100|23|0|
+7005|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7006|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7007|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7008|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7009|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7010|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7011|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7012|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7013|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7014|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7015|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7016|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7017|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7018|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7019|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7020|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7021|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7022|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7023|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7024|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7025|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7026|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7027|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7028|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7029|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7030|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7031|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7032|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7033|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7034|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7035|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7036|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7037|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7038|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7039|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7040|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7041|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7042|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7043|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7044|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7045|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|
+7046|0|Tool Card (test)|Description for Tool Card (test)|0|50000|0|0|1|

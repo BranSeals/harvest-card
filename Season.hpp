@@ -1,4 +1,5 @@
-// needs to be constructed with season length defined
+// Copyright © 2016 Bran Seals. All rights reserved.
+// Created: 2016-10-23
 
 #ifndef Season_hpp
 #define Season_hpp
@@ -10,8 +11,8 @@
 class Season : public Deck
 {
 public:
-	Season();
-    Season(int length);
+    Season();
+    Season(size_t length);
     ~Season();
 
     std::vector<Card>* pointTo(int); // uses season int as input, so increment can happen in game loop
@@ -22,16 +23,15 @@ public:
     int getCurrentSeason(void);
     void setCurrentSeason(int);
 
-	int getSeasonLength(void);
-	void setSeasonLength(int);
+    int getSeasonLength(void);
+    void setSeasonLength(int);
 
-	void print(int);
-	std::string printString(int);
+    void print(int);
+    std::string printString(int);
     void printSeason(void);
     void resolveSeason(void);
     void fillSeasons(Deck*);
-
-	int sizeOf(int);
+    int sizeOf(int);
 
 private:
     std::vector<Card> springTime;
@@ -40,7 +40,7 @@ private:
     std::vector<Card> winterTime;
     int daysLeft{0};
     int currentSeason{0};
-    int seasonLength{0};
+    size_t seasonLength{0};
 };
 
 #endif
