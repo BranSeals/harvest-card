@@ -44,17 +44,17 @@ public:
     void printPlayers(void);
     void gameLoop(void);
     void populateDeck(void);
-	void gameOver(void);
-	void rankPlayers(void);
-	bool continueGame();
+    void gameOver(void);
+    void rankPlayers(void);
+    bool continueGame();
 
 private:
-	std::string gameTitle;
-	std::string gameDescription;
+    std::string gameTitle;
+    std::string gameDescription;
     int startingGold;
-	int gameLength{0};
-	int seasonLength{0};
-	int numPlayers{1};
+    int gameLength{0};
+    int seasonLength{0};
+    int numPlayers{1};
     int currentPlayer{0};
     bool gameStatus{false};
 
@@ -64,6 +64,6 @@ private:
 
     Market gameMarket;
     Deck gameDeck;
-	Season gameSeason;
+    Season gameSeason;
 };
 #endif
