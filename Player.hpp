@@ -34,18 +34,18 @@ public:
 
     void buy(Market*);
     void sellProduct();
-	void work(void);
-	int select(std::string, int, int);
+    void work(void);
+    int select(std::string, int, int);
 
-	int advancePhase(void);
-	int getPlayerPhase(void);
-	void setPlayerPhase(int);
-	virtual void refreshTools(void);
-	void harvestCrops(int);
+    int advancePhase(void);
+    int getPlayerPhase(void);
+    void setPlayerPhase(int);
+    virtual void refreshTools(void);
+    void harvestCrops(int);
     
 private:
     int playerNumber{0};
-	int playerPhase{0};
+    int playerPhase{0};
     std::string playerName{""};
     int playerAge{0};
     int playerGold{0};
