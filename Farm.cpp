@@ -1,6 +1,5 @@
 // Copyright © 2016 Bran Seals. All rights reserved.
 // Created: 2016-11-08
-// Updated: 2017-05-26
 
 #include "Farm.hpp"
 #include <iostream>
