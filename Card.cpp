@@ -83,7 +83,7 @@ return cardCost;
 void Card::setCardCost(int cost)
 {
 	cardCost = cost;
-};
+}
 
 int Card::getCardValue(void)
 {
@@ -141,7 +141,7 @@ void Card::createByID(int id)
 	setCardID(id);
 
 	std::ifstream file;
-	std::string lineContent{ "" };
+	std::string lineContent{""};
 	std::vector<std::string> fields;
 
 	file.open("..\\cards.txt", std::ifstream::in);

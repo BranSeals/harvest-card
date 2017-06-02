@@ -41,6 +41,7 @@ void Deck::print(std::string deckName)
 {
     std::vector<int>* deckPtr{pointTo(deckName)};
     std::cout << "\n" << deckName << " Deck:\n";
+    
     for (size_t i{0}; i < (*deckPtr).size(); ++i) {
         std::cout << (*deckPtr)[i] << "\n";
     }

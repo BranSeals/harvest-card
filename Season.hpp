@@ -32,7 +32,6 @@ public:
     void printSeason(void);
     void resolveSeason(void);
     void fillSeasons(Deck*);
-
 	int sizeOf(int);
 
 private:

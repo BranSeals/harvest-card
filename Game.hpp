@@ -50,25 +50,21 @@ public:
 	bool continueGame();
 
 private:
-
 	std::string gameTitle;
 	std::string gameDescription;
     int startingGold;
 	int gameLength{0};
 	int seasonLength{0};
-
 	int numPlayers{1};
+    int currentPlayer{0};
+    bool gameStatus{false};
+
     std::vector<int> playerAges;
     std::vector<std::string> playerNames;
-
     std::vector<Player> player;
-	int currentPlayer{0};
-
-    bool gameStatus{false};
 
     Market gameMarket;
     Deck gameDeck;
 	Season gameSeason;
-    
 };
 #endif

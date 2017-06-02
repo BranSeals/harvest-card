@@ -43,9 +43,7 @@ public:
 	void setPlayerPhase(int);
 	virtual void refreshTools(void);
 	void harvestCrops(int);
-
-
-
+    
 private:
     int playerNumber{0};
 	int playerPhase{0};

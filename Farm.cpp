@@ -46,7 +46,6 @@ void Farm::print(void)
 
 void Farm::print(std::string playerLot)
 {
-
 	std::vector<Card>* lotPtr{Farm::pointTo(playerLot)};
 	std::cout << "\n" << playerLot << ":\n";
 	for (size_t i{0}; i < (*lotPtr).size(); ++i) {
@@ -97,6 +96,7 @@ void Farm::workFarm(int selectedTool, int selectedTarget)
 	/* Point to deck of cards that tool card will target */
 	/* Internal if statements make sure there is something to target */
 	std::vector<Card>* lotPtr{nullptr};
+
 	if (targetID == 5000) {
 		if (playerSeed.size() == 0) {
 			std::cout << "\n> Nothing to work on\n";
@@ -153,6 +153,7 @@ void Farm::printFarm(void)
 	intCompare.push_back(playerTool.size());
 	intCompare.push_back(playerLivestock.size());
 	int biggestLotSize{0};
+
 	for (int i{0}; i < 3; ++i) {
 		if (intCompare[i] > biggestLotSize) {
 			biggestLotSize = intCompare[i];
@@ -170,6 +171,7 @@ void Farm::printFarm(void)
 	std::cout << std::setw(10) << "Seeds:" << std::setw(19) << "Tools:"
 		<< std::setw(23) << "Livestock:" << std::endl;
 	std::cout << std::left;
+
 	for (int i{0}; i < biggestLotSize; ++i) {
 		if (playerSeed.size() > i) {
 			std::cout << "[" << i + 1 << "] " << std::setw(15);
@@ -196,6 +198,7 @@ void Farm::printFarm(void)
 	}
 	std::cout << std::endl;
 	std::cout.fill('-');
+
 	if (playerCrop.size() > 0) {
 		std::cout << std::setw(50) << "-- Crop ";
 		std::cout.fill(' ');

@@ -341,7 +341,6 @@ void Game::gameLoop(void)
 void Game::populateDeck(void)
 {
 	/* This list is manually controlled for balance purposes */
-
     gameDeck.addCard(5101);
     gameDeck.addCard(5303);
     gameDeck.addCard(5301);

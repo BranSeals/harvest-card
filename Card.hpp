@@ -52,7 +52,6 @@ public:
 
 	bool operator==(const Card& otherCard) const;
 	bool operator!=(const Card& otherCard) const;
-
     
 private:
     int cardID{0};

@@ -19,6 +19,5 @@ int main()
     Game harvestGame(gameTitle, gameDescription, seasonLength, gameLength, startingGold);
 	harvestGame.beginGame();
 
-	system("pause");
     return 0;
 }

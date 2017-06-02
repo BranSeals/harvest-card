@@ -90,6 +90,7 @@ void Player::buy(Market* market)
 		advancePhase();
 		return;
 	}
+
 	if (selection && market->canSelect(selection)) {
 		if (getPlayerGold() > market->getCostAt(selection)) {
 			boughtCard = market->removeFromStall(selection);
@@ -128,6 +129,7 @@ int Player::select(std::string message, int low, int high) {
 		std::cout << "\n*** Error, first number must be lower than second ***\n";
 		return 0;
 	}
+	
 	int selection{0};
 	do {
 		if (low == high) {

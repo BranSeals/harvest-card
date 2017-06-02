@@ -108,7 +108,6 @@ std::string Season::printString(int season)
 	}
 }
 
-
 void Season::printSeason(void)
 {
     std::vector<Card>* seasonPtr{pointTo(currentSeason)};
