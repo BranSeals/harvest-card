@@ -11,7 +11,7 @@
 class Season : public Deck
 {
 public:
-	Season();
+    Season();
     Season(size_t length);
     ~Season();
 
@@ -23,15 +23,15 @@ public:
     int getCurrentSeason(void);
     void setCurrentSeason(int);
 
-	int getSeasonLength(void);
-	void setSeasonLength(int);
+    int getSeasonLength(void);
+    void setSeasonLength(int);
 
-	void print(int);
-	std::string printString(int);
+    void print(int);
+    std::string printString(int);
     void printSeason(void);
     void resolveSeason(void);
     void fillSeasons(Deck*);
-	int sizeOf(int);
+    int sizeOf(int);
 
 private:
     std::vector<Card> springTime;
