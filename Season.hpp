@@ -42,5 +42,4 @@ private:
     int currentSeason{0};
     size_t seasonLength{0};
 };
-
 #endif

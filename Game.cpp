@@ -136,7 +136,7 @@ void Game::getPlayers() {
             std::cin.ignore();
         } while ((age < 1) || (age > 150));
 
-	/* Add player to age and name vectors for sorting purposes */
+        /* Add player to age and name vectors for sorting purposes */
         addPlayer(name, age);
     }
 
@@ -185,10 +185,8 @@ void Game::sortPlayers(std::vector<int>* agesPtr, std::vector<std::string>* name
     bool sortedName{false};
 
     while (!sortedAge || !sortedName) {
-
         /* Sort by age value first */
         for (size_t i{1}; i < (*agesPtr).size(); ++i) {
-
             if ((*agesPtr)[i] < (*agesPtr)[i - 1]) {
                 std::swap((*agesPtr)[i], (*agesPtr)[i - 1]);
                 std::swap((*namesPtr)[i], (*namesPtr)[i - 1]);
@@ -253,87 +251,85 @@ void Game::gameLoop(void)
     int turns{0}; // keeps track of total game time
     while (gameStatus) {
 
-	if (turns == gameLength) {
-	    gameOver();
-	    return;
-	}
-		
-	/* If last player has finished their turn, reset back to Player 1 control */
-	if (currentPlayer >= numPlayers) {
-	    currentPlayer = 0;
-	}
-	if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
-	    player[currentPlayer].setPlayerPhase(1);
-	}
-	if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
-	    gameSeason.setCurrentSeason(1);
-	}
-		
-	/* Phase 1 - Season */
-	if (player[currentPlayer].getPlayerPhase() == 1) {
-	    std::cout << "\n=================\n Phase 1: Season\n=================\n";
-	    gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()) - 1);
-	    gameSeason.resolveSeason();
-	    player[currentPlayer].advancePhase();
-	}
-		
-	/* Phase 2 - Market */
-	if (player[currentPlayer].getPlayerPhase() == 2) {
-	    while (player[currentPlayer].getPlayerPhase() == 2) {
-		std::cout << "\n=================\n Phase 2: Market\n=================\n";
-		/* Print current marketplace and player information */
-		gameMarket.printMarket();
-		std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName()
-		          << "\nGold: " << player[currentPlayer].getPlayerGold();
+        if (turns == gameLength) {
+            gameOver();
+            return;
+        }
 
-		/* Allow player to buy -- will auto-advance phase when finished */
-		player[currentPlayer].buy(&gameMarket);
-	    }
+        /* If last player has finished their turn, reset back to Player 1 control */
+        if (currentPlayer >= numPlayers) {
+            currentPlayer = 0;
+        }
+        if (player[currentPlayer].getPlayerPhase() == 0 || player[currentPlayer].getPlayerPhase() > 4) {
+            player[currentPlayer].setPlayerPhase(1);
+        }
+        if (gameSeason.getCurrentSeason() == 0 || gameSeason.getCurrentSeason() > 4) {
+            gameSeason.setCurrentSeason(1);
+        }
 
-	    /* Refill market for the next player after current player finished buying */
-	    gameMarket.fillStalls(&gameDeck);
-	}
+      /* Phase 1 - Season */
+        if (player[currentPlayer].getPlayerPhase() == 1) {
+            std::cout << "\n=================\n Phase 1: Season\n=================\n";
+            gameSeason.setDaysLeft(gameSeason.sizeOf(gameSeason.getCurrentSeason()) - 1);
+            gameSeason.resolveSeason();
+            player[currentPlayer].advancePhase();
+        }
 
-	/* Phase 3 - Work */
-	if (player[currentPlayer].getPlayerPhase() == 3) {
-	    std::cout << "\n===============\n Phase 3: Work\n===============";
-	    /* Refresh any exhausted tools from last turn */
-	    player[currentPlayer].refreshTools();
+        /* Phase 2 - Market */
+        if (player[currentPlayer].getPlayerPhase() == 2) {
+            while (player[currentPlayer].getPlayerPhase() == 2) {
+                std::cout << "\n=================\n Phase 2: Market\n=================\n";
+                /* Print current marketplace and player information */
+                gameMarket.printMarket();
+                std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName()
+                          << "\nGold: " << player[currentPlayer].getPlayerGold();
 
-	    while (player[currentPlayer].getPlayerPhase() == 3) {
-		std::cout << std::endl;
+                /* Allow player to buy -- will auto-advance phase when finished */
+                player[currentPlayer].buy(&gameMarket);
+            }
+            /* Refill market for the next player after current player finished buying */
+            gameMarket.fillStalls(&gameDeck);
+        }
 
-		std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName();
-		/* Allow player to work -- will auto-advance phase when finished */
-		player[currentPlayer].work();
-	    }
-	}
+        /* Phase 3 - Work */
+        if (player[currentPlayer].getPlayerPhase() == 3) {
+            std::cout << "\n===============\n Phase 3: Work\n===============";
+            /* Refresh any exhausted tools from last turn */
+            player[currentPlayer].refreshTools();
 
-	/* Phase 4 - Sell */
-	if (player[currentPlayer].getPlayerPhase() == 4) {
-	    std::cout << "\n===============\n Phase 4: Sell\n===============\n";
-	    while (player[currentPlayer].getPlayerPhase() == 4) {
+            while (player[currentPlayer].getPlayerPhase() == 3) {
+                std::cout << std::endl;
+
+                std::cout << "\nPlayer: " << player[currentPlayer].getPlayerName();
+                /* Allow player to work -- will auto-advance phase when finished */
+                player[currentPlayer].work();
+            }
+        }
+
+        /* Phase 4 - Sell */
+        if (player[currentPlayer].getPlayerPhase() == 4) {
+            std::cout << "\n===============\n Phase 4: Sell\n===============\n";
+            while (player[currentPlayer].getPlayerPhase() == 4) {
                 player[currentPlayer].sellProduct();
-	    }
-	    player[currentPlayer].advancePhase();
-	}
+            }
+            player[currentPlayer].advancePhase();
+        }
 
         /* if end of season, harvest */
         if (!gameSeason.getDaysLeft()) {
-	    std::cout << "\n-- " << gameSeason.printString(gameSeason.getCurrentSeason()) 
-		      << " harvest! --\n";
+            std::cout << "\n-- " << gameSeason.printString(gameSeason.getCurrentSeason()) 
+                      << " harvest! --\n";
             for (size_t i{0}; i < player.size(); ++i) {
-		std::cout << "> " << player[i].getPlayerName();
-		player[i].harvestCrops(gameSeason.getCurrentSeason());
+                std::cout << "> " << player[i].getPlayerName();
+                player[i].harvestCrops(gameSeason.getCurrentSeason());
             }
             /* Increment season */
-	    gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
-	}
+            gameSeason.setCurrentSeason(gameSeason.getCurrentSeason() + 1);
+        }
 
-	++currentPlayer;
-	++turns;
-		
-	gameStatus = continueGame();
+        ++currentPlayer;
+        ++turns;
+        gameStatus = continueGame();
     } /* end game loop */
 }
 
@@ -439,29 +435,29 @@ void Game::rankPlayers(void)
     int winner{0};
     std::cout << "\n== Winner ==\n";
     for (size_t i{1}; i < player.size(); ++i) {
-	if (player[i].getPlayerGold() > player[winner].getPlayerGold()) {
-	    winner = i;
-	}
+        if (player[i].getPlayerGold() > player[winner].getPlayerGold()) {
+            winner = i;
+        }
     }
     std::cout << player[winner].getPlayerName() << " with " << player[winner].getPlayerGold()
-	      << " gold!\n";
+              << " gold!\n";
 }
 
 bool Game::continueGame()
 {
     char cxAnswer{};
     while ((tolower(cxAnswer) != 'c') || (tolower(cxAnswer)) != 'x') {
-	std::cout << "\n(c)ontinue\te(x)it ";
-	std::cin >> cxAnswer;
-	std::cin.clear();
-	std::cin.ignore();
-	if (tolower(cxAnswer) == 'c') {
-	    return true;
-	} else if (tolower(cxAnswer) == 'x') {
-	    return false;
-	} else {
-	    std::cout << "\n*** Answer must be 'c' or 'x' ***\n";
-	}
+        std::cout << "\n(c)ontinue\te(x)it ";
+        std::cin >> cxAnswer;
+        std::cin.clear();
+        std::cin.ignore();
+        if (tolower(cxAnswer) == 'c') {
+            return true;
+        } else if (tolower(cxAnswer) == 'x') {
+            return false;
+        } else {
+            std::cout << "\n*** Answer must be 'c' or 'x' ***\n";
+        }
     }
     return false;
 }

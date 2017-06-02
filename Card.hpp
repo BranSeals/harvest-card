@@ -63,5 +63,4 @@ private:
     int cardSeason{0};
     std::string cardDescription{"If this card appears, a deck ran out of cards."};
 };
-
 #endif

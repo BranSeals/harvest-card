@@ -34,5 +34,4 @@ private:
     std::vector<int> toolDeck;
     std::vector<int> livestockDeck;
 };
-
 #endif

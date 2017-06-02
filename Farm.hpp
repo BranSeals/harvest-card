@@ -34,5 +34,4 @@ private:
     std::vector<Card> playerCrop;
     int seasonBonus{1};
 };
-
 #endif

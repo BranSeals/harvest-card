@@ -57,7 +57,7 @@ int Deck::dealCard(std::string deckName)
     std::vector<int>* deckPtr{pointTo(deckName)};
 
     if ((*deckPtr).size() == 0) {
-	return 0;
+        return 0;
     }
 
     int dealtCard{(*deckPtr)[(*deckPtr).size() - 1]};
@@ -91,10 +91,10 @@ std::vector<int>* Deck::pointTo(std::string deckName)
 Card Deck::dealCardObject(std::string deckName)
 {
     int dealtCard = dealCard(deckName);
-	if (dealtCard == 0) {
-	    std::cout << "\n*** No more cards in " << deckName << std::endl;
-	    return Card();
-	}
+    if (dealtCard == 0) {
+        std::cout << "\n*** No more cards in " << deckName << std::endl;
+        return Card();
+    }
     return Card(dealtCard);
 }
 
