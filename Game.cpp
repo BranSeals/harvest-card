@@ -136,7 +136,7 @@ void Game::getPlayers() {
             std::cin.ignore();
         } while ((age < 1) || (age > 150));
 
-		/* Add player to age and name vectors for sorting purposes */
+	/* Add player to age and name vectors for sorting purposes */
         addPlayer(name, age);
     }
 
