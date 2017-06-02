@@ -27,14 +27,12 @@ void Market::print(std::string stallName)
 {
 	std::vector<Card>* stallPtr{ Market::pointTo(stallName) };
 	std::cout << "\n" << stallName << ":\n";
-	for (size_t i{ 0 }; i < (*stallPtr).size(); ++i) {
+	for (size_t i{0}; i < (*stallPtr).size(); ++i) {
 		std::cout << (*stallPtr)[i].getCardName() << "\n";
 	}
 }
 
 /* Formatted Market for game display */
-// TO DO: express i + 4 and i + 7 in terms of numberInStall
-// TO DO: save top and bottom border into bar output
 void Market::printMarket(void)
 {
 	std::cout << std::left;
@@ -56,14 +54,14 @@ void Market::printMarket(void)
 			std::cout << "";
 		}
 		if (toolStall.size() > i) {
-			std::cout << "[" << i + 4 << "] " << std::setw(13);
+			std::cout << "[" << i + 1 + numberInStall << "] " << std::setw(13);
 			std::cout << toolStall[i].getCardName();
 		} else {
 			std::cout << "[" << " " << "] " << std::setw(13);
 			std::cout << "";
 		}
 		if (livestockStall.size() > i) {
-			std::cout << "[" << i + 7 << "] " << std::setw(13);
+			std::cout << "[" << i + 1 + (numberInStall * 2) << "] " << std::setw(13);
 			std::cout << livestockStall[i].getCardName();
 		} else {
 			std::cout << "[" << " " << "] " << std::setw(13);
