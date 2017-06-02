@@ -39,7 +39,6 @@ std::vector<Card>* Season::pointTo(int season)
 
 int Season::getDaysLeft(void)
 {
-
     return daysLeft;
 }
 
@@ -60,51 +59,51 @@ void Season::setCurrentSeason(int season)
 
 int Season::getSeasonLength(void)
 {
-	return seasonLength;
+    return seasonLength;
 }
 
 void Season::setSeasonLength(int length)
 {
-	seasonLength = length;
+    seasonLength = length;
 }
 
 void Season::print(int season)
 {
-	std::vector<Card>* seasonPtr{pointTo(season)};
-	std::string seasonName;
-	switch (season) {
+    std::vector<Card>* seasonPtr{pointTo(season)};
+    std::string seasonName;
+    switch (season) {
 	case (1):
-		seasonName = "Spring";
-		break;
+            seasonName = "Spring";
+            break;
 	case (2):
-		seasonName = "Summer";
-		break;
+            seasonName = "Summer";
+            break;
 	case (3):
-		seasonName = "Autumn";
-		break;
+            seasonName = "Autumn";
+            break;
 	case (4):
-		seasonName = "Winter";
-		break;
-	}
+            seasonName = "Winter";
+            break;
+    }
 }
 
 std::string Season::printString(int season)
 {
-	std::vector<Card>* seasonPtr{pointTo(season)};
-	switch (season) {
+    std::vector<Card>* seasonPtr{pointTo(season)};
+    switch (season) {
 	case (1):
-		return "Spring";
-		break;
+            return "Spring";
+            break;
 	case (2):
-		return "Summer";
-		break;
+            return "Summer";
+            break;
 	case (3):
-		return "Autumn";
-		break;
+            return "Autumn";
+            break;
 	case (4):
-		return "Winter";
-		break;
-	}
+            return "Winter";
+            break;
+    }
 }
 
 void Season::printSeason(void)
@@ -117,25 +116,25 @@ void Season::printSeason(void)
     std::cout.fill('-');
     std::cout << std::setw(50) << "-- Season ";
     std::cout.fill(' ');
-	std::cout << std::endl;
+    std::cout << std::endl;
 
-	std::cout << printString(currentSeason) << " - Day "
-		<< seasonLength - daysLeft << " of " << seasonLength << std::endl;
+    std::cout << printString(currentSeason) << " - Day "
+              << seasonLength - daysLeft << " of " << seasonLength << std::endl;
     std::cout << (*seasonPtr)[(*seasonPtr).size() - 1].getCardName()
-		<< "\n" << (*seasonPtr)[(*seasonPtr).size() - 1].getCardDescription() << std::endl;
+              << "\n" << (*seasonPtr)[(*seasonPtr).size() - 1].getCardDescription() << std::endl;
 
     /* Bottom bar */
     std::cout.fill('-');
-	std::cout << std::setw(50) << "";
-	std::cout.fill(' ');
-	std::cout << std::endl;
+    std::cout << std::setw(50) << "";
+    std::cout.fill(' ');
+    std::cout << std::endl;
 }
 
 void Season::resolveSeason(void)
 {
-	std::vector<Card>* seasonPtr{pointTo(currentSeason)};
-	printSeason();
-	(*seasonPtr).pop_back();
+    std::vector<Card>* seasonPtr{pointTo(currentSeason)};
+    printSeason();
+    (*seasonPtr).pop_back();
 }
 
 void Season::fillSeasons(Deck* deck)
@@ -156,6 +155,6 @@ void Season::fillSeasons(Deck* deck)
 
 int Season::sizeOf(int season)
 {
-	std::vector<Card>* seasonPtr{pointTo(season)};
-	return (*seasonPtr).size();
+    std::vector<Card>* seasonPtr{pointTo(season)};
+    return (*seasonPtr).size();
 }
