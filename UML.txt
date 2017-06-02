@@ -4,6 +4,7 @@ title Harvest Card Game
 
 class Card {
 +Card()
++Card(int)
 +~Card()
 +getCardID () : int
 +setCardID(int)
@@ -23,6 +24,13 @@ class Card {
 +setCardDescription(string) : int
 +getCardSeason() : int
 +setCardSeason(int)
++createByID(int)
++flipCard()
++print()
++resetCard()
++split(string) : vector<string>
++operator==(const Card&) : const bool
++operator!=(const Card&) : const bool
 -cardID : int
 -cardName : string
 -cardFaceUp : bool
