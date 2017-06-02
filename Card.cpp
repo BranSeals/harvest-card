@@ -77,104 +77,114 @@ void Card::setCardTarget(int target)
 
 int Card::getCardCost(void)
 {
-    return cardCost;
+return cardCost;
 }
 
 void Card::setCardCost(int cost)
 {
-    cardCost = cost;
+	cardCost = cost;
 };
 
 int Card::getCardValue(void)
 {
-    return cardValue;
+	return cardValue;
 }
 
 void Card::setCardValue(int value)
 {
-    cardValue = value;
+	cardValue = value;
 }
 
 int Card::getCardSeason(void)
 {
-    return cardSeason;
+	return cardSeason;
 }
 void Card::setCardSeason(int season)
 {
-    cardSeason = season;
+	cardSeason = season;
 }
 
 std::string Card::getCardDescription(void)
 {
-    return cardDescription;
+	return cardDescription;
 }
 
 void Card::setCardDescription(std::string description)
 {
-    cardDescription = description;
+	cardDescription = description;
 }
 
 void Card::flipCard(void)
 {
-    if (cardFaceUp == true) {
-        cardFaceUp = false;
-    } else {
-        cardFaceUp = true;
-    }
+	if (cardFaceUp == true) {
+		cardFaceUp = false;
+	}
+	else {
+		cardFaceUp = true;
+	}
 }
 
 void Card::resetCard(void)
 {
-    createByID(getCardID());
+	createByID(getCardID());
 }
 
 void Card::print(void)
 {
-    std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
-        << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
-        << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
+	std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
+		<< "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
+		<< "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
 }
 
 void Card::createByID(int id)
 {
-    setCardID(id);
+	setCardID(id);
 
-    std::ifstream file;
-    std::string lineContent{""};
-    
+	std::ifstream file;
+	std::string lineContent{ "" };
+	std::vector<std::string> fields;
+
 	file.open("..\\cards.txt", std::ifstream::in);
 
-    while (!file.eof()) {
-        getline(file, lineContent);
-        if (std::to_string(id) == lineContent) {
+	while (!file.eof()) {
+		getline(file, lineContent);
 
-            getline(file, lineContent);
-            setCardSeason(atoi(lineContent.c_str()));
+		/* When ID matched, create Card object using data from file*/
+		if (std::to_string(id) == lineContent.substr(0, 4)) {
+			fields = split(lineContent);
+			
+			setCardID(std::stoi(fields[0].c_str()));
+			setCardSeason(atoi(fields[1].c_str()));
+			setCardName(fields[2]);
+			setCardDescription(fields[3]);
+			setCardEffect(atoi(fields[4].c_str()));
+			setCardTarget(atoi(fields[5].c_str()));
+			setCardValue(atoi(fields[6].c_str()));
+			setCardCost(std::stoi(fields[7].c_str()));
+			setCardFaceUp(atoi(fields[8].c_str()));
+		}
+		// TODO: use boolean flag and protect against case where ID not found
+		// This should not be an issue since cards are manually selected, but 
+		// this will be useful in case of a typo during balancing card choice
+	}
+	file.close();
+}
 
-            getline(file, lineContent);
-            setCardName(lineContent);
+std::vector<std::string> Card::split(std::string cardInfo)
+{
+	// Referencing vincenzo-pii from:
+	// https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c
 
-            getline(file, lineContent);
-            setCardDescription(lineContent);
+	std::vector<std::string> fields;
+	std::string delim = "|";
+	size_t pos = 0;
 
-            getline(file, lineContent);
-            setCardEffect(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardTarget(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardValue(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardCost(atoi(lineContent.c_str()));
-
-            getline(file, lineContent);
-            setCardFaceUp(std::stoi(lineContent.c_str()));
-        }
-    }
-
-    file.close();
+	/* Split data between | - requires final | at end of record */
+	while ((pos = cardInfo.find(delim)) != std::string::npos) {
+		fields.push_back(cardInfo.substr(0, pos));
+		cardInfo.erase(0, pos + delim.length());
+	}
+	return fields;
 }
 
 /* These are used for linked lists during evaluation */
