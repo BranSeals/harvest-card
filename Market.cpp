@@ -20,58 +20,59 @@ void Market::print(void)
     print("Seed");
     print("Tool");
     print("Livestock");
-	print("Target");
+    print("Target");
 }
 
 void Market::print(std::string stallName)
 {
-	std::vector<Card>* stallPtr{ Market::pointTo(stallName) };
-	std::cout << "\n" << stallName << ":\n";
-	for (size_t i{0}; i < (*stallPtr).size(); ++i) {
-		std::cout << (*stallPtr)[i].getCardName() << "\n";
-	}
+    std::vector<Card>* stallPtr{ Market::pointTo(stallName) };
+    std::cout << "\n" << stallName << ":\n";
+    for (size_t i{0}; i < (*stallPtr).size(); ++i) {
+	std::cout << (*stallPtr)[i].getCardName() << "\n";
+    }
 }
 
 /* Formatted Market for game display */
 void Market::printMarket(void)
 {
-	std::cout << std::left;
-	std::cout << std::endl;
-	std::cout.fill('-');
-	std::cout << std::setw(50) << "-- Market ";
-	std::cout.fill(' ');
-	std::cout << std::endl;
-	std::cout << std::right;
-	std::cout << std::setw(10) << "Seeds:" << std::setw(17) << "Tools:"
-		<< std::setw(21) << "Livestock:" << std::endl;
-	std::cout << std::left;
-	for (int i{0}; i < numberInStall; ++i) {
-		if (seedStall.size() > i) {
-			std::cout << "[" << i + 1 << "] " << std::setw(13);
-			std::cout << seedStall[i].getCardName();
-		} else {
-			std::cout << "[" << " " << "] " << std::setw(13);
-			std::cout << "";
-		}
-		if (toolStall.size() > i) {
-			std::cout << "[" << i + 1 + numberInStall << "] " << std::setw(13);
-			std::cout << toolStall[i].getCardName();
-		} else {
-			std::cout << "[" << " " << "] " << std::setw(13);
-			std::cout << "";
-		}
-		if (livestockStall.size() > i) {
-			std::cout << "[" << i + 1 + (numberInStall * 2) << "] " << std::setw(13);
-			std::cout << livestockStall[i].getCardName();
-		} else {
-			std::cout << "[" << " " << "] " << std::setw(13);
-			std::cout << "";
-		}
-		std::cout << std::endl;
+    std::cout << std::left;
+    std::cout << std::endl;
+    std::cout.fill('-');
+    std::cout << std::setw(50) << "-- Market ";
+    std::cout.fill(' ');
+    std::cout << std::endl;
+    std::cout << std::right;
+    std::cout << std::setw(10) << "Seeds:" << std::setw(17) << "Tools:"
+	      << std::setw(21) << "Livestock:" << std::endl;
+    std::cout << std::left;
+	
+    for (int i{0}; i < numberInStall; ++i) {
+	if (seedStall.size() > i) {
+	    std::cout << "[" << i + 1 << "] " << std::setw(13);
+	    std::cout << seedStall[i].getCardName();
+	} else {
+	    std::cout << "[" << " " << "] " << std::setw(13);
+	    std::cout << "";
 	}
-	std::cout.fill('-');
-	std::cout << std::setw(50) << "";
-	std::cout.fill(' ');
+	if (toolStall.size() > i) {
+	    std::cout << "[" << i + 1 + numberInStall << "] " << std::setw(13);
+	    std::cout << toolStall[i].getCardName();
+	} else {
+	    std::cout << "[" << " " << "] " << std::setw(13);
+	    std::cout << "";
+	}
+	if (livestockStall.size() > i) {
+	    std::cout << "[" << i + 1 + (numberInStall * 2) << "] " << std::setw(13);
+	    std::cout << livestockStall[i].getCardName();
+	} else {
+	    std::cout << "[" << " " << "] " << std::setw(13);
+	    std::cout << "";
+	}
+	std::cout << std::endl;
+    }
+    std::cout.fill('-');
+    std::cout << std::setw(50) << "";
+    std::cout.fill(' ');
 }
 
 std::vector<Card>* Market::pointTo(std::string stallName)
@@ -136,17 +137,17 @@ Card Market::removeFromStall(int selection)
 
 bool Market::canSelect(int selection) {
 
-	if ((selection == 1 || selection == 2 || selection == 3)
-		&& (selection <= seedStall.size())) {
-		return true;
-	} else if ((selection == 4 || selection == 5 || selection == 6)
-		&& (selection - 3 <= toolStall.size())) {
-		return true;
-	} else if ((selection == 7 || selection == 8 || selection == 9)
-		&& (selection - 6 <= livestockStall.size())) {
-		return true;
-	} else {
-		std::cout << "\n> Cannot select.\n";
-		return false;
-	}
+    if ((selection == 1 || selection == 2 || selection == 3)
+	    && (selection <= seedStall.size())) {
+	return true;
+    } else if ((selection == 4 || selection == 5 || selection == 6)
+	    && (selection - 3 <= toolStall.size())) {
+	return true;
+    } else if ((selection == 7 || selection == 8 || selection == 9)
+	    && (selection - 6 <= livestockStall.size())) {
+	return true;
+    } else {
+	std::cout << "\n> Cannot select.\n";
+	return false;
+    }
 }
