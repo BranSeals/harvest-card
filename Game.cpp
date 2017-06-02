@@ -134,7 +134,7 @@ void Game::getPlayers() {
             std::cin >> age;
             std::cin.clear();
             std::cin.ignore();
-        } while ((numPlayers < 1) || (numPlayers > 150));
+        } while ((age < 1) || (age > 150));
 
 		/* Add player to age and name vectors for sorting purposes */
         addPlayer(name, age);
@@ -436,9 +436,9 @@ void Game::gameOver(void)
 
 void Game::rankPlayers(void)
 {
-	int winner{ 0 };
+	int winner{0};
 	std::cout << "\n== Winner ==\n";
-	for (size_t i{ 1 }; i < player.size(); ++i) {
+	for (size_t i{1}; i < player.size(); ++i) {
 		if (player[i].getPlayerGold() > player[winner].getPlayerGold()) {
 			winner = i;
 		}
