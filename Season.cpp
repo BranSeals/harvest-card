@@ -72,16 +72,16 @@ void Season::print(int season)
     std::vector<Card>* seasonPtr{pointTo(season)};
     std::string seasonName;
     switch (season) {
-	case (1):
+        case (1):
             seasonName = "Spring";
             break;
-	case (2):
+        case (2):
             seasonName = "Summer";
             break;
-	case (3):
+        case (3):
             seasonName = "Autumn";
             break;
-	case (4):
+        case (4):
             seasonName = "Winter";
             break;
     }
@@ -91,16 +91,16 @@ std::string Season::printString(int season)
 {
     std::vector<Card>* seasonPtr{pointTo(season)};
     switch (season) {
-	case (1):
+        case (1):
             return "Spring";
             break;
-	case (2):
+        case (2):
             return "Summer";
             break;
-	case (3):
+        case (3):
             return "Autumn";
             break;
-	case (4):
+        case (4):
             return "Winter";
             break;
     }

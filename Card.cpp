@@ -116,9 +116,9 @@ void Card::setCardDescription(std::string description)
 void Card::flipCard(void)
 {
     if (cardFaceUp == true) {
-	cardFaceUp = false;
+        cardFaceUp = false;
     } else {
-	cardFaceUp = true;
+        cardFaceUp = true;
     }
 }
 
@@ -130,8 +130,9 @@ void Card::resetCard(void)
 void Card::print(void)
 {
     std::cout << "\nName: " << getCardName() << "\nDescription: " << getCardDescription()
-	      << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget() << "\nValue: " << getCardValue()
-	      << "\nCost: " << getCardCost() << "\nFace-up: " << isCardFaceUp() << std::endl;
+              << "\nEffect: " << getCardEffect() << "\nTarget: " << getCardTarget()
+              << "\nValue: " << getCardValue() << "\nCost: " << getCardCost() 
+              << "\nFace-up: " << isCardFaceUp() << std::endl;
 }
 
 void Card::createByID(int id)
@@ -145,25 +146,25 @@ void Card::createByID(int id)
     file.open("..\\cards.txt", std::ifstream::in);
 
     while (!file.eof()) {
-	getline(file, lineContent);
+        getline(file, lineContent);
 
-	/* When ID matched, create Card object using data from file*/
-	if (std::to_string(id) == lineContent.substr(0, 4)) {
-	    fields = split(lineContent);
-			
-	    setCardID(std::stoi(fields[0].c_str()));
-	    setCardSeason(atoi(fields[1].c_str()));
-	    setCardName(fields[2]);
-	    setCardDescription(fields[3]);
-	    setCardEffect(atoi(fields[4].c_str()));
-	    setCardTarget(atoi(fields[5].c_str()));
-	    setCardValue(atoi(fields[6].c_str()));
-	    setCardCost(std::stoi(fields[7].c_str()));
-	    setCardFaceUp(atoi(fields[8].c_str()));
-	}
-	// TODO: use boolean flag and protect against case where ID not found
-	// This should not be an issue since cards are manually selected, but 
-	// this will be useful in case of a typo during balancing card choice
+        /* When ID matched, create Card object using data from file*/
+        if (std::to_string(id) == lineContent.substr(0, 4)) {
+            fields = split(lineContent);
+
+            setCardID(std::stoi(fields[0].c_str()));
+            setCardSeason(atoi(fields[1].c_str()));
+            setCardName(fields[2]);
+            setCardDescription(fields[3]);
+            setCardEffect(atoi(fields[4].c_str()));
+            setCardTarget(atoi(fields[5].c_str()));
+            setCardValue(atoi(fields[6].c_str()));
+            setCardCost(std::stoi(fields[7].c_str()));
+            setCardFaceUp(atoi(fields[8].c_str()));
+        }
+        // TODO: use boolean flag and protect against case where ID not found
+        // This should not be an issue since cards are manually selected, but 
+        // this will be useful in case of a typo during balancing card choice
     }
     file.close();
 }
@@ -179,8 +180,8 @@ std::vector<std::string> Card::split(std::string cardInfo)
 
     /* Split data between | - requires final | at end of record */
     while ((pos = cardInfo.find(delim)) != std::string::npos) {
-	fields.push_back(cardInfo.substr(0, pos));
-	cardInfo.erase(0, pos + delim.length());
+        fields.push_back(cardInfo.substr(0, pos));
+        cardInfo.erase(0, pos + delim.length());
     }
     return fields;
 }

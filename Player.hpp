@@ -52,5 +52,4 @@ private:
     Card boughtCard;
     Farm playerFarm;
 };
-
 #endif
