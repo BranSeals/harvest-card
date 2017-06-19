@@ -59,7 +59,42 @@ void CardEdit::updateCardFile()
 void CardEdit::repopulateEditFile()
 {
     //load cards.txt into currentList
-    //for each line:
-    //  push_back into editList with attribute and attribute value
+    std::ifstream file;
+    std::string lineContent{""};
+    std::vector<std::string> fields;
+
+    file.open("cards.txt", std::ifstream::in);
+
+    while (!file.eof()) {
+        getline(file, lineContent);
+        currentList.push_back(lineContent);
+    }
+   
+    for (size_t i{0}; i < currentList.size(); ++i) {
+        fields = split(lineContent);
+        editList.push_back("Card ID: " << fields[0];
+        editList.push_back("Season: " << fields[1];
+        editList.push_back("Name: " << fields[2];
+        editList.push_back("Description: " << fields[3];
+        editList.push_back("Effect: " << fields[4];
+        editList.push_back("Target: " << fields[5];
+        editList.push_back("Value: " << fields[6];
+        editList.push_back("Cost: " << fields[7];
+        editList.push_back("Initial Face Value: " << fields[8];
+        editList.push_back("\n");
+    }
     //write over cardEdit.txt with contents of editList 
+}
+
+std::vector<std::string> CardEdit::split(std::string cardInfo)
+{
+    std::vector<std::string> fields;
+    std::string delim = "|";
+    size_t pos = 0;
+
+    while ((pos = cardInfo.find(delim)) != std::string::npos) {
+        fields.push_back(cardInfo.substr(0, pos));
+        cardInfo.erase(0, pos + delim.length());
+    }
+    return fields;
 }
