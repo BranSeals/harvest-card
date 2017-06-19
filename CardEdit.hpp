@@ -14,6 +14,8 @@
 class CardEdit
 {
 public:
+    CardEdit();
+    ~CardEdit();
     void loadEditList();
     void loadOldList();
     void createNewList();

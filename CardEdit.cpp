@@ -3,6 +3,13 @@
 
 #include "CardEdit.hpp"
 
+CardEdit::CardEdit()
+{
+}
+
+CardEdit::~CardEdit()
+{
+}
 // Load cardEdit.txt into memory
 void CardEdit::loadEditList()
 {
