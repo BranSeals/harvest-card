@@ -47,3 +47,12 @@ void CardEdit::updateCardFile()
 {
     
 }
+
+// Repopulate cardEdit.txt using current cards.txt
+void CardEdit::repopulateEditFile()
+{
+    //load cards.txt into currentList
+    //for each line:
+    //  push_back into editList with attribute and attribute value
+    //write over cardEdit.txt with contents of editList 
+}

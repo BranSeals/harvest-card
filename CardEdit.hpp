@@ -21,10 +21,12 @@ public:
     bool verifyOldList();
     std::string createCardLine();
     void updateCardFile();
+    void repopulateEditFile();
 private:
     std::vector<std::string> editList;
     std::vector<std::string> oldList;
     std::vector<std::string> newList;
+    std::vector<std::string> currentList;
     std::string cardLine;
 };
 #endif
