@@ -23,7 +23,7 @@ One to four players use their starting gold to buy crop seeds, tools, and livest
 The game's currency. This doubles as the player's score at the end of the game. Gold can be earned by selling crops or tending to livestock.
 
 ### Seed Deck
-Contains various seasonal crops. These cards are planted and raised by the player. At the end of a season these cards are sold during harvest. Bonus gold is earned if the crop's season matches the current season. 
+Contains various seasonal crops. These cards are planted and raised by the player. At the end of a season these cards are sold during harvest. Bonus gold is earned if the crop's season matches the current season.
 
 ### Livestock Deck
 Contains various farm animals. When tended to by tools, livestock can offer gold at the end of every turn. Each livestock card has a matching tool card (e.g. Cow and Milk Pail).
@@ -46,7 +46,7 @@ Contains the current season’s deck, acting as a game timer. A season card is f
 Game is played as follows:
 * Youngest player goes first, with play moving clockwise.
 * At the beginning of each player’s turn, a Season card is turned face-up. If this card describes an event, it must be handled at this point.
-* Each player takes turns until the Season deck runs out of cards. 
+* Each player takes turns until the Season deck runs out of cards.
 * When the season deck runs out of cards, harvesting begins – players tally up the crops they were able to grow during the season and earn gold for each. Seasonal crops matching the season get a bonus. Crop cards are then turned face-down and the next season begins. (NOTE: Crop cards may be removed here).
 * The next season’s deck is placed in the Current Season area and normal gameplay resumes.
 * Game is played until a specified amount of time has passed.
@@ -63,10 +63,13 @@ Each turn involves the following actions:
 ## File List
 
 ### Class files
-Header and implementation files for the project's classes, each of which are described in detail below. 
+Header and implementation files for the project's classes, each of which are described in detail below.
 
 ### cards.txt
-This plaintext file contains information on all cards made for use in this project. This file is opened and read from when creating Card objects during gameplay. In the optimized version (to be added soon) this file is pulled into memory to greatly speed up card creation. 
+This plaintext file contains information on all cards made for use in this project. This file is opened and read from when creating Card objects during gameplay. In the optimized version (to be added soon) this file is pulled into memory to greatly speed up card creation.
+
+### cards_edit.txt
+This plaintext file contains an easier-to-read format for editing purposes. Paired with the CardEdit class, this file is converted and written into cards.txt.
 
 ### UML.txt
 Contains a plaintext UML representation of the classes and their relationships. Can be used with [PlantText](https://www.planttext.com/).
@@ -92,7 +95,7 @@ Each card contain the following attributes:
 Currently, the Deck class represents the suite of decks used to fill the market rather than a single, logical deck. This class will be changed later to describe a single deck, and this suite of decks will be moved into the Game class.
 
 ### Farm
-Represents a player's hand and contains seeds, tools, and livestock cards. Cards are added here after being purchased from the market, and are acted on during a player's turn. 
+Represents a player's hand and contains seeds, tools, and livestock cards. Cards are added here after being purchased from the market, and are acted on during a player's turn.
 
 ### Game
 Initializes the rules, players, decks, season, and market. Contains the main game loop, and determines which cards are used in the game.
@@ -101,7 +104,10 @@ Initializes the rules, players, decks, season, and market. Contains the main gam
 Displays three cards each of crop seeds, tools, and livestock for sale to the current player. When a card is purchased here, a card will be drawn from the Deck class to replace it.
 
 ### Player
-Contains player information, an instance of Farm (the player hand), and methods to allow a player to interact with the market and their farm. 
+Contains player information, an instance of Farm (the player hand), and methods to allow a player to interact with the market and their farm.
 
 ### Season
 Contains information on the game length, the current season, and displays an event card and handles its effect.
+
+### CardEdit
+Contains functions to read and write card information between cards.txt and cards_edit.txt files. If edit file does not exist, it can be created using existing card file and calling the function updateEditFile(). If edit file has been modified, the cards.txt file can be updated by calling updateCardFile().
