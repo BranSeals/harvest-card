@@ -10,22 +10,41 @@ CardEdit::CardEdit()
 CardEdit::~CardEdit()
 {
 }
+
 // Load cardEdit.txt into memory
 void CardEdit::loadEditList()
 {
     //fill editList with contents of cardEdit.txt
+    std::ifstream inFile;
+    std::string lineContent{""};
+
+    inFile.open("cardEdit.txt", std::ifstream::in);
+
+    while (!inFile.eof()) {
+        getline(inFile, lineContent);
+        editList.push_back(lineContent);
+    }
 }
 
 // Load current cards.txt file into memory
 void CardEdit::loadOldList()
 {
     //fill oldList with contents of cards.txt
+    std::ifstream inFile;
+    std::string lineContent{""};
+
+    inFile.open("cards.txt", std::ifstream::in);
+
+    while (!inFile.eof()) {
+        getline(inFile, lineContent);
+        oldList.push_back(lineContent);
+    }
 }
 
 // Create new list in memory using cardEdit cards with cards.txt format
 void CardEdit::createNewList()
 {
-
+    // for each element in editList, do createCardLine and add to newList
 }
 
 // Returns true if cardEdit.txt is properly formatted
@@ -52,7 +71,9 @@ std::string CardEdit::createCardLine()
 // Use newList to update cards.txt with new additions or removals
 void CardEdit::updateCardFile()
 {
-
+    // if card ID exists, check if info the same
+    // if card ID doesn't exist, insert new card sorted
+    // do a pass through cards.txt - if any IDs not in newList, remove from cards.txt
 }
 
 // Repopulate cardEdit.txt using current cards.txt
