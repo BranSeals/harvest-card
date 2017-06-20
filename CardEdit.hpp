@@ -22,7 +22,7 @@ public:
     void createNewList();
     bool verifyEditList();
     bool verifyOldList();
-    std::string createCardLine();
+    std::string createCardLine(std::vector<std::string>);
     void updateCardFile();
     void repopulateEditFile();
     std::vector<std::string> split(std::string);

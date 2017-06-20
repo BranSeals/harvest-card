@@ -44,7 +44,15 @@ void CardEdit::loadOldList()
 // Create new list in memory using cardEdit cards with cards.txt format
 void CardEdit::createNewList()
 {
+    std::vector<std::string> fields;
     // for each element in editList, do createCardLine and add to newList
+    for (int i{0}; i < editList.size(); i += 10) {
+        for (int j{0}; j < 9; ++j) {
+            fields.push_back(editList[i + j]);
+        }
+        newList.push_back(createCardLine(fields));
+        fields.clear();
+    }
 }
 
 // Returns true if cardEdit.txt is properly formatted
@@ -62,10 +70,13 @@ bool CardEdit::verifyOldList()
 }
 
 // Creates a line of card attributes in cards.txt format
-std::string CardEdit::createCardLine()
+std::string CardEdit::createCardLine(std::vector<std::string> fields)
 {
-
-    return "";
+    std::string line{""};
+    for (int i{0}; i < fields.size(); ++i) {
+        line += fields[i] + "|";
+    }
+    return line;
 }
 
 // Use newList to update cards.txt with new additions or removals
