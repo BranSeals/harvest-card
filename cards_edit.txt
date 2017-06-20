@@ -1,0 +1,890 @@
+Card ID: 1000
+Season: 1
+Name: Spring Event (test)
+Description: Description for Spring Event (test).
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 1001
+Season: 1
+Name: Blossom Festival
+Description: Relax and enjoy the spring blossoms.
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 1002
+Season: 1
+Name: Egg Hunt
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 2000
+Season: 2
+Name: Summer Event (test)
+Description: Description for Summer Event (test).
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 2001
+Season: 1
+Name: Fireworks Festival
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 2002
+Season: 2
+Name: Farmer's Market
+Description: Description
+Effect: 8
+Target: 2
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 3000
+Season: 3
+Name: Autumn Event (test)
+Description: Description for Autumn Event (test).
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 3001
+Season: 3
+Name: Thanksgiving
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 3002
+Season: 3
+Name: Pumpkin Carving
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 3003
+Season: 3
+Name: Apple Bobbing
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 3004
+Season: 3
+Name: Ghost Story
+Description: Description
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 4000
+Season: 4
+Name: Winter Event (test)
+Description: Description for Winter Event (test).
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 5100
+Season: 1
+Name: Spring Crop (test)
+Description: Description for Spring Crop (test)
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5101
+Season: 1
+Name: Radish
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5102
+Season: 1
+Name: Cabbage
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5103
+Season: 1
+Name: Potato
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5104
+Season: 1
+Name: Turnip
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5200
+Season: 2
+Name: Summer Crop (test)
+Description: Description for Summer Crop (test)
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5201
+Season: 2
+Name: Tomato
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5202
+Season: 2
+Name: Wheat
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5203
+Season: 2
+Name: Eggplant
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5204
+Season: 2
+Name: Watermelon
+Description: Description
+Effect: 2
+Target: 0
+Value: 4
+Cost: 2
+Initial Face Value: 0
+
+Card ID: 5300
+Season: 3
+Name: Autumn Crop (test)
+Description: Description for Autumn Crop (test)
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5301
+Season: 3
+Name: Corn
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5302
+Season: 3
+Name: Pumpkin
+Description: Description
+Effect: 2
+Target: 0
+Value: 4
+Cost: 2
+Initial Face Value: 0
+
+Card ID: 5303
+Season: 3
+Name: Yam
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5304
+Season: 3
+Name: Beet
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5400
+Season: 4
+Name: Winter Crop (test)
+Description: Description for Winter Crop (test)
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5401
+Season: 4
+Name: Onion
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5402
+Season: 4
+Name: Garlic
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5403
+Season: 4
+Name: Leek
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 5404
+Season: 4
+Name: Peas
+Description: Description
+Effect: 2
+Target: 0
+Value: 2
+Cost: 1
+Initial Face Value: 0
+
+Card ID: 6000
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 6001
+Season: 0
+Name: Garden Hoe
+Description: Flip one Seed Card per turn.
+Effect: 1
+Target: 50000
+Value: 1
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6002
+Season: 0
+Name: Fertilizer
+Description: Flip one Seed Card per turn.
+Effect: 1
+Target: 50000
+Value: 1
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6003
+Season: 0
+Name: Water Can
+Description: Flip one Seed Card per turn.
+Effect: 1
+Target: 50000
+Value: 1
+Cost: 10
+Initial Face Value: 1
+
+Card ID: 6004
+Season: 0
+Name: Sprinkler
+Description: Flip two Seed Cards per turn.
+Effect: 1
+Target: 50000
+Value: 2
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6005
+Season: 0
+Name: Milk Pail
+Description: Used by Cow to collect milk.
+Effect: 1
+Target: 77001
+Value: 1
+Cost: 20
+Initial Face Value: 1
+
+Card ID: 6006
+Season: 0
+Name: Shears
+Description: Used by Sheep to cut wool.
+Effect: 1
+Target: 77003
+Value: 1
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6007
+Season: 0
+Name: Animal Feed
+Description: Description
+Effect: 1
+Target: 0
+Value: 1
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6008
+Season: 0
+Name: Saddle
+Description: Used by Horse to work.
+Effect: 1
+Target: 77004
+Value: 1
+Cost: 2
+Initial Face Value: 1
+
+Card ID: 6009
+Season: 0
+Name: Hay
+Description: Used by Chicken to lay eggs.
+Effect: 1
+Target: 77002
+Value: 1
+Cost: 50
+Initial Face Value: 1
+
+Card ID: 7000
+Season: 0
+Name: Livestock Card (test)
+Description: Description for Livestock Card (test)
+Effect: 0
+Target: 0
+Value: 0
+Cost: 0
+Initial Face Value: 0
+
+Card ID: 7001
+Season: 0
+Name: Cow
+Description: With Milk Pail, can sell milk once per turn.
+Effect: 2
+Target: 0
+Value: 200
+Cost: 20
+Initial Face Value: 0
+
+Card ID: 7002
+Season: 0
+Name: Chicken
+Description: With Hay, can sell egg once per turn.
+Effect: 2
+Target: 0
+Value: 50
+Cost: 21
+Initial Face Value: 0
+
+Card ID: 7003
+Season: 0
+Name: Sheep
+Description: With Shears, can sell wool once per turn.
+Effect: 2
+Target: 0
+Value: 100
+Cost: 60
+Initial Face Value: 0
+
+Card ID: 7004
+Season: 0
+Name: Horse
+Description: With Saddle, can flip a Seed Card once per turn.
+Effect: 1
+Target: 50000
+Value: 100
+Cost: 23
+Initial Face Value: 0
+
+Card ID: 7005
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7006
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7007
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7008
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7009
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7010
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7011
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7012
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7013
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7014
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7015
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7016
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7017
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7018
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7019
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7020
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7021
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7022
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7023
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7024
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7025
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7026
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7027
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7028
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7029
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7030
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7031
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7032
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7033
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7034
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7035
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7036
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7037
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7038
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7039
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7040
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7041
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7042
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7043
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7044
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7045
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
+Card ID: 7046
+Season: 0
+Name: Tool Card (test)
+Description: Description for Tool Card (test)
+Effect: 0
+Target: 50000
+Value: 0
+Cost: 0
+Initial Face Value: 1
+
