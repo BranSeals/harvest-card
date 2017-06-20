@@ -18,19 +18,18 @@ public:
     CardEdit();
     ~CardEdit();
     void loadEditList();
-    void loadOldList();
+    void loadCardList();
     void createNewList();
     bool verifyEditList();
-    bool verifyOldList();
+    bool verifyCardList();
     std::string createCardLine(std::vector<std::string>);
     void updateCardFile();
     void repopulateEditFile();
     std::vector<std::string> split(std::string);
 private:
     std::vector<std::string> editList;
-    std::vector<std::string> oldList;
+    std::vector<std::string> cardList;
     std::vector<std::string> newList;
-    std::vector<std::string> currentList;
     std::string cardLine;
 };
 #endif

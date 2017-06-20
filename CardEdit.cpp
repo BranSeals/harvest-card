@@ -11,16 +11,6 @@ CardEdit::~CardEdit()
 {
 }
 
-// Use to compare two lines by ID (cards.txt format)
-// Helper function for binary search
-bool binaryCardSearch(std::string a, std::string b)
-{
-    if ((a.substr(0, 4) == b.substr(0, 4))) {
-        return true;
-    }
-    return false;
-}
-
 // Load cardEdit.txt into memory
 void CardEdit::loadEditList()
 {
@@ -40,9 +30,9 @@ void CardEdit::loadEditList()
 }
 
 // Load current cards.txt file into memory
-void CardEdit::loadOldList()
+void CardEdit::loadCardList()
 {
-    //fill oldList with contents of cards.txt
+    //fill cardList with contents of cards.txt
     std::ifstream inFile;
     std::string lineContent{""};
 
@@ -50,18 +40,19 @@ void CardEdit::loadOldList()
 
     while (!inFile.eof()) {
         getline(inFile, lineContent);
-        oldList.push_back(lineContent);
+        cardList.push_back(lineContent);
     }
 }
 
 // Create new list in memory using cardEdit cards with cards.txt format
 void CardEdit::createNewList()
 {
+    newList.clear();
     std::vector<std::string> fields;
     // for each element in editList, do createCardLine and add to newList
     for (int i{0}; i < editList.size(); i += 9) {
         for (int j{0}; j < 9; ++j) {
-            fields.push_back( editList[i + j].substr(editList[i + j].find_first_of(":") + 2));
+            fields.push_back(editList[i + j].substr(editList[i + j].find_first_of(":") + 2));
         }
         newList.push_back(createCardLine(fields));
         fields.clear();
@@ -76,7 +67,7 @@ bool CardEdit::verifyEditList()
 }
 
 // Returns true if cards.txt is properly formatted and sorted
-bool CardEdit::verifyOldList()
+bool CardEdit::verifyCardList()
 {
 
     return false;
@@ -92,25 +83,26 @@ std::string CardEdit::createCardLine(std::vector<std::string> fields)
     return line;
 }
 
-// Use newList to update cards.txt with new additions or removals
+// Use newList to rewrite cards.txt
 void CardEdit::updateCardFile()
 {
-    // if card ID exists, check if info the same
-    // if card ID doesn't exist, insert new card sorted
-    // do a pass through cards.txt - if any IDs not in newList, remove from cards.txt
-
+    // sort newFile by CardID here
     std::ofstream outFile;
     outFile.open("cards.txt", std::ios::out | std::ios::trunc);
     for (int i{ 0 }; i < newList.size(); ++i) {
         outFile << newList[i] + "\n";
     }
     outFile.close();
+    //repopulateEditFile() with new sorting
 }
 
 // Repopulate cardEdit.txt using current cards.txt
 void CardEdit::repopulateEditFile()
 {
-    //load cards.txt into currentList
+    editList.clear();
+    cardList.clear();
+
+    //load cards.txt into cardList
     std::ifstream inFile;
     std::string lineContent{""};
     std::vector<std::string> fields;
@@ -119,11 +111,11 @@ void CardEdit::repopulateEditFile()
 
     while (!inFile.eof()) {
         getline(inFile, lineContent);
-        currentList.push_back(lineContent);
+        cardList.push_back(lineContent);
     }
 
-    for (size_t i{0}; i < currentList.size(); ++i) {
-        fields = split(currentList[i]);
+    for (size_t i{0}; i < cardList.size(); ++i) {
+        fields = split(cardList[i]);
         editList.push_back("Card ID: " + fields[0]);
         editList.push_back("Season: " + fields[1]);
         editList.push_back("Name: " + fields[2]);
