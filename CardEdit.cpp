@@ -116,10 +116,13 @@ void CardEdit::repopulateEditFile()
         editList.push_back("\n");
     }
     inFile.close();
-    //write over cardEdit.txt with contents of editList
-    //create and open for reading cardEdit.txt
-    //for each element in editList, write line into cardEdit
-    //outFile.close();
+
+    std::ofstream outFile;
+    outFile.open("cardEdit.txt", std::ios::out);
+    for (int i{0}; i < editList.size(); ++i) {
+        outFile << editList[i] + "\n";
+    }
+    outFile.close();
 }
 
 std::vector<std::string> CardEdit::split(std::string cardInfo)
