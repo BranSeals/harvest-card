@@ -11,6 +11,16 @@ CardEdit::~CardEdit()
 {
 }
 
+// Use to compare two lines by ID (cards.txt format)
+// Helper function for binary search
+bool binaryCardSearch(std::string a, std::string b)
+{
+    if ((a.substr(0, 4) == b.substr(0, 4))) {
+        return true;
+    }
+    return false;
+}
+
 // Load cardEdit.txt into memory
 void CardEdit::loadEditList()
 {
