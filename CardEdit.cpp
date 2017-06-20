@@ -59,14 +59,14 @@ void CardEdit::updateCardFile()
 void CardEdit::repopulateEditFile()
 {
     //load cards.txt into currentList
-    std::ifstream file;
+    std::ifstream inFile;
     std::string lineContent{""};
     std::vector<std::string> fields;
 
-    file.open("cards.txt", std::ifstream::in);
+    inFile.open("cards.txt", std::ifstream::in);
 
-    while (!file.eof()) {
-        getline(file, lineContent);
+    while (!inFile.eof()) {
+        getline(inFile, lineContent);
         currentList.push_back(lineContent);
     }
 
@@ -83,7 +83,11 @@ void CardEdit::repopulateEditFile()
         editList.push_back("Initial Face Value: " + fields[8]);
         editList.push_back("\n");
     }
+    inFile.close();
     //write over cardEdit.txt with contents of editList
+    //create and open for reading cardEdit.txt
+    //for each element in editList, write line into cardEdit
+    //outFile.close();
 }
 
 std::vector<std::string> CardEdit::split(std::string cardInfo)
