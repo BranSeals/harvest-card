@@ -15,10 +15,9 @@ CardEdit::~CardEdit()
 void CardEdit::loadEditList()
 {
     editList.clear();
-    //fill editList with contents of cardEdit.txt
-    std::ifstream inFile;
     std::string lineContent{""};
 
+    std::ifstream inFile;
     inFile.open("cardEdit.txt", std::ifstream::in);
 
     while (!inFile.eof()) {
@@ -27,53 +26,59 @@ void CardEdit::loadEditList()
             editList.push_back(lineContent);
         }
     }
+    verifyEditList();
 }
 
-// Load current cards.txt file into memory
+// Load cards.txt file into memory
 void CardEdit::loadCardList()
 {
-    //fill cardList with contents of cards.txt
-    std::ifstream inFile;
+    cardList.clear();
     std::string lineContent{""};
 
+    std::ifstream inFile;
     inFile.open("cards.txt", std::ifstream::in);
 
     while (!inFile.eof()) {
         getline(inFile, lineContent);
-        cardList.push_back(lineContent);
+        if (lineContent != "") {
+            cardList.push_back(lineContent);
+        }
     }
+    verifyCardList();
 }
 
-// Create new list in memory using cardEdit cards with cards.txt format
-void CardEdit::createNewList()
+// Convert editList items to cardList with cards.txt formatting
+void CardEdit::convertEditToCardList()
 {
-    newList.clear();
+    cardList.clear();
     std::vector<std::string> fields;
-    // for each element in editList, do createCardLine and add to newList
+
     for (int i{0}; i < editList.size(); i += 9) {
         for (int j{0}; j < 9; ++j) {
             fields.push_back(editList[i + j].substr(editList[i + j].find_first_of(":") + 2));
         }
-        newList.push_back(createCardLine(fields));
+        cardList.push_back(createCardLine(fields));
         fields.clear();
     }
 }
 
 // Returns true if cardEdit.txt is properly formatted
-bool CardEdit::verifyEditList()
+void CardEdit::verifyEditList()
 {
-
-    return false;
+    // every line not empty or a comment needs ":"
+    // line with data must be found in list of attributes
+    // data after colon must be able to be specific data type
+    // if all aren't met, output formatting error and exit
 }
 
 // Returns true if cards.txt is properly formatted and sorted
-bool CardEdit::verifyCardList()
+void CardEdit::verifyCardList()
 {
-
-    return false;
+    // split line by delimiter and check data for types
+    // if anything fails, output formatting error and exit
 }
 
-// Creates a line of card attributes in cards.txt format
+// Create cards.txt format using vector of attributes
 std::string CardEdit::createCardLine(std::vector<std::string> fields)
 {
     std::string line{""};
@@ -83,35 +88,28 @@ std::string CardEdit::createCardLine(std::vector<std::string> fields)
     return line;
 }
 
-// Use newList to rewrite cards.txt
-void CardEdit::updateCardFile()
+// Rewrite cards.txt with cardList
+void CardEdit::writeCardFile()
 {
-    // sort newFile by CardID here
+    //TODO: sort cardList by CardID here
     std::ofstream outFile;
     outFile.open("cards.txt", std::ios::out | std::ios::trunc);
-    for (int i{ 0 }; i < newList.size(); ++i) {
-        outFile << newList[i] + "\n";
+
+    for (int i{ 0 }; i < cardList.size(); ++i) {
+        outFile << cardList[i] + "\n";
     }
     outFile.close();
-    //repopulateEditFile() with new sorting
+    writeEditFile(); // with new sorting
 }
 
 // Repopulate cardEdit.txt using current cards.txt
-void CardEdit::repopulateEditFile()
+void CardEdit::writeEditFile()
 {
     editList.clear();
-    cardList.clear();
-
-    //load cards.txt into cardList
-    std::ifstream inFile;
-    std::string lineContent{""};
     std::vector<std::string> fields;
 
-    inFile.open("cards.txt", std::ifstream::in);
-
-    while (!inFile.eof()) {
-        getline(inFile, lineContent);
-        cardList.push_back(lineContent);
+    if (!cardList.size()) {
+        loadCardList();
     }
 
     for (size_t i{0}; i < cardList.size(); ++i) {
@@ -126,7 +124,6 @@ void CardEdit::repopulateEditFile()
         editList.push_back("Cost: " + fields[7]);
         editList.push_back("Initial Face Value: " + fields[8] + "\n");
     }
-    inFile.close();
 
     std::ofstream outFile;
     outFile.open("cardEdit.txt", std::ios::out | std::ios::trunc);
@@ -147,4 +144,11 @@ std::vector<std::string> CardEdit::split(std::string cardInfo)
         cardInfo.erase(0, pos + delim.length());
     }
     return fields;
+}
+
+void CardEdit::updateCardFile()
+{
+    loadEditList();
+    convertEditToCardList();
+    writeCardFile();
 }

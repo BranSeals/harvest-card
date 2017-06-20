@@ -19,17 +19,16 @@ public:
     ~CardEdit();
     void loadEditList();
     void loadCardList();
-    void createNewList();
-    bool verifyEditList();
-    bool verifyCardList();
+    void convertEditToCardList();
+    void verifyEditList();
+    void verifyCardList();
     std::string createCardLine(std::vector<std::string>);
-    void updateCardFile();
-    void repopulateEditFile();
+    void writeCardFile();
+    void writeEditFile();
     std::vector<std::string> split(std::string);
+    void updateCardFile();
 private:
     std::vector<std::string> editList;
     std::vector<std::string> cardList;
-    std::vector<std::string> newList;
-    std::string cardLine;
 };
 #endif
