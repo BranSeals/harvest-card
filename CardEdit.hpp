@@ -25,6 +25,7 @@ public:
     std::string createCardLine();
     void updateCardFile();
     void repopulateEditFile();
+    std::vector<std::string> split(std::string);
 private:
     std::vector<std::string> editList;
     std::vector<std::string> oldList;
