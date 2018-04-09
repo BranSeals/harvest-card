@@ -3,6 +3,8 @@
 ## About
 Harvest Card Game (working title) is a C++ console application of an original farming-themed card game being developed for commercial release. This project is meant to prototype and playtest the physical card game, and was also used as a final project in my computer science courses.
 
+This project is not currently being developed or maintained.
+
 ## Status
 
 The purpose of this project is prototype the card game, and as such it is not a representation of the final game. Not all cards and features are complete, and parts of the game are subject to change. The rules are manually set to be low for ease of testing, and is not meant to be played as-is. The game currently operates as intended, though is in the process of being refactored and optimized.
